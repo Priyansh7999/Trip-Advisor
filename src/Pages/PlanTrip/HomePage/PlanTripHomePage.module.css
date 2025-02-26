@@ -1,0 +1,157 @@
+.header {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+  
+  .planTripBg {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(60%);
+  }
+  
+  /* Overlay with Flexbox */
+  .overlay {
+    padding: 0 10%;
+  }
+  
+  /* Left side text */
+  .overlay h1 {
+    font-size: 2.3rem;
+    font-weight: 400;
+    color: white;
+    max-width: 600px;
+    line-height: 1.2;
+    font-family: var(--ta-Raleway);
+    text-align: justify;
+  }
+  .contentbox {
+    background-color: rgba(255, 255, 255, 0.61);
+    padding: 25px;
+    border-radius: 20px;
+    width: 350px;
+  }
+  
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .content label {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: black;
+    font-family: var(--ta-Raleway);
+  }
+  
+  .content input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-family: var(--ta-Raleway);
+  }
+  
+  /* Main Section */
+  .main {
+    background: #aca5a5cc;
+  }
+  
+  /* Centered text section */
+  .main1 {
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../../../assets//PlanTripBg2.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  .main1 h2 {
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: #2c392d;
+    margin-bottom: 10px;
+    text-align: center;
+    font-family: var(--ta-Raleway);  }
+  
+  .main1 p {
+    font-size: 1.1rem;
+    color: #93418c;
+    margin: 0 30%;
+    text-align: center;
+    font-family: var(--ta-Raleway);
+  }
+  
+  /* Travel Grid Section */
+  /* Gallery Section */
+  .main3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 5rem)); /* Responsive grid */
+    grid-auto-rows: 200px; 
+    gap: 15px;
+    padding: 40px 0;
+    justify-content: center;
+  }
+  
+  /* Heading */
+  .main3 h2 {
+    font-size: 2.1rem;
+    color: #275081;
+    font-weight: 400;
+    text-align: center;
+    font-family: var(--ta-Raleway);
+    grid-column: 1 / -1; /* Makes the heading span full width */
+  }
+  
+  /* Dynamic Image Layout */
+  .main3 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  /* Different image heights for a masonry effect */
+  .main3 img:nth-child(2n) {
+    grid-row: span 2; /* Taller images */
+  }
+  
+  .main3 img:nth-child(3n) {
+    grid-column: span 2; /* Wider images */
+  }
+  
+  .main3 img:hover {
+    transform: scale(1.02);
+  }
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .overlay {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+  
+    .overlay h1 {
+      font-size: 2rem;
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
+  
+    .contentbox {
+      width: 100%;
+      max-width: 400px;
+    }
+  }
+  

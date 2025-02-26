@@ -1,0 +1,58 @@
+.WhatToSee {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 50px 5%;
+  background: rgb(78, 78, 78) ; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: #333;
+  text-align: center;
+}
+
+.WhatToSee h1 {
+  font-size: 3rem;
+  color: #d36c6c;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+
+}
+
+.content-container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(250px, 6fr));
+  gap: 30px;
+}
+
+.content-item {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.content-item:hover {
+  transform: scale(1.02);
+}
+
+.content-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 4px solid #d36c6c;
+}
+
+.content-description {
+  padding: 20px;
+}
+
+.content-description h3 {
+  font-size: 1.5rem;
+  color: #d36c6c;
+  height: 100px;
+}
+
+.content-description p {
+  font-size: 1.2rem;
+  color: #288ac7;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}

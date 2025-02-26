@@ -1,0 +1,127 @@
+.footer {
+    background-color: #000000;
+    color: #fff;
+    padding: 50px 100px;
+    z-index: 1;
+    position: relative;
+    bottom: 0;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+  
+  .footer h3 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+  }
+  
+  .footer ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer ul li {
+    margin-bottom: 10px;
+  }
+  
+  .footer ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+  }
+  
+  .footer ul li a:hover {
+    color: #f39c12;
+  }
+  
+  .social-media {
+    align-items: center;
+  }
+  .social-media ul{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; 
+  }
+  
+  .social-media i {
+    font-size: 30px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .social-media i:hover {
+    transform: scale(1.2);
+  }
+  
+  .quick-links ul li {
+    margin-bottom: 12px;
+  }
+  
+  .newsletter {
+    max-width: 350px;
+  }
+  
+  .newsletter input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 1rem;
+  }
+  
+  .newsletter button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: #f39c12;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .newsletter button:hover {
+    background-color: #e67e22;
+  }
+  
+  /* Footer bottom */
+  .footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 0.9rem;
+  }
+  
+  .footer-bottom p {
+    margin: 0;
+    font-family: var(--ta-serif);
+    font-weight: 400;
+    color: white;
+  }
+  
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .footer-content {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .social-media {
+      flex-direction: row; /* Ensures icons are still in a row on smaller screens */
+      gap: 10px; /* Reduced gap for mobile */
+    }
+  
+    .social-media i {
+      font-size: 24px; /* Slightly smaller icons on mobile */
+    }
+  
+    .quick-links ul li {
+      margin-bottom: 8px;
+    }
+  }

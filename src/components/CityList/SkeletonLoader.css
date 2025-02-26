@@ -1,0 +1,94 @@
+/* Card grid layout */
+.city-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+    padding: 60px;
+    background-color: #000000;
+    gap: 20px;
+  }
+  
+  /* Skeleton Card Styles */
+  .city-card.skeleton {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #1e1e1e;
+    border-radius: 15px;
+    padding: 20px;
+    height: 500px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.6);
+    animation: pulse 1.5s infinite ease-in-out;
+  }
+  
+  /* Skeleton Image */
+  .city-card-image.skeleton {
+    width: 100%;
+    height: 200px;
+    background-color: #ddd;
+    border-radius: 15px 15px 0 0;
+  }
+  
+  /* Skeleton Content */
+  .city-card-content {
+    flex-grow: 1;
+    padding: 15px;
+  }
+  
+  .city-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .city-card-number.skeleton,
+  .city-card-title.skeleton {
+    background-color: #ddd;
+    border-radius: 4px;
+  }
+  
+  .city-card-number.skeleton {
+    width: 25px;
+    height: 25px;
+  }
+  
+  .city-card-title.skeleton {
+    width: 150px;
+    height: 20px;
+  }
+  
+  .city-card-desc.skeleton {
+    height: 100px;
+    background-color: #ddd;
+    border-radius: 4px;
+  }
+  
+  .city-card-footer {
+    margin-top: -20px;
+    background-color: #1e1e1e;
+    width: 100%;
+    text-align: center;
+  }
+  
+  /* Skeleton Button */
+  .explore-button.skeleton {
+    height: 48px;
+    width: 300px;
+    background-color: #ddd;
+    border-radius: 10px;
+    animation: pulse 1.5s infinite ease-in-out;
+  }
+  
+  /* Skeleton Animation */
+  @keyframes pulse {
+    0% {
+      opacity: 0.6;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0.6;
+    }
+  }
+  

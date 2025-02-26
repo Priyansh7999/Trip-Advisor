@@ -1,0 +1,134 @@
+
+  
+  /* Explore Button Styling */
+  .where-to-container .explore-button {
+    position: relative;
+    display: inline-flex;
+    height: 48px;
+    overflow: hidden;
+    border-radius: 10px;
+    width: 300px;
+    padding: 1px;
+    outline: none;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+  }
+  
+  .where-to-container .explore-button-bg {
+    position: absolute;
+    /* inset: -1000%; */
+    background: conic-gradient(from 90deg at 50% 50%, #0e2735 0%, #393BB2 50%, #213a8b 100%);
+    animation: spin 5s linear infinite;
+    z-index: 1;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .explore-button-text {
+    display: inline-flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: #1e1e1e;
+    color: #fff;
+    padding: 0 12px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    backdrop-filter: blur(12px);
+    z-index: 2;
+  }
+  
+  .explore-button-text:hover {
+    color: rgb(36, 153, 149);
+  }
+  
+  .where-to-footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+    background-color: #2f2d2d9b;
+    border-radius: 25px;
+  }
+  .where-to-footer p{
+    text-align: justify;
+    font-size: 1.4rem;
+    color: #ceebc1;
+    font-family: var(--ta-Raleway);
+    font-weight: 400;
+    line-height: 1.5;
+    word-spacing: 2.5px;
+  }
+  /* Mobile Responsive Styles */
+  @media (max-width: 768px) {
+    .where-to-content{
+        padding: 60px 20px;
+      }
+  
+    .where-to-container  .where-to-title {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      margin-top: 80px;
+    }
+  
+    .where-to-container  .where-to-description {
+      font-size: 1rem;
+      margin-bottom: 20px;
+      text-align: justify;
+      padding: 10px;
+      line-height: 1.5;
+    }
+  
+    .where-to-container .place-cards-grid {
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+  
+     .place-card {
+      min-height: 300px;
+      padding: 15px;
+    }
+    .place-card-header {
+        flex-direction: column; /* Stack city number and title vertically */
+        gap: 5px;
+      }
+    .where-to-container .place-card-image {
+      height: 150px;
+    }
+  
+    .where-to-container .place-card-name {
+      font-size: 1.2rem;
+    }
+  
+    .where-to-container .place-card-description {
+      font-size: 0.9rem;
+    }
+  
+    .where-to-container .place-card-footer {
+      padding: 10px;
+    }
+  
+    .where-to-container .explore-button {
+      width: 100%;
+      height: 44px;
+    }
+  
+    .explore-button-text {
+      font-size: 0.8rem;
+      padding: 0 10px;
+    }
+  }
+  

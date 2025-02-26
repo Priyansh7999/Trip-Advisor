@@ -1,0 +1,109 @@
+.search-component{
+    position: absolute;
+    width: 100%;
+    background-color: #333;
+    top: 0;
+    height: 100%;
+}
+  .search-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 100px;
+    padding: 40px;
+    border: 2px solid #444; /* Added border around the container */
+    border-radius: 10px; /* Rounded corners */
+    background-color: #2b2b2b; /* Slightly lighter background for the container */
+  }
+  
+  /* Tabs for Search Options */
+  .search-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+  }
+  
+  .search-tabs button {
+    background-color: #333;
+    color: #f0f0f0;
+    border: 1px solid #444;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  
+  .search-tabs button.active {
+    background-color: #4caf50; /* Changed active tab color to green */
+    color: #fff;
+    border-color: #4caf50;
+  }
+  
+  .search-tabs button:hover {
+    background-color: #45a049; /* Darker green on hover */
+    color: #fff;
+  }
+  
+  /* Search Form */
+  .search-form {
+    text-align: center;
+  }
+  
+  .search-form input {
+    background-color: #333;
+    border: 1px solid #444;
+    padding: 12px 20px;
+    font-size: 1rem;
+    color: #fff;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .search-form input::placeholder {
+    color: #bbb;
+  }
+  
+  .search-form input:focus {
+    outline: none;
+    background-color: #444;
+  }
+  
+  .search-form button {
+    background-color: #4caf50; /* Green button color */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 0 10px;
+    max-width: 400px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .search-form button:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .search-tabs {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .search-tabs button {
+      margin-bottom: 10px;
+      width: 100%;
+    }
+    
+    .search-form input,
+    .search-form button {
+      max-width: 90%;
+    }
+  }
+  

@@ -1,0 +1,82 @@
+
+
+.add-city-container {
+  display: flex;
+  justify-content: center;
+  background-color: #000000;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+
+.form-wrapper {
+  background: #333;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 800px;
+  animation: fadeIn 1s ease;
+}
+
+.form-wrapper h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ffd700;
+}
+
+.form-wrapper label {
+  font-size: 1.2em;
+  margin-bottom: 8px;
+  display: block;
+  color: #bbb;
+}
+
+/* Input, Textarea, Select styling */
+.form-wrapper input, textarea, select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  background: #444;
+  color: white;
+  border: 1px solid #666;
+  border-radius: 5px;
+  font-size: 1em;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.form-wrapper input:focus, textarea:focus, select:focus {
+  border-color: #ffd700;
+  background: #555;
+}
+
+/* Button styling */
+.form-wrapper button {
+  background-color: #ffd700;
+  color: #333;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.form-wrapper button:hover {
+  background-color: #ffcc00;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

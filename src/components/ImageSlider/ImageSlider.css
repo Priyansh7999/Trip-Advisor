@@ -1,0 +1,98 @@
+/* Minimalistic Professional Design - Updated */
+.slider-container {
+  position: relative;
+  width: 75%; /* Reduced width for a sleeker design */
+  margin: 20px auto;
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: transparent;
+  height: fit-content;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.slider-image-container {
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slider-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.slider-image-container img:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+
+.slider-place-label {
+  position: absolute;
+  bottom: 60px;
+  left: 20px; 
+  background: rgba(0, 0, 0, 0.6); 
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px; 
+  font-weight: bold;
+  border-radius: 8px;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7); 
+  letter-spacing: 0.5px; /* Slightly spaced letters for elegance */
+  max-width: 60%; /* Limits the width of the label to avoid overflow */
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; /* Adds "..." if the text is too long */
+}
+
+
+.slider-navigation {
+  position: absolute;
+  top: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: background 0.3s ease;
+}
+
+.slider-navigation:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.slider-navigation.left {
+  left: 15px;
+}
+
+.slider-navigation.right {
+  right: 15px;
+}
+
+.slider-dots {
+  display: flex;
+  justify-content: center;
+  margin: 15px; 
+  padding-top: 15px; 
+}
+
+.slider-dot {
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.slider-dot.active {
+  background-color: #000;
+}

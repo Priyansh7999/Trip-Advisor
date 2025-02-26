@@ -1,0 +1,79 @@
+.where-to-content{
+    background-color: #000;
+    height: 100%;
+    padding: 60px 60px;
+  }
+  /* Card Grid Layout */
+ .place-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  /* Place Card Styling */
+ .place-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #1e1e1e;
+    border-radius: 15px;
+    overflow: hidden;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s, box-shadow 0.3s;
+    height: 500px;
+  }
+  
+  .place-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 16px rgba(70, 69, 69, 0.8);
+  }
+  
+  /* Image Styling */
+   .place-card-image {
+    width: 100%;
+    border-radius: 15px 15px 0 0;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  /* Card Content */
+  .place-card-content {
+    flex-grow: 1;
+  }
+  
+  .place-card-name {
+    margin: 0;
+    color: #fff;
+    font-family: var(--ta-serif);
+    font-size: 1.5rem;
+  }
+  
+   .place-card-name span {
+    background-color: #2ed400;
+    padding:2px 10px;
+    margin-right: 5px;
+    margin-left: -5px;
+    font-size: 1.2rem;
+  }
+  
+   .place-card-description {
+    font-size: 1rem;
+    color: #ccc;
+    margin-top: 10px;
+    text-align: justify;
+    font-family: var(--ta-serif);
+    overflow: hidden;
+    display: -webkit-box;
+    line-clamp: 6;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+  }
+  
+  /* Card Footer */
+   .place-card-footer {
+    margin-top: 20px;
+    background-color: #1e1e1e;
+    width: 100%;
+    text-align: center;
+  }

@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Outfit:wght@100..900&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quintessential&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Darker+Grotesque:wght@300..900&family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Outfit:wght@100..900&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ms+Madi&family=Rouge+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Lancelot&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+:root {
+    --color-black: #000000; /* Black color */
+    --color-white: #ffffff; /* White color */
+    --color-blue-500: #ffffff; /* Bright Blue */
+    --color-cyan-400: #00bcd4; /* Cyan */
+    --color-yellow-400: #102c11; /* Yellow */
+    --color-grey-light: #f5f5f5; /* Light Grey for Backgrounds */
+    --color-grey-dark: #333333; /* Dark Grey for Text */
+    --color-border: #dcdcdc; /* Border Color */
+    --ta-sans-serif: "Trip Sans VF","Trip Sans",Arial,sans-serif; 
+    --ta-serif: "Outfit", sans-serif; 
+    --ta-monospace: "Trip Sans Mono",Courier,monospace,Arial,sans-serif; 
+    --ta-Bodoni: "Bodoni Moda", serif;
+    --ta-Darker: "Darker Grotesque", sans-serif;
+    /* --ta-Rouge: "Rouge Script", serif; */
+    /* --ta-Madi: "Ms Madi", serif; */
+    --ta-Cinzel: "Cinzel Decorative", serif;
+    --ta-Lancelot: "Lancelot", serif;
+    --ta-Quintessential: "Quintessential", serif;
+    --ta-Raleway: "Raleway", sans-serif;
+}
+html{
+  cursor:url("./assets/dot.png"), auto;
+}
+body{
+  font-smooth: antialiased;
+  -webkit-font-smoothing: antialiased;
+  /* cursor: none; */
+  background-color:#333333;
+  
+}
+
+.glow-on-hover {
+    margin: 10px;
+    border: none;
+    font-size: 16px;
+    outline: none;
+    color: #fff;
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    padding: 12px;
+    z-index: 0;
+    border-radius: 10px;
+  }
+  
+  .glow-on-hover:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+  }
+  
+  .glow-on-hover:active {
+    color: #000
+  }
+  
+  .glow-on-hover:active:after {
+    background: transparent;
+  }
+  
+  .glow-on-hover:hover:before {
+    opacity: 1;
+  }
+  
+  .glow-on-hover:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+  }
+  
+  @keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+  }
+
+
+  .where-to-container {
+    color: #fff;
+  }
+  .where-to-header{
+    position: relative;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .where-to-header img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    filter: brightness(0.4);
+    object-fit: cover;
+    z-index: -1;
+  }
+  /* Title Styling */
+  .where-to-container .where-to-title {
+    text-align: center;
+    font-size: 2rem;
+    font-family: var(--ta-serif);
+    color: #b8e31b;
+  }
+  
+  /* Description Paragraph */
+  .where-to-container .where-to-description {
+    text-align: center;
+    font-size: 1.2rem;
+    font-family: var(--ta-serif);
+    color: #1de849;
+    line-height: 1.8;
+  }

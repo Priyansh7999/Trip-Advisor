@@ -1,0 +1,68 @@
+.card-container{
+  display: flex;
+  /* overflow-x: auto;  */
+  gap: 20px;
+  scrollbar-width: none;
+  height: 600px;
+}
+.homepage-card {
+  position: relative;
+  scrollbar-width: none;
+  scroll-behavior: unset;
+  flex: 0 0 auto;
+  border-radius: 8px; 
+  width: 400px;
+  height: 600px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+  cursor: pointer;
+}
+.homepage-card img{
+  width: 100%;
+  filter: brightness(0.9);
+  height: 100%;
+  object-fit: cover;
+}
+.homepage-card .card-title {
+  position: absolute;
+  /* height: 150px; */
+  bottom: 1rem; /* Adjusts position to be at the bottom */
+  padding:  0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: rgb(255, 255, 255); /* Title color */
+  font-weight: bold; /* Makes the title bold */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Optional: adds a shadow to text for better readability */
+}
+.homepage-card h2{
+  font-family: var(--ta-Darker);
+}
+.homepage-card p{
+  color: rgb(255, 255, 255);
+  font-size: 1rem;
+  text-align: justify;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.homepage-card .explore button{
+   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+   /* font-family: var(--ta-Lancelot); */
+   font-weight: 400;
+   font-size: 15px;
+   color: rgb(255, 255, 255);
+   background-color: rgba(0, 0, 0, 0.411);
+   border: 0.5px solid white;
+   padding: 10px;
+   cursor: pointer;
+   border-radius: 5px;
+   transition: all 0.3s ease-in-out;
+}
+.homepage-card .explore button:hover{
+  background-color: white;
+  color: black;
+}
+.see-more{
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  align-items: center;
+}

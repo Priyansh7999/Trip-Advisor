@@ -1,0 +1,127 @@
+
+  /* Card grid layout */
+  .city-cards-grid {
+    display: grid;
+    grid-template-columns: repeat( 3 , minmax(300px, 1fr));
+    padding: 60px;
+    background-color: #000000;
+    gap: 20px;
+  }
+  
+  /* City card styles */
+  .city-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    background-color: #1e1e1e; 
+    border-radius: 15px;
+    overflow: hidden;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.6);
+    transition: transform 0.3s, box-shadow 0.3s;
+    height: 500px; 
+  }
+  
+  .city-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 16px rgba(70, 69, 69, 0.8);
+  }
+  
+  /* Image styling */
+  .city-card-image {
+    width: 100%;
+    border-radius: 15px 15px 0 0;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  /* Card content */
+  .city-card-content {
+    flex-grow: 1; 
+    padding: 15px;
+  }
+  
+  .city-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .city-card-number {
+    background-color: rgb(36, 153, 149); 
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px 0px;
+    color: #fff;
+    font-size: 1rem;
+    font-family: var(--ta-serif);
+    font-weight: bold;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5%;
+    margin-right: 10px;
+  }
+  
+  .city-card-title {
+    margin: 0;
+    color: #fff;
+    font-family: var(--ta-sans-serif);
+  }
+  
+  .city-card-desc {
+    font-size: 1rem;
+    height: 150px;
+    line-height: 25px;
+    color: #ccc;
+    margin: 10px 0;
+    text-align: justify;
+    font-family: var(--ta-serif);
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient:vertical;
+  }
+  .city-card-footer {
+    margin-top: -20px; 
+    /* padding: 15px; */
+    background-color: #1e1e1e;
+    width: 100%;
+    text-align: center;
+  }
+  
+/* Parent Button Styling */
+.explore-button {
+    position: relative;
+    display: inline-flex;
+    height: 48px; /* Height is 12 Tailwind units */
+    overflow: hidden;
+    border-radius: 10px; /* Fully rounded (Tailwind rounded-full) */
+    width: 300px;
+    padding: 1px; /* Border thickness simulation */
+    outline: none;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+  }
+
+  /* Spinning Background Gradient */
+  .explore-button-bg {
+    position: absolute;
+    inset: -1000%;
+    background: conic-gradient(from 90deg at 50% 50%, #0e2735 0%, #393BB2 50%, #213a8b 100%);
+    animation: spin 5s linear infinite; /* Spinning effect */
+    z-index: 1; /* Ensures it stays behind the text */
+  }
+  
+  /* Spinning Animation */
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  

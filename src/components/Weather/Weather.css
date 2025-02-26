@@ -1,0 +1,120 @@
+/* Weather container */
+.weather-container {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background: linear-gradient(to bottom, #ba8f4e, #cc8f33); /* Light orange gradient */
+    border-radius: 8px;
+    width: 360px; /* Set width */
+    height: 460px; /* Set height */
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden; /* To ensure no overflow outside the box */
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  /* Error message */
+  .error {
+    color: red;
+    text-align: center;
+    font-size: 18px;
+    margin-top: 20px;
+  }
+  
+  /* City and Weather Info */
+  .city-name {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #333 !important;
+  }
+  
+  .weather-image {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .weather-image img {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .weather-info {
+    text-align: center;
+  }
+  
+  .weather-info p {
+    margin: 5px 0;
+    font-size: 14px;
+  }
+  
+  .temperature {
+    font-size: 30px;
+    font-weight: bold;
+    color: #ff8c00;
+  }
+  
+  .condition,
+  .wind-speed,
+  .humidity {
+    font-size: 12px;
+    color: #555;
+  }
+  
+  /* Forecast Section */
+  .forecast {
+    text-align: center;
+  }
+  
+  .forecast h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .forecast-boxes {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+  }
+  
+  .forecast-box {
+    background-color: #fff;
+    padding: 8px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    box-sizing: border-box;
+  }
+  
+  .forecast-box h4 {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  .forecast-image img {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .forecast-temp {
+    font-size: 16px;
+    font-weight: bold;
+    color: #ff8c00;
+  }
+  
+  @media (max-width: 768px) {
+    .forecast-boxes {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .forecast-box {
+      width: 80%;
+      margin-bottom: 10px;
+    }
+  }
+  

@@ -1,0 +1,79 @@
+.below-hero-section {
+  /* background-color: #72cef2af; */
+  background-color: #72cef2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  padding: 100px 120px;
+  height: 90vh;
+  /* margin-bottom: -39px; */
+}
+
+.below-hero-section h3 {
+  font-size: 2rem;
+  font-family: var(--ta-Rouge);
+  color: #000000;
+  margin-bottom: 20px;
+}
+
+.below-hero-section p {
+  font-size: 1.7rem;
+  color: #000000;
+  font-family: var(--ta-Rouge);
+  font-family: var(--ta-Madi);
+  font-family: var(--ta-Lancelot);
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.explore-but {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: var(--ta-serif);
+  background-color: #1a1a1a;
+  cursor: pointer;
+  color: white;
+  transition: border-color 0.25s;
+}
+
+.explore-but:hover {
+  border-color: #646cff;
+  background-color: black;
+}
+
+.explore-but:focus,
+.explore-but:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 768px) {
+/* Below Hero Section */
+.below-hero-section {
+  padding: 50px 20px; /* Adjust padding for mobile */
+}
+
+.below-hero-section h3 {
+  font-size: 1.6rem; /* Smaller font size for headings on mobile */
+  margin-top: 40px; /* Reduce top margin on mobile */
+  margin-bottom: 10px; /* Reduce bottom margin */
+}
+
+.below-hero-section p {
+  font-size: 1.3rem; /* Reduce font size of the paragraph for mobile */
+  padding: 0 20px; /* Reduce padding for mobile to avoid overflow */
+  margin-bottom: 15px; /* Reduce bottom margin */
+}
+
+/* Button adjustments */
+.explore-but {
+  padding: 0.5em 1em; /* Reduce padding for mobile */
+  font-size: 0.9rem; /* Adjust font size of the button */
+}
+}

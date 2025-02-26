@@ -1,0 +1,56 @@
+/* lesserKnown.css */
+
+.lesser-known {
+    padding: 20px;
+    text-align: center;
+    font-family: var(--ta-Cinzel);
+}
+  
+  .lesser-known h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #995dcea1;
+    font-weight: bold;
+  }
+  .lesser-known-cards {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    scrollbar-width: none;
+    padding: 20px;
+  }
+  .lesser-known-card {
+    position: relative;
+    scrollbar-width: none;
+    scroll-behavior: unset;
+    flex: 0 0 auto;
+    overflow: hidden;
+    border-radius: 8px; 
+    width: 300px;
+    height: 400px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+    cursor: pointer;
+  }
+  .lesser-known-card-img img {
+    width: 100%;
+    filter: brightness(0.8);
+    height: 400px;
+    object-fit: cover;
+    border-radius: 5px;
+    transition: 0.3s ease-in-out;
+}
+  .lesser-known-card-img img:hover{
+    filter: brightness(1);
+    scale: 1.1;
+  }
+
+  .lesser-known-card-info h3 {
+    position: absolute;
+    bottom: 1rem;
+    width: 100%;
+    text-align: center;
+    color: rgb(255, 255, 255); 
+    font-family: var(--ta-serif);
+    font-weight: 400;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+  }

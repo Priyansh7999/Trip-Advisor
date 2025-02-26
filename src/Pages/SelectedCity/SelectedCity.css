@@ -1,0 +1,241 @@
+.selected-city-container {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    padding: 1rem;
+  }
+  
+.selected-city-header {
+    margin-top: 60px;
+    position: relative;
+    margin-bottom: 3rem;
+}
+  
+.selected-city-image {
+    height: 80vh;
+    overflow: hidden;
+    border-radius: 1rem;
+    position: relative;
+  }
+  
+  .selected-city-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.5);
+  }
+  
+  .selected-city-name {
+    position: absolute;
+    bottom: 20%;
+    left: 2rem;
+    z-index: 2;
+  }
+  
+  .selected-city-name h1 {
+    font-size: 3.5rem;
+    color: #fffefe;
+    font-family: var(--ta-serif);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.781);
+  }
+  
+  .selected-city-desc {
+    position: absolute;
+    bottom: 5%;
+    font-family: var(--ta-Darker);
+    left: 2rem;
+    max-width: 60%;
+    z-index: 2;
+  }
+  .selected-place-desc {
+    position: absolute;
+    bottom: 10%;
+    font-family: var(--ta-Darker);
+    left: 2rem;
+    max-width: 60%;
+    z-index: 2;
+  }
+  
+  .selected-city-desc p, .selected-place-desc p {
+    color: #ffffff;
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  }
+  
+  .selected-city-best-time-to-visit {
+    background-color: #242424;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-bottom: 3rem;
+    font-family: var(--ta-Raleway);
+  }
+  
+  .selected-city-best-time-to-visit h2{
+    color: #ffffff;
+    margin-bottom: 1rem;
+    font-family: var(--ta-Raleway);
+  }
+  .selected-city-best-time-to-visit-Season-weather{
+    display: flex;
+    justify-content: space-between;
+  }
+  .selected-city-best-time-to-visit-Season {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .selected-city-best-time-to-visit-Season .box1,.box2,.box3 {
+    background-color: #333333;
+    padding: 1.5rem;
+    width: 220px;
+    border-radius: 0.5rem;
+    transition: transform 0.3s ease;
+  }
+  .box1 h2{
+    color: green;
+  }
+  .box2 h2{
+    color: yellow;
+  }
+  .box3 h2{
+    color: rgba(170, 24, 24, 0.757);
+  }
+  .selected-city-best-time-to-visit-Season > div:hover {
+    transform: translateY(-5px);
+  }
+  .Weather{
+    margin-top: -100px;
+    width: 400px;
+    height: 500px;
+    border: 1px solid #ffffff;
+    border-radius: 8px;
+  }
+
+
+  .selected-city-overview {
+    background-color: #242424;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin: 3rem 0;
+  }
+  .selected-city-overview h1{
+    font-family: var(--ta-Raleway);
+  }
+  .selected-city-overview p{
+    font-family: var(--ta-Raleway);
+    text-align: justify;
+  }
+  .city-name-title-history-card p,h2{
+    font-family: var(--ta-Raleway);
+    word-spacing: 2px;
+    text-align: justify;
+  }
+  .selected-city-card{
+    border-radius: 20px;
+    border: 1px solid #ffffff;
+    padding: 10px;
+  }
+  
+  .city-name-title-history-card table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .city-name-title-history-card th,
+  .city-name-title-history-card td {
+    padding: 1rem;
+    background-color: #1a1a1a;
+    font-family: var(--ta-serif);
+  }
+  
+  .city-name-title-history-card th {
+    background-color: #252525;
+    color: #ffffff;
+    text-align: left;
+  }
+  .selected-city-transport-map{
+    display: flex;
+    width: 100%;
+    gap: 2rem;
+  }
+  .selected-city-transport-map .transport {
+    width: 700px;
+  }
+  .selected-city-transport-map .map {
+    width: 700px;
+  }
+  .transport > div {
+    border-radius: 0.5rem;
+    font-family: var(--ta-serif);
+  }
+  
+  
+  .restaurants-list,
+  .hotels-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .restaurants,
+  .hotel {
+    background-color: #333333;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .restaurants:hover,
+  .hotel:hover {
+    transform: translateY(-5px);
+  }
+  
+  .selected-city-attractions-section,
+  .selected-city-hotels-section,
+  .selected-city-what-to-see-and-do,
+  .selected-city-food-to-try,
+  .selected-city-famous-restaurants,
+  .selected-city-famous-hotels,
+  .selected-city-how-to-reach,
+  .selected-city-Conclusion,
+  .selected-city-things-to-buy,
+  .selected-place-tips {
+    background-color: #242424;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin: 1rem 0;
+    font-family: var(--ta-Raleway);
+  }
+  .selected-city-attractions-section p,
+  .selected-city-hotels-section p,
+  .selected-city-what-to-see-and-do p,
+  .selected-city-food-to-try p,
+  .selected-city-famous-restaurants p,
+  .selected-city-famous-hotels p,
+  .selected-city-how-to-reach p,
+  .selected-city-Conclusion p{
+    font-family: var(--ta-Darker);
+    font-size: 20px;
+  }
+  
+  .selected-place-tips li{
+    padding: 1rem;
+  }
+
+  
+  @media (max-width: 768px) {
+    .selected-city-name h1 {
+      font-size: 2.5rem;
+    }
+    
+    .selected-city-desc {
+      max-width: 90%;
+    }
+    
+    .selected-city-container {
+      padding: 1rem;
+    }
+  }
