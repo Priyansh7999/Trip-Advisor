@@ -14,17 +14,16 @@
 
 .below-hero-section h3 {
   font-size: 2rem;
-  font-family: var(--ta-Rouge);
+  font-family: var(--ta-serif);
   color: #000000;
   margin-bottom: 20px;
 }
 
 .below-hero-section p {
-  font-size: 1.7rem;
+  font-size: 1.6rem;
   color: #000000;
-  font-family: var(--ta-Rouge);
-  font-family: var(--ta-Madi);
-  font-family: var(--ta-Lancelot);
+  font-weight: 400;
+  font-family: var(--ta-Raleway);
   margin-bottom: 20px;
   line-height: 1.2;
 }

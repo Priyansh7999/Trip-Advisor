@@ -82,6 +82,8 @@
     display: -webkit-box;
     -webkit-line-clamp: 6;
     -webkit-box-orient:vertical;
+    font-weight: 400;
+    font-family: var(--ta-Raleway);
   }
   .city-card-footer {
     margin-top: -20px; 

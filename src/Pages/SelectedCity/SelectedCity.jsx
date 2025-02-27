@@ -120,7 +120,7 @@ const SelectedCity = () => {
             </div>
           </div>
           <div className='map'>
-          <CityMap latitude={latitude} longitude={longitude} />
+          <CityMap url={`https://www.google.com/maps/embed/v1/view?key=AIzaSyAOVYRIgupAurZup5y1PRh8Ismb1A3lLao&center=${latitude},${longitude}&zoom=12`} />
           </div>
         </div>
       </div>

@@ -1,11 +1,18 @@
 import React, { useState } from 'react'
 import styles from './PlanTripHomePage.module.css';
 import bg from "../../../assets/PlanTripBg.avif"
-import Trending from '../../../components/Trending/Trending';
+// import Trending from '../../../components/Trending/Trending';
 import TravelGrid from '../../../components/TravelGrid/TravelGrid';
+import { useNavigate } from 'react-router-dom';
+
 export default function PlanTripHomePage() {
-  const { from, setFrom } = useState('');
-  const { to, setTo } = useState('paris');
+  const navigate = useNavigate();
+  const  [from, setFrom] = useState('');
+  const [ to, setTo] = useState('');
+  
+  function handleSearch() {
+    navigate(`/plantrip/${from}/${to}`, { state: { from, to } });
+  }
   return (
   <>
     <div className={styles.header}>
@@ -28,7 +35,7 @@ export default function PlanTripHomePage() {
             value={to}
             onChange={(e) => setTo(e.target.value)}
           />
-          <button className='glow-on-hover'>Let's Plan</button>
+          <button className='glow-on-hover' onClick={handleSearch}>Let's Plan</button>
         </div>
       </div>
     </div>

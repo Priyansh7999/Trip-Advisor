@@ -3,15 +3,11 @@
     width: 100%;
     margin-top: -39px;
     height: 100%;
-    background: #434343;
-    background: linear-gradient(
-      to right,
-      #434343,#000000
-    );
+    background: linear-gradient(to right, #253487, #e46f86);
   }
   .travel-grid-header h2{
     text-align: center;
-    color: brown;
+    color: rgb(255, 255, 255);
     font-size: 3rem;
     font-family: var(--ta-Cinzel);
     padding: 60px 0 0 0;
@@ -21,7 +17,9 @@
     margin-top: 3%;
     text-align: center;
     font-size: 1.5rem;
-    color: palevioletred;
+    color: rgb(255, 254, 254);
+    font-weight: 400;
+    font-family: var(--ta-Raleway);
   }
   .travel-grid {
     display: grid;

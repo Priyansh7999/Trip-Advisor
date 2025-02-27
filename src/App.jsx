@@ -16,8 +16,9 @@ import PageNotFound from './Pages/PageNotFound/PageNotFound';
 import SplashCursor from './ui/SplashCursor';
 import TrainSearch from './components/Search/TrainSearch';
 import SelectedPlace from './Pages/SelectedPlace/SelectedPlace';
-import PlanTripHomePage from './Pages/PlanTrip/HomePage';
+import PlanTripHomePage from './Pages/PlanTrip/HomePage/PlanTripHomePage';
 import "./index.css"
+import TripReview from './Pages/PlanTrip/TripReview/TripReview';
 export default function App() {
   return (
     <div>
@@ -25,7 +26,6 @@ export default function App() {
       <Router>
                 <Routes>
                     <Route element={<Layout />}>
-
                         <Route path="/" element={<HomePage />} />
                         <Route path="/hero" element={<HeroSection />} />
                         <Route path="/slider" element={<ImageSlider />} />
@@ -38,6 +38,7 @@ export default function App() {
                         <Route path="/PlanTripCategory" element={<PlanTripCategory />} />
                         <Route path="/PlanTripCategory/:placeName" element={<PlanTripSelected />} />
                         <Route path="/plantrip" element={<PlanTripHomePage />} />
+                        <Route path="/plantrip/:from/:to" element={<TripReview />} />
                         <Route path="/month/:month" element={<MonthBased />} />
                         <Route path="/Search" element={<Search />} />
                         <Route path="/train" element={<TrainSearch />} />

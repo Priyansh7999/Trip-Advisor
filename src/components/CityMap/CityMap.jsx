@@ -1,8 +1,7 @@
 import React from "react";
 
-const CityMap = ({ latitude, longitude }) => {
+const CityMap = ({ url }) => {
   // Google Maps Embed URL with dynamic latitude and longitude
-  const mapUrl = `https://www.google.com/maps/embed/v1/view?key=AIzaSyAOVYRIgupAurZup5y1PRh8Ismb1A3lLao&center=${latitude},${longitude}&zoom=12`;
 
   return (
     <div className="city-map-container">
@@ -14,7 +13,7 @@ const CityMap = ({ latitude, longitude }) => {
         style={{ border: 0, borderRadius: "10px" }}
         loading="lazy"
         allowFullScreen
-        src={mapUrl}
+        src={url}
       ></iframe>
     </div>
   );

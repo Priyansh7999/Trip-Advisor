@@ -496,6 +496,28 @@ app.get('/train-data', async (req, res) => {
 
 
 
+const API_KEY = "AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg";
+
+app.get('/api/places', async (req, res) => {
+  const { location, radius, type } = req.query;
+  try {
+    const response = await axios.get('https://maps.googleapis.com/maps/api/place/nearbysearch/json', {
+      params: {
+        location,
+        radius,
+        type,
+        key: API_KEY,
+      },
+    });
+    res.json(response.data);  // Send the response back to the frontend
+  } catch (err) {
+    // Log the full error for debugging
+    console.error("Error fetching data from Google API:", err.message);
+    res.status(500).json({ error: 'Failed to fetch data from Google Maps API', details: err.message });
+  }
+});
+
+
 
 
 // Start the server

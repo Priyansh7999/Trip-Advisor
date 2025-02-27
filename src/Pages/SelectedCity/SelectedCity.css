@@ -41,7 +41,8 @@
   .selected-city-desc {
     position: absolute;
     bottom: 5%;
-    font-family: var(--ta-Darker);
+    font-weight: 400;
+    font-family: var(--ta-Raleway);
     left: 2rem;
     max-width: 60%;
     z-index: 2;
@@ -49,7 +50,8 @@
   .selected-place-desc {
     position: absolute;
     bottom: 10%;
-    font-family: var(--ta-Darker);
+    font-weight: 400;
+    font-family: var(--ta-Raleway);
     left: 2rem;
     max-width: 60%;
     z-index: 2;

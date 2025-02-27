@@ -20,16 +20,15 @@
     font-weight: 600;
     letter-spacing: 3px;
     line-height: .9em;
-    text-transform: uppercase
+    text-transform: uppercase;
   }
   
   .hero-content p {
     font-size: 1.6rem;
     text-align: center;
     line-height: 1;
-    font-family: var(--ta-Quintessential);
-    font-family: var(--ta-Lancelot);
-    font-weight: 700;
+    font-weight: 300;
+    font-family: var(--ta-Raleway);
     margin-top: 15px;
     background-image: linear-gradient(to right, #7f8cd4, pink, #3aff7c);
     background-clip: text;
