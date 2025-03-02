@@ -1,0 +1,75 @@
+.container {
+    text-align: center;
+    padding: 50px;
+  }
+  
+  .title {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .restaurantList {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .restaurantItem {
+    margin-bottom: 20px;
+  }
+  
+  .restaurantCard {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+  }
+  .restaurantImage{
+    width: 60%;
+  }
+  .restaurantImage img {
+    border-radius: 10px;
+    object-fit: cover;
+    width: 70%;
+    height: 400px;
+  }
+  
+  .restaurantDetails {
+    flex: 1;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .restaurantName {
+    font-size: 20px;
+    margin-bottom: 5px;
+    font-family: var(--ta-Raleway);
+  }
+  
+  .restaurantAddress, .restaurantRating, .restaurantHours, .restaurantPhone {
+    margin: 20px 0;
+    font-size: 18px;
+    font-weight: 400;
+    font-family: var(--ta-sans-serif);
+    text-align: justify;
+  }
+  
+  .restaurantHoursList {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  .viewMoreButton {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+  }
+  
+  .viewMoreButton:hover {
+    background-color: #0056b3;
+  }
+  

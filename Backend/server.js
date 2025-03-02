@@ -3,7 +3,7 @@ const path = require('path');
 const cors = require('cors');
 const { scrapeTrainData } = require('./scraper');
 const { img } = require('framer-motion/client');
-
+const scrapeHotelDetails = require('./scrapeHotel'); 
 const app = express();
 const PORT = 7000;
 
@@ -517,8 +517,14 @@ app.get('/api/places', async (req, res) => {
   }
 });
 
-
-
+app.get('/api/hotels', async (req, res) => {
+  try {
+    const hotels = await scrapeHotelDetails(); // Scrape the hotel data
+    res.json(hotels); // Send the hotel list as JSON
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to scrape hotel data' });
+  }
+});
 
 // Start the server
 app.listen(PORT, () => {
