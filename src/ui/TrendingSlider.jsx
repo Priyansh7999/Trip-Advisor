@@ -1,6 +1,6 @@
 
 import React , { useEffect, useState } from 'react'
-import "./TrendingSlider.css"
+import styles from  "./TrendingSlider.module.css"
 import { useNavigate } from 'react-router-dom';
 export default function TrendingSlider({cards,text}) {
   const [loaded, setLoaded] = useState(false);
@@ -14,15 +14,15 @@ export default function TrendingSlider({cards,text}) {
   }, [cards]);
   return (
     <>
-      <div className="card-container">
+      <div className={styles["card-container"]}>
       {loaded ? (
           cards.map((item, index) => (
-            <div key={index} className="homepage-card">
+            <div key={index} className={styles["homepage-card"]}>
               <img src={item.src} alt={item.title} />
-              <div className="card-title">
+              <div className={styles["card-title"]}>
                 <h2>{item.title}</h2>
                 <p>{item.des}</p>
-                <div className="explore">
+                <div className={styles["explore"]}>
                   <button onClick={() => (navigate(`/${text}/${item.title}`))}>
                     Explore {item.title}
                   </button>
@@ -33,7 +33,7 @@ export default function TrendingSlider({cards,text}) {
         ) : (
           <h1 style={{ color: 'black' }}>Loading...</h1>
         )}
-        <div className='see-more'>
+        <div className={styles['see-more']}>
           {loaded? <button class="glow-on-hover" type="button" onClick={() => {
             text==='city' ? navigate(`/cities`) : navigate(`/places`)
           }}>SEE MORE</button> : null}

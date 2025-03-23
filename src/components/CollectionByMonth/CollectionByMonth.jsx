@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
-import "./CollectionByMonth.css"
+import styles from "./CollectionByMonth.module.css"
 import { TripPlannerContext } from '../../context'
 export default function CollectionByMonth() {
     const {setMonth}=useContext(TripPlannerContext);
@@ -60,16 +60,16 @@ export default function CollectionByMonth() {
         navigate(`/month/${name}`)
     }
   return (
-    <div className='collection-by-month'>
+    <div className={styles['collection-by-month']}>
             <h2>Collections by Month</h2>
-            <div className='collection-cards'>
+            <div className={styles['collection-cards']} id='collection-cards'>
                     {
                         month.map((item,index)=>(
-                            <div key={index} className='collection-card' onClick={()=>{ handleClick(item.month,item.img) }}>
-                                <div className='collection-card-img'>
+                            <div key={index} className={styles['collection-card']} id='collection-card' onClick={()=>{ handleClick(item.month,item.img) }}>
+                                <div className={styles['collection-card-img']} id='collection-card-img'>
                                     <img src={item.img} alt={item.name} />
                                 </div>
-                                <div className='collection-card-info'>
+                                <div className={styles['collection-card-info']} id='collection-card-info'>
                                     <h3>{item.month}</h3>
                                 </div>
                             </div> 

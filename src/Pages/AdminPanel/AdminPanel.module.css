@@ -1,0 +1,80 @@
+
+.adminPanel {
+  display: flex;
+  background-color: #dbd9d9;
+  height: 100%;
+  padding-top: 2rem;
+}
+
+.sidebar {
+  background: #2c3e50;
+  color: white;
+  padding: 1.5rem;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding-top: 4rem;
+}
+
+.sidebar h2 {
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 1rem;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 12px 15px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.sidebar ul li:hover,
+.sidebar ul li.active {
+  background: #1abc9c;
+  transform: scale(1.05);
+}
+
+.mainContent {
+  margin-left: 19%;
+  position: relative;
+  padding: 20px;
+  width: 100%;
+  transition: margin-left 0.3s ease-in-out;
+}
+/* 📱 Responsive Sidebar */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 200px;
+  }
+
+  .mainContent {
+    margin-left: 200px;
+  }
+}
+
+@media (max-width: 600px) {
+  .sidebar {
+    width: 100px;
+    padding: 10px;
+  }
+
+  .sidebar h2 {
+    font-size: 16px;
+  }
+
+  .sidebar ul li {
+    font-size: 14px;
+  }
+
+  .mainContent {
+    margin-left: 100px;
+  }
+}

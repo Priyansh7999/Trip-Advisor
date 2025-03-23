@@ -1,9 +1,11 @@
 .WhatToSee {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding: 50px 5%;
-  background: rgb(78, 78, 78) ; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color: #333;
   text-align: center;
+  border: var(--s) solid #0000;
+  box-sizing: border-box;
+  background:linear-gradient(135deg,#1f005c, #5b0060, #870160, #ac255e, #ca485c, #e16b5c, #f39060, #ffb56b) border-box; 
 }
 
 .WhatToSee h1 {
@@ -31,6 +33,7 @@
 
 .content-item:hover {
   transform: scale(1.02);
+  filter: brightness(1.1);
 }
 
 .content-item img {

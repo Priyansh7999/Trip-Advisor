@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom"; 
-import "./TravelGrid.css";
+import style from "./TravelGrid.module.css";
 import heritage from "./public/heritage.jpg";
 import Romantic from "./public/Romantic.jpg";
 import Foodies from "./public/Foodies.jpg";
@@ -52,18 +52,18 @@ const TravelGrid = () => {
   };
 
   return (
-    <div className="travel-grid-header">
+    <div className={style["travel-grid-header"]}>
       <h2>PLAN TRIP</h2>
       <p>Discover the most beautiful places to visit, the best things to do, where to stay, and more in India.</p>
-      <div className="travel-grid">
+      <div className={style["travel-grid"]}>
         {articles.map((article, index) => (
           <div
             key={index}
-            className={`travel-card ${index === 0 ? "large" : ""}`}
+            className={`${style['travel-card']} ${index === 0 ? style['large'] : ''}`}
             style={{ backgroundImage: `url(${article.image})` }}
             onClick={() => handleCardClick(article.category, article.image, article.description)}
           >
-            <div className="travel-card-content">
+            <div className={style["travel-card-content"]}>
               <h3>{article.title}</h3>
             </div>
           </div>

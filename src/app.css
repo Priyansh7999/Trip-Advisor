@@ -25,21 +25,12 @@
     --ta-Quintessential: "Quintessential", serif;
     --ta-Raleway: "Raleway", sans-serif;
 }
-html{
-  cursor:url("./assets/dot.png"), auto;
-}
-body{
-  font-smooth: antialiased;
-  -webkit-font-smoothing: antialiased;
-  /* cursor: none; */
-  background-color:#333333;
-  
-}
 
 .glow-on-hover {
     margin: 10px;
     border: none;
     font-size: 16px;
+    font-weight: 300;
     outline: none;
     color: #fff;
     background: #111;
@@ -90,6 +81,25 @@ body{
     top: 0;
     border-radius: 10px;
   }
+  .explore-button-text {
+    display: inline-flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px; /* Fully rounded */
+    background-color: #1e1e1e;
+    color: #fff; /* Tailwind text-white */
+    padding: 0 12px; /* Tailwind px-3 */
+    font-size: 0.875rem; /* Tailwind text-sm */
+    font-weight: 500; /* Tailwind font-medium */
+    backdrop-filter: blur(12px); /* Tailwind backdrop-blur-3xl */
+    z-index: 2; /* Above the spinning gradient */
+  }
+  .explore-button-text:hover{
+    color: rgb(36, 153, 149);
+  }
+
   
   @keyframes glowing {
     0% { background-position: 0 0; }
@@ -135,4 +145,29 @@ body{
     font-family: var(--ta-serif);
     color: #1de849;
     line-height: 1.8;
+  }
+  .selected-city-container {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    padding: 1rem;
+  }
+  
+.selected-city-header {
+    margin-top: 60px;
+    position: relative;
+    margin-bottom: 3rem;
+}
+  
+.selected-city-image {
+    height: 80vh;
+    overflow: hidden;
+    border-radius: 1rem;
+    position: relative;
+  }
+  
+  .selected-city-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.5);
   }

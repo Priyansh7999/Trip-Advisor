@@ -10,6 +10,7 @@
     margin-bottom: 20px;
     color: #da6125;
     font-weight: bold;
+    text-align: center;
   }
   
   .collection-cards {
@@ -31,6 +32,7 @@
     height: 400px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
   }
   .collection-card-img img {
     width: 100%;
@@ -50,4 +52,10 @@
     font-weight: 400;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
   }
+  .collection-card:hover{
+    transform: scale(1.05);
+  }
   
+  .collection-card:hover .collection-card-img img {
+    transform: scale(1.05);
+  }

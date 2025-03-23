@@ -1,292 +1,442 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import './AddCityDetails.css';
+import styles from './AddCityDetails.module.css';
 
 const AddCityDetails = () => {
+  // Define state for each input field
   const [cityName, setCityName] = useState('');
-  const [cityState, setCityState] = useState('');
-  const [cityTitle, setCityTitle] = useState('');
-  const [cityBriefDesc, setCityBriefDesc] = useState('');
-  const [cityDetailedDesc, setCityDetailedDesc] = useState('');
-  const [cityCategory, setCityCategory] = useState('');
-  const [history, setHistory] = useState('');
-  const [establishedYear, setEstablishedYear] = useState('');
-  const [peakSeason, setPeakSeason] = useState('');
-  const [moderateSeason, setModerateSeason] = useState('');
-  const [offSeason, setOffSeason] = useState('');
-  const [region, setRegion] = useState('');
+  const [description, setDescription] = useState('');
+  const [bestTime, setBestTime] = useState('');
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
-  const [location, setLocation] = useState('');
-  const [averageTripLength, setAverageTripLength] = useState('');
-  const [bestTimeToVisitCity, setBestTimeToVisitCity] = useState('');
-  const [whenToVisitCity, setWhenToVisitCity] = useState('');
-  const [howToReachByAir, setHowToReachByAir] = useState('');
-  const [howToReachByRail, setHowToReachByRail] = useState('');
-  const [howToReachByRoad, setHowToReachByRoad] = useState('');
-  const [attractions, setAttractions] = useState([]);
-  const [festivals, setFestivals] = useState([]);
-  const [thingsToSeeAndDo, setThingsToSeeAndDo] = useState('');
-  const [foodSpecialties, setFoodSpecialties] = useState([]);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  // Seasons data with start and end date
+  const [peakSeasonStart, setPeakSeasonStart] = useState('');
+  const [peakSeasonEnd, setPeakSeasonEnd] = useState('');
+  const [peakSeasonDesc, setPeakSeasonDesc] = useState('');
 
-    const newCityData = {
-      cityName,
-      cityState,
-      cityTitle,
-      cityBriefDesc,
-      cityDetailedDesc,
-      cityCategory,
-      history,
-      establishedYear,
-      seasons: {
-        peakSeason,
-        moderateSeason,
-        offSeason,
-      },
-      geographicalDetails: {
-        region,
-        latitude,
-        longitude,
-        location,
-      },
-      tripDetails: {
-        averageTripLength,
-        bestTimeToVisitCity,
-        whenToVisitCity,
-      },
-      accessibility: {
-        howToReachByAir,
-        howToReachByRail,
-        howToReachByRoad,
-      },
-      attractions,
-      localEvents: festivals,
-      experiences: {
-        thingsToSeeAndDo,
-        foodSpecialties,
-      },
-    };
+  const [moderateSeasonStart, setModerateSeasonStart] = useState('');
+  const [moderateSeasonEnd, setModerateSeasonEnd] = useState('');
+  const [moderateSeasonDesc, setModerateSeasonDesc] = useState('');
 
-    try {
-      await axios.post('http://localhost:5000/api/cities', newCityData);
-      alert('City added successfully!');
-    } catch (error) {
-      console.error('Error adding city:', error);
-      alert('Failed to add city.');
-    }
+  const [offSeasonStart, setOffSeasonStart] = useState('');
+  const [offSeasonEnd, setOffSeasonEnd] = useState('');
+  const [offSeasonDesc, setOffSeasonDesc] = useState('');
+
+  // Overview details split into multiple fields
+  const [cityTitle, setCityTitle] = useState('');
+  const [cityHistory, setCityHistory] = useState('');
+  const [state, setState] = useState('');
+  const [touristPlaces, setTouristPlaces] = useState('');
+  const [famousFor, setFamousFor] = useState('');
+  const [weather, setWeather] = useState('');
+
+  // How to reach details
+  const [byAir, setByAir] = useState('');
+  const [byRail, setByRail] = useState('');
+  const [byRoad, setByRoad] = useState('');
+
+  const [attractions, setAttractions] = useState('');
+  const [hotels, setHotels] = useState('');
+
+  // Food to Try: dynamic fields
+  const [foodToTry, setFoodToTry] = useState([{ name: '', description: '' }]);
+
+  const handleFoodChange = (index, field, value) => {
+    const updatedFoodToTry = [...foodToTry];
+    updatedFoodToTry[index][field] = value;
+    setFoodToTry(updatedFoodToTry);
   };
 
+  const addFoodItem = () => {
+    setFoodToTry([...foodToTry, { name: '', description: '' }]);
+  };
+
+  // Things to Buy: dynamic fields
+  const [thingsToBuy, setThingsToBuy] = useState([{ heading: '', description: '' }]);
+
+  const handleThingsToBuyChange = (index, field, value) => {
+    const updatedThingsToBuy = [...thingsToBuy];
+    updatedThingsToBuy[index][field] = value;
+    setThingsToBuy(updatedThingsToBuy);
+  };
+
+  const addThingToBuy = () => {
+    setThingsToBuy([...thingsToBuy, { heading: '', description: '' }]);
+  };
+
+  // Conclusion
+  const [conclusion, setConclusion] = useState('');
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const cityDetails = {
+      cityName,
+      description,
+      bestTime,
+      peakSeason: { start: peakSeasonStart, end: peakSeasonEnd, description: peakSeasonDesc },
+      moderateSeason: { start: moderateSeasonStart, end: moderateSeasonEnd, description: moderateSeasonDesc },
+      offSeason: { start: offSeasonStart, end: offSeasonEnd, description: offSeasonDesc },
+      overview: {
+        cityTitle,
+        cityHistory,
+        state,
+        touristPlaces,
+        famousFor,
+        weather,
+      },
+      howToReach: { byAir, byRail, byRoad },
+      attractions,
+      hotels,
+      foodToTry,
+      thingsToBuy,
+      conclusion,
+    };
+  
+    try {
+      const response = await fetch('http://localhost:7000/submit-city-details', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(cityDetails),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+  
+      const data = await response.json();
+      console.log('City Details Submitted:', data);
+    } catch (error) {
+      console.error('Error submitting city details:', error);
+    }
+  };
+  
+  
+  
+
   return (
-    <div className="add-city-container">
-      <form className="form-wrapper" onSubmit={handleSubmit}>
-        <h2>Add City Details</h2>
+    <div className={styles.addCityContainer}>
+      <h1>Add City Details</h1>
+      <form onSubmit={handleSubmit}>
+        {/* City Name */}
+        <div className={styles.formGroup}>
+          <label htmlFor='cityName'>City Name</label>
+          <input
+            type='text'
+            id='cityName'
+            value={cityName}
+            onChange={(e) => setCityName(e.target.value)}
+            required
+          />
+        </div>
 
-        <label htmlFor="cityName">City Name</label>
-        <input
-          type="text"
-          id="cityName"
-          value={cityName}
-          onChange={(e) => setCityName(e.target.value)}
-          required
-        />
+        {/* Description */}
+        <div className={styles.formGroup}>
+          <label htmlFor='description'>Description</label>
+          <textarea
+            id='description'
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            required
+          />
+        </div>
 
-        <label htmlFor="cityState">City State</label>
-        <input
-          type="text"
-          id="cityState"
-          value={cityState}
-          onChange={(e) => setCityState(e.target.value)}
-          required
-        />
+        {/* Best Time to Visit */}
+        <div className={styles.formGroup}>
+          <label htmlFor='bestTime'>Best Time to Visit</label>
+          <input
+            type='text'
+            id='bestTime'
+            value={bestTime}
+            onChange={(e) => setBestTime(e.target.value)}
+            required
+          />
+        </div>
+        
+        {/* Peak Season */}
+        <div className='form-group'>
+          <label htmlFor='peakSeasonStart'>Peak Season Start</label>
+          <input
+            type='date'
+            id='peakSeasonStart'
+            value={peakSeasonStart}
+            onChange={(e) => setPeakSeasonStart(e.target.value)}
+            required
+          />
+        </div>
+        <div className='form-group'>
+          <label htmlFor='peakSeasonEnd'>Peak Season End</label>
+          <input
+            type='date'
+            id='peakSeasonEnd'
+            value={peakSeasonEnd}
+            onChange={(e) => setPeakSeasonEnd(e.target.value)}
+            required
+          />
+        </div>
+        <div className='form-group'>
+          <label htmlFor='peakSeasonDesc'>Peak Season Description</label>
+          <textarea
+            id='peakSeasonDesc'
+            value={peakSeasonDesc}
+            onChange={(e) => setPeakSeasonDesc(e.target.value)}
+            required
+          />
+        </div>
 
-        <label htmlFor="cityTitle">City Title</label>
-        <input
-          type="text"
-          id="cityTitle"
-          value={cityTitle}
-          onChange={(e) => setCityTitle(e.target.value)}
-          required
-        />
+        {/* Moderate Season */}
+        <div className='form-group'>
+          <label htmlFor='moderateSeasonStart'>Moderate Season Start</label>
+          <input
+            type='date'
+            id='moderateSeasonStart'
+            value={moderateSeasonStart}
+            onChange={(e) => setModerateSeasonStart(e.target.value)}
+            required
+          />
+        </div>
+        <div className='form-group'>
+          <label htmlFor='moderateSeasonEnd'>Moderate Season End</label>
+          <input
+            type='date'
+            id='moderateSeasonEnd'
+            value={moderateSeasonEnd}
+            onChange={(e) => setModerateSeasonEnd(e.target.value)}
+            required
+          />
+        </div>
+        <div className='form-group'>
+          <label htmlFor='moderateSeasonDesc'>Moderate Season Description</label>
+          <textarea
+            id='moderateSeasonDesc'
+            value={moderateSeasonDesc}
+            onChange={(e) => setModerateSeasonDesc(e.target.value)}
+            required
+          />
+        </div>
 
-        <label htmlFor="cityBriefDesc">City Brief Description</label>
-        <textarea
-          id="cityBriefDesc"
-          value={cityBriefDesc}
-          onChange={(e) => setCityBriefDesc(e.target.value)}
-          required
-        />
+        {/* Off Season */}
+        <div className='form-group'>
+          <label htmlFor='offSeasonStart'>Off Season Start</label>
+          <input
+            type='date'
+            id='offSeasonStart'
+            value={offSeasonStart}
+            onChange={(e) => setOffSeasonStart(e.target.value)}
+            required
+          />
+        </div>
+        <div className='form-group'>
+          <label htmlFor='offSeasonEnd'>Off Season End</label>
+          <input
+            type='date'
+            id='offSeasonEnd'
+            value={offSeasonEnd}
+            onChange={(e) => setOffSeasonEnd(e.target.value)}
+            required
+          />
+        </div>
+        <div className='form-group'>
+          <label htmlFor='offSeasonDesc'>Off Season Description</label>
+          <textarea
+            id='offSeasonDesc'
+            value={offSeasonDesc}
+            onChange={(e) => setOffSeasonDesc(e.target.value)}
+            required
+          />
+        </div>
 
-        <label htmlFor="cityDetailedDesc">City Detailed Description</label>
-        <textarea
-          id="cityDetailedDesc"
-          value={cityDetailedDesc}
-          onChange={(e) => setCityDetailedDesc(e.target.value)}
-          required
-        />
+        {/* Overview Details */}
+        <div className='form-group'>
+          <label htmlFor='cityTitle'>City Title</label>
+          <input
+            type='text'
+            id='cityTitle'
+            value={cityTitle}
+            onChange={(e) => setCityTitle(e.target.value)}
+            required
+          />
+        </div>
+        <div className='form-group'>
+          <label htmlFor='cityHistory'>City History</label>
+          <textarea
+            id='cityHistory'
+            value={cityHistory}
+            onChange={(e) => setCityHistory(e.target.value)}
+            required
+          />
+        </div>
+        <div className='form-group'>
+          <label htmlFor='state'>State</label>
+          <input
+            type='text'
+            id='state'
+            value={state}
+            onChange={(e) => setState(e.target.value)}
+            required
+          />
+        </div>
+        <div className='form-group'>
+          <label htmlFor='touristPlaces'>Tourist Places</label>
+          <textarea
+            id='touristPlaces'
+            value={touristPlaces}
+            onChange={(e) => setTouristPlaces(e.target.value)}
+            required
+          />
+        </div>
+        <div className='form-group'>
+          <label htmlFor='famousFor'>Famous For</label>
+          <input
+            type='text'
+            id='famousFor'
+            value={famousFor}
+            onChange={(e) => setFamousFor(e.target.value)}
+            required
+          />
+        </div>
+        <div className='form-group'>
+          <label htmlFor='weather'>Weather</label>
+          <textarea
+            id='weather'
+            value={weather}
+            onChange={(e) => setWeather(e.target.value)}
+            required
+          />
+        </div>
 
-        <label htmlFor="cityCategory">City Category</label>
-        <input
-          type="text"
-          id="cityCategory"
-          value={cityCategory}
-          onChange={(e) => setCityCategory(e.target.value)}
-          required
-        />
+        {/* How to Reach */}
+        <div className='form-group'>
+          <label htmlFor='byAir'>By Air</label>
+          <textarea
+            id='byAir'
+            value={byAir}
+            onChange={(e) => setByAir(e.target.value)}
+            required
+          />
+        </div>
+        <div className='form-group'>
+          <label htmlFor='byRail'>By Rail</label>
+          <textarea
+            id='byRail'
+            value={byRail}
+            onChange={(e) => setByRail(e.target.value)}
+            required
+          />
+        </div>
+        <div className='form-group'>
+          <label htmlFor='byRoad'>By Road</label>
+          <textarea
+            id='byRoad'
+            value={byRoad}
+            onChange={(e) => setByRoad(e.target.value)}
+            required
+          />
+        </div>
 
-        <label htmlFor="history">City History</label>
-        <textarea
-          id="history"
-          value={history}
-          onChange={(e) => setHistory(e.target.value)}
-        />
+        {/* Attractions */}
+        <div className='form-group'>
+          <label htmlFor='attractions'>Attractions</label>
+          <textarea
+            id='attractions'
+            value={attractions}
+            onChange={(e) => setAttractions(e.target.value)}
+            required
+          />
+        </div>
 
-        <label htmlFor="establishedYear">Established Year</label>
-        <input
-          type="number"
-          id="establishedYear"
-          value={establishedYear}
-          onChange={(e) => setEstablishedYear(e.target.value)}
-        />
+        {/* Hotels */}
+        <div className='form-group'>
+          <label htmlFor='hotels'>Hotels</label>
+          <textarea
+            id='hotels'
+            value={hotels}
+            onChange={(e) => setHotels(e.target.value)}
+            required
+          />
+        </div>
 
-        <label htmlFor="peakSeason">Peak Season</label>
-        <input
-          type="text"
-          id="peakSeason"
-          value={peakSeason}
-          onChange={(e) => setPeakSeason(e.target.value)}
-        />
+        {/* Food to Try - Dynamic Fields */}
+        <div className={styles.formGroup}>
+          <label>Food to Try</label>
+          {foodToTry.map((food, index) => (
+            <div key={index} className={styles.foodItem}>
+              <input
+                type='text'
+                placeholder='Food Name'
+                value={food.name}
+                onChange={(e) => handleFoodChange(index, 'name', e.target.value)}
+                required
+              />
+              <textarea
+                placeholder='Food Description'
+                value={food.description}
+                onChange={(e) => handleFoodChange(index, 'description', e.target.value)}
+                required
+              />
+            </div>
+          ))}
+          <button type='button' className={styles.addButton} onClick={addFoodItem}>
+            Add+
+          </button>
+        </div>
 
-        <label htmlFor="moderateSeason">Moderate Season</label>
-        <input
-          type="text"
-          id="moderateSeason"
-          value={moderateSeason}
-          onChange={(e) => setModerateSeason(e.target.value)}
-        />
+        {/* Famous Restaurants */}
+        {/* <div className='form-group'>
+          <label htmlFor='famousRestaurants'>Famous Restaurants</label>
+          <textarea
+            id='famousRestaurants'
+            value={fa}
+            onChange={(e) => setFamousRestaurants(e.target.value)}
+            required
+          />
+        </div> */}
 
-        <label htmlFor="offSeason">Off Season</label>
-        <input
-          type="text"
-          id="offSeason"
-          value={offSeason}
-          onChange={(e) => setOffSeason(e.target.value)}
-        />
+        {/* Things to Buy - Dynamic Fields */}
+        <div className={styles.formGroup}>
+          <label>Things to Buy</label>
+          {thingsToBuy.map((item, index) => (
+            <div key={index} className={styles.itemToBuy}>
+              <input
+                type='text'
+                placeholder='Item Heading'
+                value={item.heading}
+                onChange={(e) => handleThingsToBuyChange(index, 'heading', e.target.value)}
+                required
+              />
+              <textarea
+                placeholder='Item Description'
+                value={item.description}
+                onChange={(e) => handleThingsToBuyChange(index, 'description', e.target.value)}
+                required
+              />
+            </div>
+          ))}
+          <button type='button' className={styles.addButton} onClick={addThingToBuy}>
+            Add+
+          </button>
+        </div>
+        {/* Conclusion */}
+        <div className={styles.formGroup}>
+          <label htmlFor='conclusion'>Conclusion</label>
+          <textarea
+            id='conclusion'
+            value={conclusion}
+            onChange={(e) => setConclusion(e.target.value)}
+            required
+          />
+        </div>
 
-        <label htmlFor="region">Region</label>
-        <input
-          type="text"
-          id="region"
-          value={region}
-          onChange={(e) => setRegion(e.target.value)}
-        />
-
-        <label htmlFor="latitude">Latitude</label>
-        <input
-          type="text"
-          id="latitude"
-          value={latitude}
-          onChange={(e) => setLatitude(e.target.value)}
-        />
-
-        <label htmlFor="longitude">Longitude</label>
-        <input
-          type="text"
-          id="longitude"
-          value={longitude}
-          onChange={(e) => setLongitude(e.target.value)}
-        />
-
-        <label htmlFor="location">Location</label>
-        <input
-          type="text"
-          id="location"
-          value={location}
-          onChange={(e) => setLocation(e.target.value)}
-        />
-
-        <label htmlFor="averageTripLength">Average Trip Length</label>
-        <input
-          type="number"
-          id="averageTripLength"
-          value={averageTripLength}
-          onChange={(e) => setAverageTripLength(e.target.value)}
-        />
-
-        <label htmlFor="bestTimeToVisitCity">Best Time To Visit City</label>
-        <input
-          type="text"
-          id="bestTimeToVisitCity"
-          value={bestTimeToVisitCity}
-          onChange={(e) => setBestTimeToVisitCity(e.target.value)}
-        />
-
-        <label htmlFor="whenToVisitCity">When To Visit City</label>
-        <input
-          type="text"
-          id="whenToVisitCity"
-          value={whenToVisitCity}
-          onChange={(e) => setWhenToVisitCity(e.target.value)}
-        />
-
-        <label htmlFor="howToReachByAir">How to Reach By Air</label>
-        <input
-          type="text"
-          id="howToReachByAir"
-          value={howToReachByAir}
-          onChange={(e) => setHowToReachByAir(e.target.value)}
-        />
-
-        <label htmlFor="howToReachByRail">How to Reach By Rail</label>
-        <input
-          type="text"
-          id="howToReachByRail"
-          value={howToReachByRail}
-          onChange={(e) => setHowToReachByRail(e.target.value)}
-        />
-
-        <label htmlFor="howToReachByRoad">How to Reach By Road</label>
-        <input
-          type="text"
-          id="howToReachByRoad"
-          value={howToReachByRoad}
-          onChange={(e) => setHowToReachByRoad(e.target.value)}
-        />
-
-        <label htmlFor="attractions">City Attractions</label>
-        <textarea
-          id="attractions"
-          value={attractions}
-          onChange={(e) => setAttractions(e.target.value)}
-        />
-
-        <label htmlFor="festivals">Local Festivals</label>
-        <textarea
-          id="festivals"
-          value={festivals}
-          onChange={(e) => setFestivals(e.target.value)}
-        />
-
-        <label htmlFor="thingsToSeeAndDo">Things To See and Do</label>
-        <textarea
-          id="thingsToSeeAndDo"
-          value={thingsToSeeAndDo}
-          onChange={(e) => setThingsToSeeAndDo(e.target.value)}
-        />
-
-        <label htmlFor="foodSpecialties">Food Specialties</label>
-        <textarea
-          id="foodSpecialties"
-          value={foodSpecialties}
-          onChange={(e) => setFoodSpecialties(e.target.value)}
-        />
-
-        <button type="submit">Submit City Details</button>
+        {/* Submit Button */}
+        <div className={styles.formGroup}>
+          <button type='submit' className={styles.submitButton}>
+            Submit
+          </button>
+        </div>
       </form>
     </div>
   );
 };
+
 
 export default AddCityDetails;

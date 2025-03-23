@@ -1,9 +1,11 @@
 import React from 'react'
 import './Footer.css';
+import footerbg from "../../assets/footer-background.jpg"
 export default function Footer() {
   return (
     <>
     <div className='footer'>
+      {/* <img src={footerbg} alt="footerbg" /> */}
       <div className='footer-content'>
         <div className='social-media'>
           <h3>Follow Us</h3>

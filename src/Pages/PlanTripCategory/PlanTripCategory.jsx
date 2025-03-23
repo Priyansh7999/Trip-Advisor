@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "./WhereTo.css";
+import styles from "./Whereto.module.css"
 import beach from "../../assets/beach.jpg";
 import Hills from "../../assets/Hills.jpg";
 import Adventure from "../../assets/Adventure.jpg";
@@ -57,17 +57,17 @@ export default function PlanTripCategory() {
 
   return (
     <>
-      <div className="where-to-container">
-        <div className="where-to-header">
+      <div className='where-to-container' id="where-to-container">
+        <div className="where-to-header" id="where-to-header">
           <img src={bg1} alt="" />
-          <h1 className="where-to-title">Trip Idea - Discover Places & Plan Your Holidays!</h1>
-          <p className="where-to-description">
+          <h1 className="where-to-title" id="where-to-title">Trip Idea - Discover Places & Plan Your Holidays!</h1>
+          <p className="where-to-description" id="where-to-description">
             Planning your next vacation? Try one of these exotic and comfortable travel ideas to make your holiday memorable. Whether a romantic beach vacation, a relaxing family holiday, an adventurous trek, or a heritage walk, plan the most appropriate itinerary within your budget.
           </p>
         </div>
-        <div className="where-to-content">
+        <div className={"where-to-content"} id="where-to-content">
           <AllCards places={places} />
-          <div className="where-to-footer">
+          <div className={styles["where-to-footer"]} id="where-to-footer">
             <h2>Unleash Your Wanderlust with Our Exclusive Holiday Ideas!</h2>
             <p>Vacations are the perfect opportunity to create lasting memories, and a well-organized itinerary ensures an unforgettable experience. Explore a diverse range of destinations, from serene mountain escapes and vibrant valleys to iconic monuments, bustling cities, and thrilling adventure trails. <br />
               Heritage enthusiasts and spiritual seekers will find joy in our handpicked heritage and pilgrimage destinations, while food lovers can indulge in culinary journeys exploring exotic dishes and renowned food hubs.<br />

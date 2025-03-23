@@ -1,5 +1,5 @@
 import React from "react";
-import "./HeroSection.css";
+import styles from "./HeroSection.module.css";
 import GradientText from "../../ui/GradientText";
 const HeroSection = () => {
   const HeroLine=[
@@ -13,8 +13,8 @@ const HeroSection = () => {
     const randomIndex = Math.floor(Math.random() * HeroLine.length);
     const randomHeroLine = HeroLine[randomIndex];
     return (
-      <div className="hero-section">
-        <div className="hero-content">
+      <div className={styles["hero-section"]} id="hero-section">
+        <div className={styles["hero-content"]} id="hero-content">
           <h1>
           Explore the World
           </h1>
@@ -23,7 +23,6 @@ const HeroSection = () => {
               colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
               animationSpeed={3}
               showBorder={false}
-              className="custom-class"
             >
               {randomHeroLine}
             </GradientText>

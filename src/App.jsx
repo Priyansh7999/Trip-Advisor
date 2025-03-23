@@ -19,6 +19,7 @@ import SelectedPlace from './Pages/SelectedPlace/SelectedPlace';
 import PlanTripHomePage from './Pages/PlanTrip/HomePage/PlanTripHomePage';
 import "./index.css"
 import TripReview from './Pages/PlanTrip/TripReview/TripReview';
+import AdminPanel from './Pages/AdminPanel/AdminPanel';
 export default function App() {
   return (
     <div>
@@ -42,6 +43,7 @@ export default function App() {
                         <Route path="/month/:month" element={<MonthBased />} />
                         <Route path="/Search" element={<Search />} />
                         <Route path="/train" element={<TrainSearch />} />
+                        <Route path="/admin" element={<AdminPanel />} />
                         <Route path='*' element={<PageNotFound />} />
                     </Route>
                 </Routes>

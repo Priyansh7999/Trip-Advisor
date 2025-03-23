@@ -1,0 +1,63 @@
+/* 🌍 General Styling */
+.container {
+  /* padding: 20px; */
+  min-height: 100vh;
+  text-align: center;
+}
+
+.heading {
+  font-size: 28px;
+  color: #333;
+  font-family: var(--ta-Cinzel);
+}
+
+.description {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
+  font-family: var(--ta-Raleway);
+}
+
+/* 🔄 Tab Navigation */
+.tabContainer {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tabButton {
+  padding: 10px 20px;
+  background-color: #ddd;
+  color: #333;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--ta-Raleway);
+}
+
+.tabButton:hover {
+  background-color: #ccc;
+}
+
+.tabButton.active {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+}
+
+/* 📌 Content Area */
+.contentContainer {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  min-height: 300px;
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 768px) {
+  .tabContainer {
+    flex-direction: column;
+  }
+}

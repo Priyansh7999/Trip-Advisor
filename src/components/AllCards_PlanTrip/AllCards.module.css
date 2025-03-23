@@ -3,10 +3,9 @@
     height: 100%;
     padding: 60px 60px;
   }
-  /* Card Grid Layout */
  .place-cards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, minmax(30%, 1fr));
     gap: 20px;
   }
   
@@ -37,23 +36,20 @@
     object-fit: cover;
   }
   
-  /* Card Content */
-  .place-card-content {
-    flex-grow: 1;
-  }
   
   .place-card-name {
-    margin: 0;
+    margin: auto;
     color: #fff;
     font-family: var(--ta-serif);
     font-size: 1.5rem;
   }
   
    .place-card-name span {
-    background-color: #2ed400;
+    background-color: #27a005;
     padding:2px 10px;
     margin-right: 5px;
     margin-left: -5px;
+    border-radius: 5px 15px;
     font-size: 1.2rem;
   }
   
@@ -77,3 +73,36 @@
     width: 100%;
     text-align: center;
   }
+  /* Parent Button Styling */
+.explore-button {
+  position: relative;
+  display: inline-flex;
+  height: 48px; /* Height is 12 Tailwind units */
+  overflow: hidden;
+  border-radius: 10px; /* Fully rounded (Tailwind rounded-full) */
+  width: 300px;
+  padding: 1px; /* Border thickness simulation */
+  outline: none;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+/* Spinning Background Gradient */
+.explore-button-bg {
+  position: absolute;
+  inset: -1000%;
+  background: conic-gradient(from 90deg at 50% 50%, #0e2735 0%, #393BB2 50%, #213a8b 100%);
+  animation: spin 5s linear infinite; /* Spinning effect */
+  z-index: 1; /* Ensures it stays behind the text */
+}
+
+/* Spinning Animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -129,7 +129,12 @@
     font-family: var(--ta-Raleway);
     text-align: justify;
   }
-  .city-name-title-history-card p,h2{
+  .city-name-title-history-card h2{
+    font-family: var(--ta-Raleway);
+    word-spacing: 2px;
+    text-align: justify;
+  }
+  .city-name-title-history-card p{
     font-family: var(--ta-Raleway);
     word-spacing: 2px;
     text-align: justify;
