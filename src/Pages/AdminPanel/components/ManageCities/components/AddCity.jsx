@@ -42,6 +42,7 @@ export default function AddCity() {
     const [foodToTry, setFoodToTry] = useState([{ name: '', description: '' }]);
     // Conclusion
     const [conclusion, setConclusion] = useState('');
+    const [review, setReview] = useState(['']);
     const handleFoodChange = (index, field, value) => {
       const updatedFoodToTry = [...foodToTry];
       updatedFoodToTry[index][field] = value;
@@ -113,6 +114,7 @@ export default function AddCity() {
         thingsToBuy,
         placeTypes: selectedPlaceTypes,
         conclusion,
+        reviews: review
       };
     
       try {
@@ -360,17 +362,6 @@ export default function AddCity() {
               Add+
             </button>
           </div>
-  
-          {/* Famous Restaurants */}
-          {/* <div className='form-group'>
-            <label htmlFor='famousRestaurants'>Famous Restaurants</label>
-            <textarea
-              id='famousRestaurants'
-              value={fa}
-              onChange={(e) => setFamousRestaurants(e.target.value)}
-              required
-            />
-          </div> */}
   
           {/* Things to Buy - Dynamic Fields */}
           <div className={styles.formGroup}>

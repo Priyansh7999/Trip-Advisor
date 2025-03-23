@@ -5,7 +5,6 @@
   justify-content: space-between;
   align-items: center;
   position: fixed;
-  color: white;
 }
 nav.black{
   background-color: black;
@@ -13,7 +12,6 @@ nav.black{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #ffffff;
   transition: 0.3s;
   position: fixed;
   color: white;

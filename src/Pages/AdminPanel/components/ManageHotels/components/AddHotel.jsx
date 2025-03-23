@@ -24,6 +24,8 @@ export default function AddHotel() {
   const [checkIn, setCheckIn] = useState('');
   const [checkOut, setCheckOut] = useState('');
   const [otherRules, setOtherRules] = useState(['']);
+  const [urls, setUrls] = useState(['']);
+  const [review, setReview] = useState(['']);
 
   // Function to handle dynamic fields
   const addField = (setState) => {
@@ -65,6 +67,8 @@ export default function AddHotel() {
         checkOut,
         otherRules,
       },
+      urlsList: urls,
+      reviews: review
     };
 
     console.log('Hotel Data:', hotelData);
@@ -170,6 +174,15 @@ export default function AddHotel() {
             <input key={i} style={{ width: '20%' }} type="text" value={rule} onChange={(e) => handleChange(i, otherRules, setOtherRules, e.target.value)} required />
           ))}
           <button type="button" className={styles.addButton} onClick={() => addField(setOtherRules)}>Add+</button>
+        </div>
+
+        {/* list of urls with add button */}
+        <div className={styles.formGroup} style={{ flexWrap: 'wrap' }}>
+          <label>Urls</label>
+          {urls.map((url, i) => (
+            <input key={i} style={{ width: '65%' }} type="text" value={url} onChange={(e) => handleChange(i, hotelImages, setHotelImages, e.target.value)} required />
+          ))}
+          <button type="button" className={styles.addButton} onClick={() => addField(setUrls)}>Add+</button>
         </div>
 
         {/* Submit Button */}

@@ -1,0 +1,108 @@
+/* UserFavorites.module.css */
+
+/* Container */
+.favoritesContainer {
+    width: 70%;
+    margin: 40px auto;
+    font-family: "Poppins", sans-serif;
+    padding: 30px;
+    border-radius: 10px;
+    color: white;
+  }
+  
+  /* Header */
+  .favoritesContainer h1 {
+    font-size: 26px;
+    margin-bottom: 10px;
+    color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .favoritesContainer p {
+    font-size: 14px;
+    color: #ff4b5c;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* No Favorites Message */
+  .noFavorites {
+    font-size: 16px;
+    color: #aaa;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  /* Favorites List */
+  .favoritesList {
+    list-style: none;
+    padding: 0;
+  }
+  
+  /* Individual Favorite Item */
+  .favoriteItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 15px;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .favoriteItem:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+  }
+  
+  /* Favorite Place Name */
+  .favoriteItem h3 {
+    font-size: 18px;
+    color: #ffcc00;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  /* Location */
+  .location {
+    font-size: 16px;
+    color: #f8f9fa;
+    margin-bottom: 5px;
+  }
+  
+  /* Remove Button */
+  .removeButton {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .removeButton:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+  }
+  
+  /* Responsive */
+  @media screen and (max-width: 768px) {
+    .favoritesContainer {
+      width: 90%;
+      padding: 20px;
+    }
+  
+    .favoriteItem {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .removeButton {
+      margin-top: 10px;
+    }
+  }
+  

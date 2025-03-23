@@ -20,6 +20,7 @@ import PlanTripHomePage from './Pages/PlanTrip/HomePage/PlanTripHomePage';
 import "./index.css"
 import TripReview from './Pages/PlanTrip/TripReview/TripReview';
 import AdminPanel from './Pages/AdminPanel/AdminPanel';
+import UserPanel from './Pages/UserPanel/Userpanel';
 export default function App() {
   return (
     <div>
@@ -44,6 +45,7 @@ export default function App() {
                         <Route path="/Search" element={<Search />} />
                         <Route path="/train" element={<TrainSearch />} />
                         <Route path="/admin" element={<AdminPanel />} />
+                        <Route path="/user" element={<UserPanel />} />
                         <Route path='*' element={<PageNotFound />} />
                     </Route>
                 </Routes>

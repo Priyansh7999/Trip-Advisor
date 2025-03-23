@@ -1,12 +1,13 @@
+/* UserPanel.module.css */
 
-.adminPanel {
+/* Container */
+.userPanel {
   display: flex;
-  background-color: #dbd9d9;
   height: 100%;
-  padding-top: 2rem;
   font-family: var(--ta-Raleway);
 }
 
+/* Sidebar */
 .sidebar {
   background: #2c3e50;
   color: white;
@@ -16,6 +17,7 @@
   left: 0;
   top: 0;
   padding-top: 4rem;
+  width: 250px;
 }
 
 .sidebar h2 {
@@ -43,13 +45,12 @@
   transform: scale(1.05);
 }
 
+/* Main Content */
 .mainContent {
-  margin-left: 19%;
-  position: relative;
-  padding: 20px;
+  margin-left: 270px;
   width: 100%;
-  transition: margin-left 0.3s ease-in-out;
 }
+
 /* 📱 Responsive Sidebar */
 @media (max-width: 768px) {
   .sidebar {

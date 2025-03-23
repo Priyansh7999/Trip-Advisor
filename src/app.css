@@ -25,7 +25,9 @@
     --ta-Quintessential: "Quintessential", serif;
     --ta-Raleway: "Raleway", sans-serif;
 }
-
+body{
+  background: #6f7882;
+}
 .glow-on-hover {
     margin: 10px;
     border: none;

@@ -4,7 +4,7 @@ import AddHotel from './components/AddHotel';
 import UpdateHotel from './components/UpdateHotel';
 import ViewHotel from './components/ViewHotel';
 export default function ManageHotels() {
-  const [activeTab, setActiveTab] = useState("AddCity");
+  const [activeTab, setActiveTab] = useState("AddHotel");
 
   // Function to render the selected component
   const renderTab = () => {
@@ -31,19 +31,19 @@ export default function ManageHotels() {
       <div className={styles.tabContainer}>
         <button 
           className={`${styles.tabButton} ${activeTab === "AddHotel" ? styles.active : ""}`}
-          onClick={() => setActiveTab("AddCity")}
+          onClick={() => setActiveTab("AddHotel")}
         >
           ➕ Add Hotel
         </button>
         <button 
           className={`${styles.tabButton} ${activeTab === "UpdateHotel" ? styles.active : ""}`}
-          onClick={() => setActiveTab("UpdateCity")}
+          onClick={() => setActiveTab("UpdateHotel")}
         >
           ✏️ Update Hotel
         </button>
         <button 
           className={`${styles.tabButton} ${activeTab === "ViewHotel" ? styles.active : ""}`}
-          onClick={() => setActiveTab("ViewCity")}
+          onClick={() => setActiveTab("ViewHotel")}
         >
           ➖ Delete Hotel
         </button>

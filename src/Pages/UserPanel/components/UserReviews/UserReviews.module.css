@@ -1,0 +1,84 @@
+/* UserReviews.module.css */
+
+/* Container */
+.reviewsContainer {
+    width: 70%;
+    margin: 40px auto;
+    font-family: "Poppins", sans-serif;
+    padding: 30px;
+    border-radius: 10px;
+    color: white;
+  }
+  
+  /* Header */
+  .reviewsContainer h1 {
+    font-size: 26px;
+    text-align: center;
+    color: #ffffff;
+    font-weight: bold;
+  }
+  
+  .reviewsContainer p {
+    font-size: 14px;
+    text-align: center;
+    color: #ff4b5c;
+    margin-bottom: 20px;
+  }
+  
+  /* No Reviews Message */
+  .noReviews {
+    font-size: 16px;
+    color: #aaa;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  /* Reviews List */
+  .reviewsList {
+    list-style: none;
+    padding: 0;
+  }
+  
+  /* Individual Review */
+  .reviewItem {
+    padding: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 15px;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  .reviewItem:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+  }
+  
+  /* Place Name */
+  .reviewItem h3 {
+    font-size: 18px;
+    color: #ffcc00;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  /* Review Comment */
+  .comment {
+    font-size: 16px;
+    color: #f8f9fa;
+    margin-bottom: 5px;
+    font-style: italic;
+  }
+  
+  /* Review Date */
+  .date {
+    font-size: 14px;
+    color: #bbb;
+  }
+  
+  /* Responsive */
+  @media screen and (max-width: 768px) {
+    .reviewsContainer {
+      width: 90%;
+      padding: 20px;
+    }
+  }
+  
