@@ -77,45 +77,45 @@ export default function AddPlace() {
         <h2>Basic Details</h2>
         <div className={styles.formGroup}>
           <label>Name</label>
-          <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+          <input type="text" style={{width:'20%'}} value={name} onChange={(e) => setName(e.target.value)} />
         </div>
 
         <div className={styles.formGroup}>
           <label>Description</label>
-          <textarea value={desc} onChange={(e) => setDesc(e.target.value)} />
+          <textarea style={{width:'65%'}} value={desc} onChange={(e) => setDesc(e.target.value)} />
         </div>
 
         <div className={styles.formGroup}>
           <label>City</label>
-          <input type="text" value={city} onChange={(e) => setCity(e.target.value)} />
+          <input style={{width:'20%'}} type="text" value={city} onChange={(e) => setCity(e.target.value)} />
         </div>
 
         <div className={styles.formGroup}>
           <label>State</label>
-          <input type="text" value={state} onChange={(e) => setState(e.target.value)} />
+          <input style={{width:'20%'}} type="text" value={state} onChange={(e) => setState(e.target.value)} />
         </div>
 
         <div className={styles.coordinates}>
           <div className={styles.formGroup}>
             <label>Latitude</label>
-            <input type="text" value={latitude} onChange={(e) => setLatitude(e.target.value)} />
+            <input style={{width:'20%'}} type="text" value={latitude} onChange={(e) => setLatitude(e.target.value)} />
           </div>
           <div className={styles.formGroup}>
             <label>Longitude</label>
-            <input type="text" value={longitude} onChange={(e) => setLongitude(e.target.value)} />
+            <input style={{width:'20%'}} type="text" value={longitude} onChange={(e) => setLongitude(e.target.value)} />
           </div>
         </div>
 
         <div className={styles.formGroup}>
           <label>Suggested Duration</label>
-          <input type="text" value={suggestedDuration} onChange={(e) => setSuggestedDuration(e.target.value)} />
+          <input style={{width:'20%'}} type="text" value={suggestedDuration} onChange={(e) => setSuggestedDuration(e.target.value)} />
         </div>
 
         {/* What to Expect */}
         <h2>What to Expect</h2>
         <div className={styles.formGroup}>
           <label>What to Expect</label>
-          <textarea value={whatToExpect} onChange={(e) => setWhatToExpect(e.target.value)} />
+          <textarea style={{width:'65%'}} value={whatToExpect} onChange={(e) => setWhatToExpect(e.target.value)} />
         </div>
 
         {/* Tips (Dynamic Fields) */}
@@ -128,7 +128,7 @@ export default function AddPlace() {
         type="text" 
         value={tip} 
         onChange={(e) => handleChange(i, tips, setTips, e.target.value)} 
-        style={{ width: '60%' }} 
+        style={{ width: '50%' }} 
       />
     </div>
   ))}
@@ -149,7 +149,7 @@ export default function AddPlace() {
         ].map((section, index) => (
           <div key={index} className={styles.formGroup}>
             <label>{section.label}</label>
-            <textarea value={section.state} onChange={(e) => section.setState(e.target.value)} />
+            <textarea style={{width:'65%'}} value={section.state} onChange={(e) => section.setState(e.target.value)} />
           </div>
         ))}
 
@@ -157,22 +157,23 @@ export default function AddPlace() {
         <h2>More About</h2>
         <div className={styles.formGroup}>
           <label>More About</label>
-          <textarea value={moreAbout} onChange={(e) => setMoreAbout(e.target.value)} />
+          <textarea style={{width:'60%'}} value={moreAbout} onChange={(e) => setMoreAbout(e.target.value)} />
         </div>
 
         {/* Best Time to Visit */}
         <h2>Best Time to Visit</h2>
         <div className={styles.formGroup}>
           <label>Best Time to Visit</label>
-          <textarea value={bestTime} onChange={(e) => setBestTime(e.target.value)} />
+          <textarea style={{width:'60%'}} value={bestTime} onChange={(e) => setBestTime(e.target.value)} />
         </div>
 
         {/* Image URLs (Dynamic Fields) */}
         <h2>Image URLs</h2>
         <div className={styles.formGroup}>
-          {urls.map((url, i) => (
-            <input key={i} type="text" value={url} onChange={(e) => handleChange(i, urls, setUrls, e.target.value)} />
-          ))}
+          {urls.map((url, i) => (<>
+            <label>Url {i+1}</label>
+            <input key={i} style={{width:'60%'}} type="text" value={url} onChange={(e) => handleChange(i, urls, setUrls, e.target.value)} />
+          </>))}
           <button type="button" className={styles.addButton} onClick={() => addField(setUrls)}>Add+</button>
         </div>
 
