@@ -2,7 +2,6 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const { scrapeTrainData } = require('./scraper');
-const { img } = require('framer-motion/client');
 const scrapeHotelDetails = require('./scrapeHotel'); 
 const app = express();
 const PORT = 7000;
