@@ -40,39 +40,57 @@ export default function AddHotel() {
   
 
   // Handle Submit
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const hotelData = {
-      cityName,
-      hotelState,
-      hotelName,
-      aboutHotel,
-      hotelAddress,
-      star,
-      amenities: {
-        basicFacilities,
-        foodAndDrinks,
-        safetyAndSecurity,
-        healthAndWellness,
-        commonArea,
-      },
-      roomAmenities: {
-        popularWithGuests,
-        roomFeatures,
-        bathroom,
-      },
-      propertyRules: {
-        checkIn,
-        checkOut,
-        otherRules,
-      },
-      urlsList: urls,
-      reviews: review
+        cityName,
+        hotelState,
+        hotelName,
+        aboutHotel,
+        hotelAddress,
+        star,
+        amenities: {
+            basicFacilities,
+            foodAndDrinks,
+            safetyAndSecurity,
+            healthAndWellness,
+            commonArea,
+        },
+        roomAmenities: {
+            popularWithGuests,
+            roomFeatures,
+            bathroom,
+        },
+        propertyRules: {
+            checkIn,
+            checkOut,
+            otherRules,
+        },
+        urlsList: urls,
+        reviews: review
     };
 
-    console.log('Hotel Data:', hotelData);
-  };
+    try {
+        const response = await fetch('http://localhost:7000/submit-hotels-details', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(hotelData)
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to submit hotel details');
+        }
+
+        const result = await response.json();
+        console.log('✅ Hotel details submitted successfully:', result);
+        alert('Hotel details added successfully!');
+    } catch (error) {
+        console.error('❌ Error submitting hotel details:', error);
+        alert('Error submitting hotel details. Please try again.');
+    }
+};
+
 
   return (
     <div className={styles.addHotelContainer}>
@@ -180,7 +198,7 @@ export default function AddHotel() {
         <div className={styles.formGroup} style={{ flexWrap: 'wrap' }}>
           <label>Urls</label>
           {urls.map((url, i) => (
-            <input key={i} style={{ width: '65%' }} type="text" value={url} onChange={(e) => handleChange(i, hotelImages, setHotelImages, e.target.value)} required />
+            <input key={i} style={{ width: '65%' }} type="text" value={url} onChange={(e) => handleChange(i, urls, setUrls, e.target.value)} required />
           ))}
           <button type="button" className={styles.addButton} onClick={() => addField(setUrls)}>Add+</button>
         </div>

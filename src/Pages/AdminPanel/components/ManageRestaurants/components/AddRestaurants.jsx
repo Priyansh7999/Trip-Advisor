@@ -50,23 +50,41 @@ export default function AddRestaurants() {
       };
     
       // Handle Submit
-      const handleSubmit = (e) => {
+      const handleSubmit = async (e) => {
         e.preventDefault();
     
         const restaurantData = {
-          name,
-          city,
-          state,
-          address,
-          about,
-          features: { cuisines, mealTypes, specialDiets, restaurantFeatures },
-          timings,
-          contactInfo: { phoneNumber, website, email },
-          review, // Not displayed but handled
+            name,
+            city,
+            state,
+            address,
+            about,
+            features: { cuisines, mealTypes, specialDiets, restaurantFeatures },
+            timings,
+            contactInfo: { phoneNumber, website, email },
+            review // Not displayed but handled
         };
     
-        console.log('Restaurant Data:', restaurantData);
-      };
+        try {
+            const response = await fetch('http://localhost:7000/submit-restaurant-details', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(restaurantData)
+            });
+    
+            if (!response.ok) {
+                throw new Error('Failed to submit restaurant details');
+            }
+    
+            const result = await response.json();
+            console.log('✅ Restaurant details submitted successfully:', result);
+            alert('Restaurant details added successfully!');
+        } catch (error) {
+            console.error('❌ Error submitting restaurant details:', error);
+            alert('Error submitting restaurant details. Please try again.');
+        }
+    };
+    
     
       return (
         <div className={styles.manageRestaurantsContainer}>

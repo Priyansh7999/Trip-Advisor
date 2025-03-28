@@ -90,12 +90,13 @@ export default function AddCity() {
     ];
     const handleSubmit = async (e) => {
       e.preventDefault();
+      
       const cityDetails = {
         cityName,
         description,
         bestTime,
-        latitude,
-        longitude,
+        latitude: latitude || null,
+        longitude: longitude || null,
         peakSeason: { start: peakSeasonStart, end: peakSeasonEnd, description: peakSeasonDesc },
         moderateSeason: { start: moderateSeasonStart, end: moderateSeasonEnd, description: moderateSeasonDesc },
         offSeason: { start: offSeasonStart, end: offSeasonEnd, description: offSeasonDesc },
@@ -108,13 +109,13 @@ export default function AddCity() {
           weather,
         },
         howToReach: { byAir, byRail, byRoad },
-        attractions,
-        hotels,
-        foodToTry,
-        thingsToBuy,
-        placeTypes: selectedPlaceTypes,
+        attractions: JSON.stringify(attractions || []),
+        hotels: JSON.stringify(hotels || []),
+        foodToTry: JSON.stringify(foodToTry || []),
+        thingsToBuy: JSON.stringify(thingsToBuy || []),
+        placeTypes: JSON.stringify(selectedPlaceTypes || []),
         conclusion,
-        reviews: review
+        reviews: JSON.stringify(review || [])
       };
     
       try {
@@ -131,11 +132,12 @@ export default function AddCity() {
         }
     
         const data = await response.json();
-        console.log('City Details Submitted:', data);
+        console.log('✅ City Details Submitted:', data);
       } catch (error) {
-        console.error('Error submitting city details:', error);
+        console.error('❌ Error submitting city details:', error);
       }
     };
+       
     
     return (
       <div className={styles.addCityContainer}>

@@ -46,27 +46,45 @@ export default function AddPlace() {
   };
 
   // Handle Submit
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const placeData = {
-      name,
-      desc,
-      city,
-      state,
-      latitude,
-      longitude,
-      suggestedDuration,
-      whatToExpect,
-      tips,
-      overview: { history, highlights, timings, entryFee, restrictedItems },
-      moreAbout,
-      bestTime,
-      urls,
+        name,
+        desc,
+        city,
+        state,
+        latitude,
+        longitude,
+        suggestedDuration,
+        whatToExpect,
+        tips,
+        overview: { history, highlights, timings, entryFee, restrictedItems },
+        moreAbout,
+        bestTime,
+        urls,
     };
 
-    console.log('Place Data:', placeData);
-  };
+    try {
+        const response = await fetch('http://localhost:7000/submit-place-details', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(placeData)
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to submit place details');
+        }
+
+        const result = await response.json();
+        console.log('✅ Place details submitted successfully:', result);
+        alert('Place details added successfully!');
+    } catch (error) {
+        console.error('❌ Error submitting place details:', error);
+        alert('Error submitting place details. Please try again.');
+    }
+};
+
 
   return (
     <div className={styles.addPlaceContainer}>

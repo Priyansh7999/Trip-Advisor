@@ -24,7 +24,7 @@ import UserPanel from './Pages/UserPanel/Userpanel';
 export default function App() {
   return (
     <div>
-<SplashCursor />
+{/* <SplashCursor /> */}
       <Router>
                 <Routes>
                     <Route element={<Layout />}>

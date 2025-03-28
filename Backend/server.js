@@ -42,10 +42,6 @@ const imageSliderData = [
     }
 ];
 
-// Endpoint to serve image slider data
-app.get('/imageslider', (req, res) => {
-    res.json(imageSliderData);
-});
 
 // Trending City Data
 const cities = [
@@ -421,14 +417,6 @@ const cities = [
     res.json(places);
   });
   
-// Route to test the server
-app.get('/', (req, res) => {
-    res.send(`
-        <h1>Image Slider</h1>
-        <p>Access image slider data at <a href="/imageslider">/imageslider</a>.</p>
-    `);
-});
-
 
 const lesser_known=[
     {

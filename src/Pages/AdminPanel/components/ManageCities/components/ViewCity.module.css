@@ -1,0 +1,162 @@
+.viewCityContainer {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .heading {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  
+  /* Search Bar */
+  .searchContainer {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .searchInput {
+    width: 60%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #3498db;
+    border-radius: 5px;
+  }
+  
+  .searchButton {
+    padding: 10px 15px;
+    font-size: 16px;
+    color: #fff;
+    background: #3498db;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .searchButton:hover {
+    background: #2980b9;
+  }
+  
+  /* Error Message */
+  .error {
+    text-align: center;
+    color: red;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  
+  /* City Details */
+  .cityDetails {
+    margin-top: 20px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .cityName {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  
+  .section {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .section h3 {
+    text-align: center;
+    color: #34495e;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 5px;
+  }
+  
+  /* Detail Row */
+  .detailRow {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .detailLabel {
+    font-weight: bold;
+    color: #2c3e50;
+    flex: 1;
+    text-align: left;
+  }
+  
+  .detailValue {
+    flex: 2;
+    text-align: right;
+    color: #555;
+  }
+  
+  /* List Styles */
+  .foodList, .buyList, .reviews {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+  }
+  
+  .foodList li, .buyList li, .reviews li {
+    background: #ecf0f1;
+    padding: 8px;
+    margin: 5px 0;
+    border-radius: 5px;
+    display: inline-block;
+    width: 90%;
+  }
+  
+  .foodList li span, .buyList li span, .reviews li span {
+    display: block;
+    padding: 5px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .searchContainer {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .searchInput {
+      width: 80%;
+    }
+  
+    .searchButton {
+      width: 50%;
+    }
+  
+    .detailRow {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .detailLabel {
+      text-align: center;
+    }
+  
+    .detailValue {
+      text-align: center;
+    }
+  }
+  
