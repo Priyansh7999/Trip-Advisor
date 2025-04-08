@@ -1,0 +1,34 @@
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+.cards{
+    background-color: #0a1036fb;
+    width: 13%;
+    height: 8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.cards p{
+    font-size: 1.3rem;
+    background-image: linear-gradient(45deg, #d16ef9 18%, #9c601c 59%, #7f4025 100%);
+    background-clip: text; 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+
+}
+.cards h2{
+    font-size: 2rem;
+    /* background-color: aliceblue; */
+    font-weight: 400;
+    background-image: linear-gradient(45deg, #d16ef9 18%, #9c601c 59%, #7f4025 100%);
+    background-clip: text; 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
+}

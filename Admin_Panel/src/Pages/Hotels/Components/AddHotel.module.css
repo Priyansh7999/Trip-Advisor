@@ -1,0 +1,134 @@
+.container{
+    padding: 2rem;
+    border: 0.1px solid white;
+    margin: 20px;
+    border-radius: 15px;
+}
+.container h1{
+    text-align: center;
+    margin: 2rem;
+}
+.formdataAdd{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1rem;
+}
+.formdataAdd label{
+    width: 20%;
+    font-size: 1.3rem;
+}
+.formdataAdd input, .formdataAdd textarea{
+    padding: 1rem;
+    border: none;
+    border-bottom: 1px solid white;
+    background: transparent;
+    border-radius: 1px;
+}
+.formdataAdd .multiInput{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.formdata{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem;
+}
+.formdata label{
+    width: 20%;
+    font-size: 1.3rem;
+}
+.formdata input, .formdata textarea{
+    padding: 1rem;
+    border: none;
+    width: 70%;
+    border-bottom: 1px solid white;
+    background: transparent;
+    border-radius: 1px;
+}
+.formdata select{
+    padding: 1rem;
+    border: none;
+    width: 15%;
+    border-bottom: 1px solid white;
+    background: transparent;
+    border-radius: 1px;
+}
+.formdata input:active{
+    border: none;
+}
+.formdata select{
+    color: rgb(255, 254, 254);
+}
+.formdata option{
+    color: black;
+}
+.formdata textarea{
+    height: 100px;
+    resize: none;
+}
+.checkBoxGroup{
+    display: flex;
+    align-items: center;
+    gap:2rem;
+    margin: 1rem;
+    /* flex-wrap: wrap; */
+}
+.checkBoxGroup p{
+    width: 20%;
+    font-size: 1.3rem;
+}
+.checkBoxGroup .options{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.addButton, .deleteButton{
+    padding: 0.5rem 1rem;
+    width: 5rem;
+    height: 3rem;
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+    border: 1px solid white;
+    cursor: pointer;
+    background: rgb(15, 15, 116);
+}
+.button{
+    padding: 0.5rem 1rem;
+    text-align: center;
+}
+.button .submitButton{
+    padding: 0.5rem 1rem;
+    color: #5e7c63; 
+    font-size: 1rem;
+    background-color: rgb(12, 12, 56); 
+    border-radius: 4px;
+    border: none;
+    width: 30%;
+}
+.formdataAdd button{
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    width: 5rem;
+    height: 3rem;
+    color: rgb(255, 255, 255);
+    border: 1px solid white;
+    cursor: pointer;
+    background: rgb(15, 15, 116);
+}
+.button{
+    padding: 0.5rem 1rem;
+    text-align: center;
+}
+.button .submitButton{
+    padding: 0.5rem 1rem;
+    color: #5e7c63; 
+    font-size: 1rem;
+    background-color: rgb(12, 12, 56); 
+    border-radius: 4px;
+    border: none;
+    width: 30%;
+}
