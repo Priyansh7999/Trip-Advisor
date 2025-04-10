@@ -54,24 +54,47 @@ export default function AddRestaurant() {
   // Handle Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
+  
     if (phoneNumber.length !== 10 || isNaN(phoneNumber)) {
       alert('Phone number must be exactly 10 digits.');
       return;
     }
-
+  
     const restaurantData = {
       name,
       city,
       state,
       address,
       about,
-      features: { cuisines, mealTypes, specialDiets, restaurantFeatures },
+      features: {
+        cuisines,
+        mealTypes,
+        specialDiets,
+        restaurantFeatures,
+      },
       timings,
-      contactInfo: { phoneNumber, website, email },
-      review // Not displayed but handled
+      contactInfo: {
+        phoneNumber,
+        website,
+        email,
+      },
+      review,
     };
-    console.log(restaurantData)
-  }
+  
+    try {
+      const res = await fetch('http://localhost:5000/add-restaurant', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(restaurantData),
+      });
+  
+      const data = await res.json();
+      console.log('Restaurant saved:', data);
+    } catch (err) {
+      console.error('Error submitting restaurant data:', err);
+    }
+  };
+  
 
   return (
     <form className={styles.container} onSubmit={handleSubmit}>

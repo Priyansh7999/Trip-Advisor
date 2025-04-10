@@ -5,7 +5,7 @@
   text-align: center;
   border: var(--s) solid #0000;
   box-sizing: border-box;
-  background:linear-gradient(135deg,#1f005c, #5b0060, #870160, #ac255e, #ca485c, #e16b5c, #f39060, #ffb56b) border-box; 
+  background:linear-gradient(135deg,#b9c2c6) border-box; 
 }
 
 .WhatToSee h1 {
@@ -29,11 +29,11 @@
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: all 0.3s;
+  filter: brightness(90%);
 }
 
 .content-item:hover {
   transform: scale(1.02);
-  filter: brightness(1.1);
 }
 
 .content-item img {

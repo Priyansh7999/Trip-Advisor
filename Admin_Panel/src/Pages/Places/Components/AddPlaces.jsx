@@ -34,7 +34,7 @@ export default function AddPlaces() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const placeData = {
       name,
       desc,
@@ -45,13 +45,33 @@ export default function AddPlaces() {
       suggestedDuration,
       whatToExpect,
       tips,
-      overview: { history, highlights, timings, entryFee, restrictedItems },
+      overview: {
+        history,
+        highlights,
+        timings,
+        entryFee,
+        restrictedItems,
+      },
       moreAbout,
       bestTime,
       urls,
     };
     console.log(placeData);
+  
+    try {
+      const res = await fetch('http://localhost:5000/add-place', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(placeData),
+      });
+  
+      const data = await res.json();
+      console.log('Place saved:', data);
+    } catch (err) {
+      console.error('Error submitting place data:', err);
+    }
   };
+  
 
   return (
     <form className={styles.container} onSubmit={handleSubmit}>

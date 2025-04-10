@@ -23,13 +23,13 @@ export default function Restaurant() {
            className={`${styles.tabButton} ${activeTab === "AddRestaurant" ? styles.active : ""}`}
            onClick={() => setActiveTab("AddRestaurant")}
          >
-           ➕ Add City
+           ➕ Add Restaurant
          </button>
          <button
            className={`${styles.tabButton} ${activeTab === "UpdateRestaurant" ? styles.active : ""}`}
            onClick={() => setActiveTab("UpdateRestaurant")}
          >
-           ➖ Update City
+           ➖ Update Restaurant
          </button>
        </div>
        <div className={styles.contentContainer}>

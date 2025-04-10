@@ -22,13 +22,12 @@ export default function Navbar() {
 
   return (
     <div className={styles.nav}>
-      <div className={styles.logo}>
-        
+      <div className={styles.logo} onClick={() => navigate('/Home')} >
         <h1><img width={30} src="https://codervent.com/maxton/demo/horizontal-menu/assets/images/logo-icon.png" alt="" />Trip Planner</h1>
         <p>Admin Panel</p>
       </div>
       <div className={styles.buttons}>
-        {['Dashboard', 'Cities', 'Hotels', 'Restaurants', 'Places'].map((label, index) => (
+        {['Home', 'Dashboard', 'Cities', 'Hotels', 'Restaurants', 'Places'].map((label, index) => (
           <button
             key={index}
             className={activeButton === label ? styles.activeButton : ''}

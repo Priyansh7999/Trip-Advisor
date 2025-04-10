@@ -8,6 +8,28 @@
     text-align: center;
     margin: 2rem;
 }
+.formInput{
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+}
+.formInput input{
+    padding: 1rem;
+    border: none;
+    border: 1px solid white;
+    background: transparent;
+    border-radius: 1px;
+}
+.formInput button{
+    padding: 0.5rem 1rem;
+    color: #5e7c63; 
+    font-size: 1rem;
+    background-color: rgb(12, 12, 56); 
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+}
 .formdataAdd{
     display: flex;
     align-items: center;
@@ -39,7 +61,7 @@
 }
 .formdata label{
     width: 20%;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
 }
 .formdata input, .formdata textarea{
     padding: 1rem;
@@ -87,9 +109,9 @@
     gap: 1rem;
 }
 .addButton, .deleteButton{
-    padding: 0.5rem 1rem;
-    width: 5rem;
-    height: 3rem;
+    padding: 0.2rem;
+    width: 4rem;
+    height: 1.5rem;
     border-radius: 5px;
     color: rgb(255, 255, 255);
     border: 1px solid white;

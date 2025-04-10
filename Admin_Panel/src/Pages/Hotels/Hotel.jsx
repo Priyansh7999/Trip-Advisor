@@ -23,13 +23,13 @@ const [activeTab, setActiveTab] = useState("AddHotel");
           className={`${styles.tabButton} ${activeTab === "AddHotel" ? styles.active : ""}`}
           onClick={() => setActiveTab("AddHotel")}
         >
-          ➕ Add City
+          ➕ Add Hotel
         </button>
         <button
           className={`${styles.tabButton} ${activeTab === "UpdateHotel" ? styles.active : ""}`}
           onClick={() => setActiveTab("UpdateHotel")}
         >
-          ➖ Update City
+          ➖ Update Hotel
         </button>
       </div>
       <div className={styles.contentContainer}>

@@ -84,7 +84,7 @@ export default function AddCity() {
   ];
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const cityDetails = {
       cityName,
       description,
@@ -103,15 +103,59 @@ export default function AddCity() {
         weather,
       },
       howToReach: { byAir, byRail, byRoad },
-      foodToTry: JSON.stringify(foodToTry || []),
-      thingsToBuy: JSON.stringify(thingsToBuy || []),
-      placeTypes: JSON.stringify(selectedPlaceTypes || []),
+      foodToTry: foodToTry || [],
+      thingsToBuy: thingsToBuy || [],
+      placeTypes: selectedPlaceTypes || [],
       conclusion,
-      urls: JSON.stringify(urls || []),
-      reviews: JSON.stringify(review || [])
+      urls: urls || [],
+      reviews: review || [],
     };
-    console.log(cityDetails)
-  }
+  
+    try {
+      const res = await fetch('http://localhost:5000/add-city', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(cityDetails),
+      });
+  
+      const data = await res.json();
+      console.log(data);
+      alert(data.error || data.message);
+      setCityName('');
+      setDescription('');
+      setBestTime('');
+      setLatitude('');
+      setLongitude('');  
+      setPeakSeasonStart('');
+      setPeakSeasonEnd('');
+      setPeakSeasonDesc('');  
+      setModerateSeasonStart('');
+      setModerateSeasonEnd('');
+      setModerateSeasonDesc('');  
+      setOffSeasonStart('');
+      setOffSeasonEnd('');
+      setOffSeasonDesc('');  
+      setCityTitle('');
+      setCityHistory('');
+      setState('');
+      setTouristPlaces('');
+      setFamousFor('');
+      setWeather('');  
+      setByAir('');
+      setByRail('');
+      setByRoad('');  
+      setFoodToTry([{ name: '', description: '' }]);
+      setThingsToBuy([{ heading: '', description: '' }]);
+      setSelectedPlaceTypes([]);
+      setConclusion('');
+      setUrls([{ url: '', description: '' }]);
+      setReview([]);
+    } catch (err) {
+      console.error('Submission error:', err);
+    }
+  };
+  
+  
   return (
     <form className={styles.container} onSubmit={handleSubmit}>
       <h1>Enter Basic Information</h1>
@@ -196,7 +240,6 @@ export default function AddCity() {
             </label>
           ))}
         </div>
-
       </div>
 
       <h1>City Overview</h1>
@@ -279,8 +322,6 @@ export default function AddCity() {
         ))}
 
       </div>
-
-      {/* Dynamic fields: Things to Buy */}
       <h1>Things To Buy</h1>
       <div className={styles.formdataAdd}>
         {thingsToBuy.map((item, index) => (

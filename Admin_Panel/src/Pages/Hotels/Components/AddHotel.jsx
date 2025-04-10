@@ -46,7 +46,7 @@ export default function AddHotel() {
   // Handle Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const hotelData = {
       cityName,
       hotelState,
@@ -72,10 +72,24 @@ export default function AddHotel() {
         otherRules,
       },
       urlsList: urls,
-      reviews: review
+      reviews: review,
     };
     console.log(hotelData);
+  
+    try {
+      const res = await fetch('http://localhost:5000/add-hotel', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(hotelData),
+      });
+  
+      const data = await res.json();
+      console.log('Hotel saved:', data);
+    } catch (err) {
+      console.error('Error submitting hotel data:', err);
+    }
   };
+  
 
   return (
     <form className={styles.container} onSubmit={handleSubmit}>

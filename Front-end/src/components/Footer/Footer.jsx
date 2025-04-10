@@ -25,13 +25,6 @@ export default function Footer() {
             <li><a href='#'>Plan Your Trip</a></li>
           </ul>
         </div>
-        <div className='quick-links'>
-          <h3>Other</h3>
-          <ul>
-            <li><a href='/admin'>Admin Panel</a></li>
-            <li><a href='/user'>User Panel</a></li>
-          </ul>
-        </div>
         <div className='newsletter'>
           <h3>Get exclusive inspiration for your next stay subscribe to our newsletter.</h3>
           <form onSubmit={(e) => e.preventDefault()}>

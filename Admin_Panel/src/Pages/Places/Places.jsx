@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import AddPlaces from './Components/AddPlaces';
-import UpdatePlaces from './Components/updatePlaces';
+import UpdatePlaces from './Components/UpdatePlaces';
 import styles from "./Places.module.css";
 export default function Places() {
   const [activeTab, setActiveTab] = useState("AddPlaces");
@@ -15,7 +15,7 @@ export default function Places() {
     return (
       <div>
         <div className={styles.container}>
-          <h1>Hotels Overview</h1>
+          <h1>Places Overview</h1>
           <p>Help tourists discover hidden gems, iconic landmarks, and cultural spots by adding complete destination info.</p>
         </div>
         <div className={styles.tabContainer}>
@@ -23,13 +23,13 @@ export default function Places() {
             className={`${styles.tabButton} ${activeTab === "AddPlaces" ? styles.active : ""}`}
             onClick={() => setActiveTab("AddPlaces")}
           >
-            ➕ Add City
+            ➕ Add Place
           </button>
           <button
             className={`${styles.tabButton} ${activeTab === "UpdatePlaces" ? styles.active : ""}`}
             onClick={() => setActiveTab("UpdatePlaces")}
           >
-            ➖ Update City
+            ➖ Update Place
           </button>
         </div>
         <div className={styles.contentContainer}>
