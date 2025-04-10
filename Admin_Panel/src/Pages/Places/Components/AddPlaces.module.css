@@ -40,6 +40,11 @@
 .formdataAdd label{
     width: 20%;
     font-size: 1.3rem;
+    color: #9ffefb; 
+    background-image: linear-gradient(45deg, #9ffefb 29%, #d6f579 57%, #c56039 64%); 
+    background-clip: text; 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent;
 }
 .formdataAdd input, .formdataAdd textarea{
     padding: 1rem;
@@ -62,6 +67,11 @@
 .formdata label{
     width: 20%;
     font-size: 1.3rem;
+    color: #9ffefb; 
+    background-image: linear-gradient(45deg, #9ffefb 29%, #d6f579 57%, #c56039 64%); 
+    background-clip: text; 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent;
 }
 .formdata input, .formdata textarea{
     padding: 1rem;

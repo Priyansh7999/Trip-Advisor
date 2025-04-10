@@ -38,7 +38,7 @@
     background-color: rgba(53, 53, 147, 0.2); /* Optional: add hover effect */
 }
 .buttons .activeButton{
-    background-color: rgb(53, 53, 147);
+    background: linear-gradient(to right, #192152, #6a11cb, #2575fc);
 }
 .buttons .activeButton:hover{
     background-color: rgb(53, 53, 147);

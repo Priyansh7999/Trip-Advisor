@@ -62,7 +62,9 @@ body {
 }
 .LesserKnown{
   background:url(../../assets/whitebg.jpg);
+  filter: brightness(0.8);
   position: relative;
+  padding: 6rem 0rem;
 }
 .Collections-by-month{
   background:url(../../assets/bg2.jpg);

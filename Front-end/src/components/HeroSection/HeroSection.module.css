@@ -26,14 +26,13 @@
   .hero-content p {
     font-size: 1.6rem;
     text-align: center;
-    line-height: 1;
-    font-weight: 300;
+    font-weight: 500;
     font-family: var(--ta-Raleway);
-    margin-top: 15px;
-    background-image: linear-gradient(to right, #7f8cd4, pink, #3aff7c);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent; 
+    color: #9ffefb; 
+    background-image: linear-gradient(45deg, #9ffefb 29%, #d6f579 57%, #c56039 64%); 
+    background-clip: text; 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent;
   }
 
   @media (max-width: 768px) {

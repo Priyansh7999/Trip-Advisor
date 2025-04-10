@@ -19,13 +19,7 @@ const HeroSection = () => {
           Explore the World
           </h1>
           <p>
-            <GradientText
-              colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
-              animationSpeed={3}
-              showBorder={false}
-            >
               {randomHeroLine}
-            </GradientText>
           </p>
           <div className="see-more">
               <button class="glow-on-hover" type="button">SEE MORE</button>

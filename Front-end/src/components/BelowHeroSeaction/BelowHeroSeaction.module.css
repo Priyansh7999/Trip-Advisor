@@ -10,6 +10,12 @@
   padding: 100px 120px;
   height: 90vh;
   /* margin-bottom: -39px; */
+  /* background-image: url(../../assets/below_hero_section.avif); */
+  background:url(../../assets/whitebg.jpg);
+  background-position: center;
+  background-attachment: fixed;
+  /* background-size: cover; */
+  filter: brightness(0.8);
 }
 
 .below-hero-section h3 {
