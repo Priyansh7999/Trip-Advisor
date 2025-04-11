@@ -1,0 +1,15 @@
+.section-title{
+    font-size: 2rem;
+    color: rgb(194, 194, 31);
+}
+p{
+    color: rgba(214, 228, 228, 0.74);
+}
+.box{
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+}
+.box strong{
+    color: green;
+}

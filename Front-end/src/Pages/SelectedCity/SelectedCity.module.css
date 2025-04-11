@@ -209,7 +209,7 @@
   .selected-city-how-to-reach,
   .selected-city-Conclusion,
   .selected-city-things-to-buy,
-  .selected-place-tips {
+  .selected-place-tips, .selected-city-section, .selected-place-description {
     background-color: #242424;
     padding: 2rem;
     border-radius: 1rem;

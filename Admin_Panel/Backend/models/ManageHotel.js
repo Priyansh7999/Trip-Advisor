@@ -74,5 +74,17 @@ async function updateHotelData(hotelName, data) {
   await pool.query(query, values);
   return { message: 'Hotel updated successfully' };
 }
+async function getHotelsByCity(cityName) {
+  const result = await pool.query(
+    'SELECT hotelname, urlslist, abouthotel FROM HotelsDb WHERE cityName = $1',
+    [cityName]
+  );
+  return result.rows;
+}
 
-module.exports = { saveHotelData, getHotelByName, updateHotelData };
+module.exports = {
+  saveHotelData,
+  getHotelByName,
+  updateHotelData,
+  getHotelsByCity // ✅ Exported properly
+};

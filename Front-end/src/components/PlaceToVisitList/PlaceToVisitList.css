@@ -1,0 +1,53 @@
+.place-list-container {
+    display: flex;
+    flex-wrap: wrap;
+    background-color:#242424;
+    border-radius: 20px;
+    padding: 30px 0;
+    justify-content: center;
+    gap: 4px;
+  }
+  
+  .place-card {
+    background-color: #343030;
+    padding: 10px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease;
+  }
+  
+  .place-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .place-image {
+    height: 300px;
+    width: 300px;
+    object-fit: cover;
+    border-radius: 20px;
+  }
+  
+  .place-name {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 12px 16px 4px;
+    font-family: var(--ta-sans-serif);
+    text-align: center;
+  }
+  
+  .place-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .place-button:hover {
+    background-color: #0056b3;
+  }
+  

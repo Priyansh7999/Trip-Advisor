@@ -16,7 +16,7 @@ app.use('/images', express.static(path.join(__dirname, 'ImageSlider')));
 const imageSliderData = [
     {
         id: 1,
-        place: "Taj Mahal, Agra",
+        place: "Birla Mandir",
         image: "/images/taj mahal.jpg"
     },
     {
@@ -45,11 +45,11 @@ const imageSliderData = [
 // Trending City Data
 const cities = [
   {'id': 1,
-    'title': 'Jaipur',
-    'State' : 'Rajasthan',
-    'src': 'https://images.unsplash.com/photo-1650530777057-3a7dbc24bf6c?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDN8fGphaXB1cnxlbnwwfDF8MHx8fDA%3D',
-    'des': "Jaipur is the capital of the royal state of Rajasthan",
-    'description':'Also called the Pink City, Jaipur is the capital of the royal state of Rajasthan. Along with Delhi and Agra, Jaipur forms the Golden Triangle and hails as one of the most famous tourist circuits in the country. ',
+    'title': 'Bhopal',
+    'State' : 'Madhya Pradesh',
+    'src': 'https://plus.unsplash.com/premium_photo-1697729585263-29ebdcb972ee?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YmhvcGFsfGVufDB8MHwwfHx8MA%3D%3D',
+    'des': "Bhopal is the capital of Madhya Pradesh",
+    'description':'Ruled by Mughal Begums in the past, Bhopal’s rich history, traditional legacy and artistic vibrancy is mirrored in its various Architectural marvels, historical monuments, religious sites and museums. ',
   },
 
    {'id': 2,
@@ -305,23 +305,23 @@ const cities = [
   const places = [
     {
       id: 1,
-      title: 'Taj Mahal, Agra',
-      src: "https://media.istockphoto.com/id/483076881/photo/taj-mahal-monument-agra-india.jpg?s=612x612&w=0&k=20&c=qZhHNlpXdtNIs-02GTv_o95A5VFR9bYEVJUMFWis1_A=",
+      title: 'Birla Mandir',
+      src: "https://hblimg.mmtcdn.com/content/hubble/img/bhopal/mmt/activities/m_activities_bhopal_birla_mandir_l_534_805.jpg",
     },
     {
       id: 2,
-      title: 'Red Fort, Delhi',
-      src: "https://plus.unsplash.com/premium_photo-1697730373510-51b7fcf2ff52?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      title: 'Bhojpur Temple',
+      src: "https://hblimg.mmtcdn.com/content/hubble/img/bhopal/mmt/activities/m_bhopal_bhojpur_temple_l_500_667.jpg",
     },
     {
       id: 3,
-      title: 'Amber Fort, Jaipur',
-      src: "https://images.unsplash.com/photo-1599661046274-f1154c4ea62b?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8QW1iZXIlMjBGb3J0JTJDJTIwSmFpcHVyfGVufDB8fDB8fHww",
+      title: 'Taj-ul-Masajid',
+      src: "https://hblimg.mmtcdn.com/content/hubble/img/bhopal/mmt/activities/m_bhopal_taj_ul_masajid_l_518_760.jpg",
     },
     {
       id: 4,
-      title: 'Gateway of India, Mumbai',
-      src: "https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8R2F0ZXdheSUyMG9mJTIwSW5kaWElMkMlMjBNdW1iYWl8ZW58MHx8MHx8fDA%3D",
+      title: 'Van Vihar National Park',
+      src: "https://hblimg.mmtcdn.com/content/hubble/img/bhopal/mmt/activities/m_bhopal_van_vihar_national_park_l_324_433.jpg",
     },
     {
       id: 5,

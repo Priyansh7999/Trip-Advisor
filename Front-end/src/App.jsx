@@ -20,6 +20,7 @@ import PlanTripHomePage from './Pages/PlanTrip/HomePage/PlanTripHomePage';
 import "./index.css"
 import TripReview from './Pages/PlanTrip/TripReview/TripReview';
 import UserPanel from './Pages/UserPanel/Userpanel';
+import SelectedHotel from './Pages/SelectedHotel/SelectedHotel';
 export default function App() {
   return (
     <div>
@@ -35,15 +36,15 @@ export default function App() {
                         <Route path="/places" element={<AllCityList trending="trendingplace" />} />
                         <Route path="/add-city" element={<AddCityDetails />} />
                         <Route path="/city/:cityName" element={<SelectedCity />} />
-                        <Route path="/place/:cityName" element={<SelectedPlace />} />
+                        <Route path="/place/:placeName" element={<SelectedPlace />} />
                         <Route path="/PlanTripCategory" element={<PlanTripCategory />} />
                         <Route path="/PlanTripCategory/:placeName" element={<PlanTripSelected />} />
                         <Route path="/plantrip" element={<PlanTripHomePage />} />
+                        <Route path='/hotel/:name' element={<SelectedHotel />} />
                         <Route path="/plantrip/:from/:to" element={<TripReview />} />
                         <Route path="/month/:month" element={<MonthBased />} />
                         <Route path="/Search" element={<Search />} />
                         <Route path="/train" element={<TrainSearch />} />
-                        <Route path="/user" element={<UserPanel />} />
                         <Route path='*' element={<PageNotFound />} />
                     </Route>
                 </Routes>

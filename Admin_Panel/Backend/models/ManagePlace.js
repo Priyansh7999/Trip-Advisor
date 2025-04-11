@@ -78,6 +78,13 @@ async function updatePlaceData(name, data) {
   await pool.query(query, values);
   return { message: 'Place updated successfully' };
 }
+async function getPlacesByCityName(cityName) {
+  const result = await pool.query(
+    'SELECT * FROM PlacesDb WHERE city = $1',
+    [cityName]
+  );
+  return result.rows;
+}
 
-module.exports = { savePlaceData, getPlaceByName, updatePlaceData };
+module.exports = { savePlaceData, getPlaceByName, updatePlaceData, getPlacesByCityName };
 
