@@ -29,12 +29,13 @@ export default function UpdateHotel() {
   const [urls, setUrls] = useState(['']);
   const [review, setReview] = useState(['']);
 
-  const addField = (setState) => setState((prev) => [...prev, '']);
+  
   const handleChange = (index, array, setArray, value) => {
     const updated = [...array];
     updated[index] = value;
     setArray(updated);
   };
+  const addField = (setState) => setState((prev) => [...prev, '']);
   const handleDelete = (index, setArray) => {
     setArray(prev => prev.filter((_, i) => i !== index));
   };
@@ -74,9 +75,43 @@ export default function UpdateHotel() {
       setReview(hotelData.reviews || ['']);
     }
   }, [hotelData]);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleDeleteData = async () => {
+    try {
+      const res = await fetch(`http://localhost:5000/delete-hotel/${hotelName}`, {
+        method: 'DELETE',
+      });
+  
+      const data = await res.json();
+      alert(data.message || data.error);
+  
+      if (data.message) {
+        // Clear hotel fields
+        setCityName('');
+        setHotelState('');
+        setHotelName('');
+        setAboutHotel('');
+        setHotelAddress('');
+        setStar(0);
+        setBasicFacilities(['']);
+        setFoodAndDrinks(['']);
+        setSafetyAndSecurity(['']);
+        setHealthAndWellness(['']);
+        setCommonArea(['']);
+        setPopularWithGuests(['']);
+        setRoomFeatures(['']);
+        setBathroom(['']);
+        setCheckIn(['']);
+        setCheckOut(['']);
+        setOtherRules(['']);
+      }
+    } catch (err) {
+      console.error('Error deleting hotel:', err);
+      alert('Failed to delete hotel');
+    }
+  };
+  
+  const handleSubmit = async () => {
+   
     const hotelDetails = {
       cityName, hotelState, hotelName, aboutHotel, hotelAddress, star,
       amenities: { basicFacilities, foodAndDrinks, safetyAndSecurity, healthAndWellness, commonArea },
@@ -92,6 +127,25 @@ export default function UpdateHotel() {
       });
       const data = await res.json();
       alert(data.message || data.error);
+      if(data.message){
+        setCityName('');
+        setHotelState('');
+        setHotelName('');
+        setAboutHotel('');
+        setHotelAddress('');
+        setStar(0);
+        setBasicFacilities(['']);
+        setFoodAndDrinks(['']);
+        setSafetyAndSecurity(['']);
+        setHealthAndWellness(['']);
+        setCommonArea(['']);
+        setPopularWithGuests(['']);
+        setRoomFeatures(['']);
+        setBathroom(['']);
+        setCheckIn(['']);
+        setCheckOut(['']);
+        setOtherRules(['']);
+      }
     } catch (err) {
       console.error('Error updating hotel:', err);
     }
@@ -106,8 +160,8 @@ export default function UpdateHotel() {
       </form>
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
-      {hotelData && (
-        <form onSubmit={handleSubmit}>
+      {!error && (
+        <div>
           <h1>Basic Hotel Details</h1>
           <div className={styles.formdata}>
             <label>Hotel Name</label>
@@ -209,9 +263,12 @@ export default function UpdateHotel() {
           </div>
 
           <div className={styles.button}>
-            <button type="submit" className={styles.submitButton}>Update</button>
+            <button onClick={handleSubmit} className={styles.submitButton}>Update</button>
           </div>
-        </form>
+          <div className={styles.button}>
+            <button onClick={handleDeleteData} className={styles.submitButton}>Delete</button>
+          </div>
+        </div>
       )}
     </div>
   );

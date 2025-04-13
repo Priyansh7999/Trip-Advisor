@@ -12,6 +12,10 @@ const pool = new Pool({
 });
 
 async function savePlaceData(data) {
+  const existing = await pool.query('SELECT * FROM PlacesDb WHERE name = $1', [data.name]);
+  if (existing.rows.length > 0) {
+    return { exists: true, message: 'Place already exists' };
+  }
   const query = `
     INSERT INTO PlacesDb (
       name, description, city, state, latitude, longitude,
@@ -86,5 +90,18 @@ async function getPlacesByCityName(cityName) {
   return result.rows;
 }
 
-module.exports = { savePlaceData, getPlaceByName, updatePlaceData, getPlacesByCityName };
+async function deletePlaceData(name) {
+  const result = await pool.query('DELETE FROM PlacesDb WHERE name = $1', [name]);
+  if (result.rowCount === 0) {
+    throw new Error('Place not found');
+  }
+  return { message: 'Place deleted successfully' };
+}
 
+module.exports = {
+  savePlaceData,
+  getPlaceByName,
+  updatePlaceData,
+  getPlacesByCityName,
+  deletePlaceData, 
+};

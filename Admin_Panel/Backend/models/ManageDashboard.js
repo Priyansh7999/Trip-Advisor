@@ -17,10 +17,10 @@ async function getDashboardCounts() {
     const restaurantCount = await pool.query('SELECT COUNT(*) FROM RestaurantsDb');
 
     return {
-      totalCities: parseInt(cityCount.rows[0].count, 10),
-      totalPlaces: parseInt(placeCount.rows[0].count, 10),
-      totalHotels: parseInt(hotelCount.rows[0].count, 10),
-      totalRestaurants: parseInt(restaurantCount.rows[0].count, 10),
+      totalCities: cityCount.rows[0].count,
+      totalPlaces: placeCount.rows[0].count,
+      totalHotels: hotelCount.rows[0].count,
+      totalRestaurants: restaurantCount.rows[0].count,
     };
   } catch (error) {
     console.error('Dashboard count error:', error);

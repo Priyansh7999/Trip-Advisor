@@ -21,9 +21,6 @@ const HeroSection = () => {
           <p>
               {randomHeroLine}
           </p>
-          <div className="see-more">
-              <button class="glow-on-hover" type="button">SEE MORE</button>
-        </div>
         </div>
       </div>
     );

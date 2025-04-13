@@ -18,6 +18,7 @@
     padding: 20px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.6);
     transition: transform 0.3s, box-shadow 0.3s;
+    border-radius: 17px;
   }
   .city-card:hover {
     transform: translateY(-5px);

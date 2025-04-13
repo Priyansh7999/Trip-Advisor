@@ -129,9 +129,58 @@ export default function UpdateCity() {
       fetchCityData();
     }
   };
+  const handleDelete = async (cityName) => {
 
-  const handleUpdateSubmit = async (e) => {
-    e.preventDefault();
+    try {
+      const res = await fetch(`http://localhost:5000/delete-city/${cityName}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+      });
+  
+      const data = await res.json();
+      alert(data.message || data.error);
+  
+      if (data.message) {
+        // Clear form fields
+        setCityName('');
+        setDescription('');
+        setBestTime('');
+        setLatitude('');
+        setLongitude('');
+        setPeakSeasonStart('');
+        setPeakSeasonEnd('');
+        setPeakSeasonDesc('');
+        setModerateSeasonStart('');
+        setModerateSeasonEnd('');
+        setModerateSeasonDesc('');
+        setOffSeasonStart('');
+        setOffSeasonEnd('');
+        setOffSeasonDesc('');
+        setCityTitle('');
+        setCityHistory('');
+        setState('');
+        setTouristPlaces('');
+        setFamousFor('');
+        setWeather('');
+        setByAir('');
+        setByRail('');
+        setByRoad('');
+        setFoodToTry([{ name: '', description: '' }]);
+        setThingsToBuy([{ heading: '', description: '' }]);
+        setSelectedPlaceTypes([]);
+        setConclusion('');
+        setUrls([{ url: '', description: '' }]);
+        setReview([]);
+      }
+  
+      console.log('City deleted:', data);
+    } catch (err) {
+      console.error('Delete failed:', err);
+    }
+  };
+  
+
+  const handleUpdateSubmit = async (cityName) => {
 
     const cityDetails = {
       cityName,
@@ -167,6 +216,38 @@ export default function UpdateCity() {
       });
       const data = await res.json();
       alert(data.message || data.error);
+      if(data.message){
+        setCityName('');
+        setDescription('');
+        setBestTime('');
+        setLatitude('');
+        setLongitude('');  
+        setPeakSeasonStart('');
+        setPeakSeasonEnd('');
+        setPeakSeasonDesc('');  
+        setModerateSeasonStart('');
+        setModerateSeasonEnd('');
+        setModerateSeasonDesc('');  
+        setOffSeasonStart('');
+        setOffSeasonEnd('');
+        setOffSeasonDesc('');  
+        setCityTitle('');
+        setCityHistory('');
+        setState('');
+        setTouristPlaces('');
+        setFamousFor('');
+        setWeather('');  
+        setByAir('');
+        setByRail('');
+        setByRoad('');  
+        setFoodToTry([{ name: '', description: '' }]);
+        setThingsToBuy([{ heading: '', description: '' }]);
+        setSelectedPlaceTypes([]);
+        setConclusion('');
+        setUrls([{ url: '', description: '' }]);
+        setReview([]);        
+        }
+  
       console.log('City updated:', data);
     } catch (err) {
       console.error('Update failed:', err);
@@ -207,7 +288,7 @@ export default function UpdateCity() {
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
       {cityData && (
-        <form onSubmit={handleUpdateSubmit}>
+        <div>
           <h1>Update City Info</h1>
 
           <div className={styles.formdata}>
@@ -330,8 +411,6 @@ export default function UpdateCity() {
               />
             </div>
           </div>
-
-          {/* How To Reach */}
           <h1>How To Reach</h1>
           <div className={styles.howtoreach}>
             <div className={styles.formdata}>
@@ -457,9 +536,12 @@ export default function UpdateCity() {
           </div>
 
           <div className={styles.button}>
-            <button type="submit" className={styles.submitButton}>Update</button>
+            <button onClick={()=>handleUpdateSubmit(cityName)} className={styles.submitButton}>Update</button>
           </div>
-        </form>
+          <div className={styles.button}>
+            <button onClick={()=>handleDelete(cityName)} className={styles.submitButton}>Delete</button>
+          </div>
+        </div>
       )}
     </div>
   );

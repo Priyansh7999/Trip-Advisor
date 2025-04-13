@@ -20,6 +20,7 @@ export default function UpdateRestaurant() {
   const [timings, setTimings] = useState([{ from: '', to: '' }]);
   const [phoneNumber, setPhoneNumber] = useState('');
   const [website, setWebsite] = useState('');
+  const [urls, setUrls] = useState(['']);
   const [email, setEmail] = useState('');
   const [review, setReview] = useState(['']);
 
@@ -38,7 +39,10 @@ export default function UpdateRestaurant() {
     updatedFields[index] = value;
     setState(updatedFields);
   };
-
+  const addField = (setState) => setState((prev) => [...prev, '']);
+  const handleDelete = (index, setArray) => {
+    setArray(prev => prev.filter((_, i) => i !== index));
+  };
   const handleTimingChange = (index, field, value) => {
     const updatedTimings = [...timings];
     updatedTimings[index][field] = value;
@@ -73,11 +77,55 @@ export default function UpdateRestaurant() {
       setWebsite(restaurantData.contactinfo?.website || '');
       setEmail(restaurantData.contactinfo?.email || '');
       setReview(restaurantData.review || ['']);
+      setUrls(restaurantData.urls || [''])
     }
   }, [restaurantData]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleDeleteData = async (name) =>{
+    if (phoneNumber.length !== 10 || isNaN(phoneNumber)) {
+      alert('Phone number must be exactly 10 digits.');
+      return;
+    }
+    const restaurantData = {
+      name,
+      city,
+      state,
+      address,
+      about,
+      features: { cuisines, mealTypes, specialDiets, restaurantFeatures },
+      timings,
+      contactInfo: { phoneNumber, website, email },
+      review,
+      urls,
+    };
+
+    try {
+      const res = await fetch(`http://localhost:5000/delete-restaurant/${name}`, {
+        method: 'DELETE',
+      });
+      const data = await res.json();
+      alert(data.message)
+      if(data.message){
+        setName('');
+        setCity('');
+        setState('');
+        setAddress('');
+        setAbout('');
+        setCuisines(['']);
+        setMealTypes(['']);
+        setSpecialDiets(['']);
+        setRestaurantFeatures(['']);
+        setPhoneNumber('');
+        setWebsite('');
+        setEmail('')
+        setUrls([''])
+      }
+      alert(data.message || data.error);
+    } catch (err) {
+      console.error('Error updating restaurant data:', err);
+    }
+  }
+  const handleSubmit = async () => {
 
     if (phoneNumber.length !== 10 || isNaN(phoneNumber)) {
       alert('Phone number must be exactly 10 digits.');
@@ -94,6 +142,7 @@ export default function UpdateRestaurant() {
       timings,
       contactInfo: { phoneNumber, website, email },
       review,
+      urls,
     };
 
     try {
@@ -124,8 +173,8 @@ export default function UpdateRestaurant() {
 
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
-      {restaurantData && (
-        <form onSubmit={handleSubmit}>
+      {!error && (
+        <div>
           <h1>Basic Restaurant Details</h1>
           <div className={styles.formdata}>
             <label>Restaurant Name</label>
@@ -195,11 +244,23 @@ export default function UpdateRestaurant() {
             <label>Email</label>
             <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
           </div>
-
+          <div className={styles.formdataAdd}>
+                      <label>URLs</label>
+                      {urls.map((url, i) => (
+                        <div key={i} className={styles.inputContainer}>
+                          <input value={url} onChange={(e) => handleChange(i, urls, setUrls, e.target.value)} />
+                          {urls.length > 1 && <button type="button" onClick={() => handleDelete(i, setUrls)}>Delete</button>}
+                        </div>
+                      ))}
+                      <button type="button" onClick={() => addField(setUrls)}>Add+</button>
+                    </div>
           <div className={styles.button}>
-            <button type="submit" className={styles.submitButton}>Update</button>
+            <button onClick={handleSubmit} className={styles.submitButton}>Update</button>
           </div>
-        </form>
+          <div className={styles.button}>
+            <button onClick={()=>handleDeleteData(name)} className={styles.submitButton}>Delete</button>
+          </div>
+        </div>
       )}
     </div>
   );

@@ -3,7 +3,7 @@ import React from "react";
 import style from "./AllCity.module.css";
 import AllCitySkeleton from "./AllCitySkeleton";
 export default function AllCity({ cities, trending, navigate }) {
-  if(!cities){
+  if (!cities) {
     return <AllCitySkeleton />
   }
   return (
@@ -22,16 +22,12 @@ export default function AllCity({ cities, trending, navigate }) {
             <div className={style["city-card-footer"]} id="city-card-footer">
               <hr style={{ opacity: "0.3" }} />
               <br />
-              <button
-                className={style["explore-button"]} id="explore-button"
-                onClick={() => {
-                  (trending === "trendingcity")?
+              <div className="see-more" style={{ textAlign: 'center', width: '100%' }}>
+                <button class="glow-on-hover" type="button" style={{ width: "80%" }} onClick={() => {
+                  (trending === "trendingcity") ?
                     navigate(`/city/${city.title}`) : navigate(`/place/${city.title}`)
-                }}
-              >
-                <span className={style["explore-button-bg"]} id="explore-button-bg"></span>
-                <span className="explore-button-text">Explore</span>
-              </button>
+                }}>EXPLORE </button>
+              </div>
             </div>
           </div>
         ))

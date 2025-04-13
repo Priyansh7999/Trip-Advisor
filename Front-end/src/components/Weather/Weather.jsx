@@ -15,7 +15,7 @@ const Weather = ({ city }) => {
   const [weatherLocation, setWeatherLocation] = useState(null);
   const [error, setError] = useState(null);
 
-  const apiKey = '18812b219abd4538819170630242509';
+  const apiKey = 'e2add103a6bd4977991123722252402';
   
   // Format the city name to avoid extra spaces
   const formattedCity = city.trim();

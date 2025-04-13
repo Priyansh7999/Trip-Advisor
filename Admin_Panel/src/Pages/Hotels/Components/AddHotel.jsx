@@ -85,6 +85,26 @@ export default function AddHotel() {
   
       const data = await res.json();
       console.log('Hotel saved:', data);
+      alert(data.error || data.message);
+      if(data.message){
+        setCityName('');
+        setHotelState('');
+        setHotelName('');
+        setAboutHotel('');
+        setHotelAddress('');
+        setStar(0);
+        setBasicFacilities(['']);
+        setFoodAndDrinks(['']);
+        setSafetyAndSecurity(['']);
+        setHealthAndWellness(['']);
+        setCommonArea(['']);
+        setPopularWithGuests(['']);
+        setRoomFeatures(['']);
+        setBathroom(['']);
+        setCheckIn(['']);
+        setCheckOut(['']);
+        setOtherRules(['']);
+      }
     } catch (err) {
       console.error('Error submitting hotel data:', err);
     }

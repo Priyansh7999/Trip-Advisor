@@ -2,10 +2,10 @@ const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const { getDashboardCounts } = require('./models/ManageDashboard');
-const { saveCityData, getCityByName,updateCityData } = require('./models/ManageCity');
-const { savePlaceData, getPlaceByName, updatePlaceData, getPlacesByCityName } = require('./models/ManagePlace');
-const { saveHotelData, getHotelByName, updateHotelData, getHotelsByCity } = require('./models/ManageHotel');
-const { saveRestaurantData, getRestaurantByName, updateRestaurant } = require('./models/ManageRestaurant');
+const { saveCityData, getCityByName,updateCityData, deleteCityData } = require('./models/ManageCity');
+const { savePlaceData, getPlaceByName, updatePlaceData, getPlacesByCityName, deletePlaceData } = require('./models/ManagePlace');
+const { saveHotelData, getHotelByName, updateHotelData, getHotelsByCity, deleteHotelData } = require('./models/ManageHotel');
+const { saveRestaurantData, getRestaurantByName, updateRestaurant, deleteRestaurantData } = require('./models/ManageRestaurant');
 
 dotenv.config();
 
@@ -13,7 +13,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Dashboard Endpoints
+
 app.get('/dashboard-counts', async (req, res) => {
   try {
     const counts = await getDashboardCounts();
@@ -24,7 +24,6 @@ app.get('/dashboard-counts', async (req, res) => {
   }
 });
 
-// City Endpoints
 app.post('/add-city', async (req, res) => {
   try {
     const result = await saveCityData(req.body);
@@ -61,8 +60,18 @@ app.put('/update-city/:cityName', async (req, res) => {
   }
 });
 
+app.put('/delete-city/:cityName', async (req, res) => {
+  try {
+    const cityName = req.params.cityName;
+    const result = await deleteCityData(cityName);
+    res.json({ message: result.message });
+  } catch (error) {
+    console.error('City deletion failed:', error);
+    res.json({ error: 'Failed to delete city' });
+  }
+});
 
-// Place Endpoints
+
 app.post('/add-place', async (req, res) => {
   try {
     await savePlaceData(req.body);
@@ -77,7 +86,6 @@ app.get('/get-place/:name', async (req, res) => {
   try {
     const place = await getPlaceByName(req.params.name);
     res.json(place);
-    console.log(place);
   } catch (error) {
     console.error('Error retrieving place data:', error);
     res.json({ error: 'Failed to fetch place data' });
@@ -103,9 +111,17 @@ app.get('/get-place-list/:name', async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch place list' });
   }
 });
+app.delete('/delete-place/:name', async (req, res) => {
+  try {
+    const result = await deletePlaceData(req.params.name);
+    res.json(result);
+  } catch (error) {
+    console.error('Error deleting place:', error);
+    res.status(500).json({ error: 'Failed to delete place' });
+  }
+});
 
 
-// Hotel Endpoints
 app.post('/add-hotel', async (req, res) => {
   try {
     await saveHotelData(req.body);
@@ -147,9 +163,20 @@ app.get('/get-hotel-list/:city', async (req, res) => {
   }
 });
 
-// Restaurant Endpoints
+
+app.delete('/delete-hotel/:name', async (req, res) => {
+  try {
+    const result = await deleteHotelData(req.params.name);
+    res.json(result);
+  } catch (error) {
+    console.error('Error deleting hotel:', error);
+    res.status(500).json({ error: 'Failed to delete hotel' });
+  }
+});
+
 app.post('/add-restaurant', async (req, res) => {
   try {
+    console.log(req.body)
     await saveRestaurantData(req.body);
     res.json({ message: 'Restaurant data saved!' });
   } catch (error) {
@@ -170,11 +197,26 @@ app.get('/get-restaurant/:name', async (req, res) => {
 
 app.put('/update-restaurant/:name', async (req, res) => {
   try {
+    console.log('Update request received:', req.body);
     const result = await updateRestaurant(req.params.name, req.body);
-    if (result.error) return res.status(404).json(result);
+    
+    if (result.modifiedCount === 0) {
+      return res.json({ error: 'No matching restaurant found or no changes made.' });
+    }
+
+    res.json({ message: 'Restaurant updated successfully!' });
+  } catch (error) {
+    console.error('Error updating restaurant data:', error);
+    res.status(500).json({ error: 'Failed to update restaurant data' });
+  }
+});
+app.delete('/delete-restaurant/:name', async (req, res) => {
+  try {
+    const result = await deleteRestaurantData(req.params.name);
     res.json(result);
-  } catch (err) {
-    res.json({ error: 'Update failed' });
+  } catch (error) {
+    console.error('Error deleting hotel:', error);
+    res.status(500).json({ error: 'Failed to delete restaurant' });
   }
 });
 

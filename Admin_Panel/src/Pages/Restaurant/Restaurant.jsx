@@ -15,7 +15,7 @@ export default function Restaurant() {
    return (
      <div>
        <div className={styles.container}>
-         <h1>Cities Overview</h1>
+         <h1>Restaurant Overview</h1>
          <p>From cozy cafés to gourmet spots — add all key information and images to list this eatery.</p>
        </div>
        <div className={styles.tabContainer}>

@@ -10,8 +10,20 @@ const pool = new Pool({
   password: process.env.PG_PASSWORD,
   port: process.env.PG_PORT,
 });
-
 async function saveHotelData(data) {
+  // Basic validation
+  if (
+    !data.cityName || !data.hotelState || !data.hotelName ||
+    !data.aboutHotel || !data.hotelAddress || !data.star
+  ) {
+    throw new Error('Missing required fields');
+  }
+
+  const existing = await pool.query('SELECT * FROM HotelsDb WHERE hotelName = $1', [data.hotelName]);
+  if (existing.rows.length > 0) {
+    return { exists: true, message: 'Hotel already exists' };
+  }
+
   const query = `
     INSERT INTO HotelsDb (
       cityName, hotelState, hotelName, aboutHotel, hotelAddress, star,
@@ -29,11 +41,11 @@ async function saveHotelData(data) {
     data.aboutHotel,
     data.hotelAddress,
     data.star,
-    JSON.stringify(data.amenities),
-    JSON.stringify(data.roomAmenities),
-    JSON.stringify(data.propertyRules),
-    JSON.stringify(data.urlsList),
-    JSON.stringify(data.reviews),
+    JSON.stringify(data.amenities || []),
+    JSON.stringify(data.roomAmenities || []),
+    JSON.stringify(data.propertyRules || []),
+    JSON.stringify(data.urlsList || []),
+    JSON.stringify(data.reviews || []),
   ];
 
   await pool.query(query, values);
@@ -82,9 +94,18 @@ async function getHotelsByCity(cityName) {
   return result.rows;
 }
 
+async function deleteHotelData(hotelName) {
+  const result = await pool.query('DELETE FROM HotelsDb WHERE hotelName = $1', [hotelName]);
+  if (result.rowCount === 0) {
+    throw new Error('Hotel not found');
+  }
+  return { message: 'Hotel deleted successfully' };
+}
+
 module.exports = {
   saveHotelData,
   getHotelByName,
   updateHotelData,
-  getHotelsByCity // ✅ Exported properly
+  getHotelsByCity,
+  deleteHotelData 
 };

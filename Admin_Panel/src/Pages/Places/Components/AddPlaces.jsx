@@ -64,9 +64,28 @@ export default function AddPlaces() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(placeData),
       });
-  
+      
       const data = await res.json();
       console.log('Place saved:', data);
+      alert(data.error || data.message);
+      if(data.message){
+        setName('');
+        setDesc('');
+        setCity('');
+        setState('');
+        setLatitude(0);
+        setLongitude(0);
+        setSuggestedDuration(0);
+        setWhatToExpect('');
+        setHistory('');
+        setHighlights('');
+        setTimings('');
+        setEntryFee('');
+        setRestrictedItems('');
+        setMoreAbout('');
+        setBestTime('');
+        setUrls('');
+      }
     } catch (err) {
       console.error('Error submitting place data:', err);
     }
@@ -109,32 +128,6 @@ export default function AddPlaces() {
       <div className={styles.formdata}>
         <label>What to Expect</label>
         <textarea value={whatToExpect} onChange={(e) => setWhatToExpect(e.target.value)} />
-      </div>
-
-      <div className={styles.formdataAdd} style={{ display: 'flex', flexWrap: 'wrap' }}>
-        {tips.map((tip, i) => (
-          <div key={i} className={styles.formdataAdd}>
-            <label>Tip {i + 1}</label>
-            <div className={styles.multiInput}>
-              <div>
-                <input
-                type="text"
-                value={tip}
-                onChange={(e) => handleChange(i, tips, setTips, e.target.value)}
-              />
-              {tips.length > 1 && (
-                <button type="button" onClick={() => handleDelete(i, tips, setTips)} className={styles.deleteButton}>
-                  Delete
-                </button>
-              )}
-              </div>
-              
-            </div>
-          </div>
-        ))}
-        <button type="button" className={styles.addButton} onClick={() => addField(setTips)}>
-          Add+
-        </button>
       </div>
 
       <h1>Overview</h1>

@@ -12,13 +12,17 @@ const pool = new Pool({
 });
 
 async function saveRestaurantData(data) {
+  const existing = await pool.query('SELECT * FROM RestaurantsDb WHERE name = $1', [data.name]);
+  if (existing.rows.length > 0) {
+    return { exists: true, message: 'Restaurant already exists' };
+  }
   const query = `
     INSERT INTO RestaurantsDb (
       name, city, state, address, about, features,
-      timings, contactInfo, reviews
+      timings, contactInfo, reviews,urls
     ) VALUES (
       $1, $2, $3, $4, $5, $6,
-      $7, $8, $9
+      $7, $8, $9, $10
     )
   `;
 
@@ -32,6 +36,7 @@ async function saveRestaurantData(data) {
     data.timings,
     JSON.stringify(data.contactInfo),
     JSON.stringify(data.review),
+    JSON.stringify(data.urls),
   ];
 
   await pool.query(query, values);
@@ -55,9 +60,11 @@ async function updateRestaurant(name, data) {
       features = $5,
       timings = $6,
       contactInfo = $7,
-      review = $8
-    WHERE name = $9
+      reviews = $8,
+      urls = $9
+    WHERE name = $10
   `;
+
   const values = [
     data.city,
     data.state,
@@ -67,10 +74,20 @@ async function updateRestaurant(name, data) {
     JSON.stringify(data.timings),
     JSON.stringify(data.contactInfo),
     JSON.stringify(data.review),
+    JSON.stringify(data.urls), // ✅ This will now work
     name,
   ];
+
   await pool.query(query, values);
   return { message: 'Restaurant updated successfully' };
 }
 
-module.exports = { saveRestaurantData, getRestaurantByName, updateRestaurant };
+async function deleteRestaurantData(name) {
+  const result = await pool.query('DELETE FROM RestaurantsDb WHERE name = $1', [name]);
+  if (result.rowCount === 0) {
+    throw new Error('Restaurant not found');
+  }
+  return { message: 'Restaurant deleted successfully' };
+}
+
+module.exports = { saveRestaurantData, getRestaurantByName, updateRestaurant, deleteRestaurantData };

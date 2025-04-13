@@ -22,7 +22,7 @@ export default function AddRestaurant() {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [website, setWebsite] = useState('');
   const [email, setEmail] = useState('');
-
+  const [urls, setUrls] = useState(['']);
   // State for Reviews (Not displaying in UI but handling it for database)
   const [review, setReview] = useState(['']);
 
@@ -43,7 +43,9 @@ export default function AddRestaurant() {
     updatedFields[index] = value;
     setState(updatedFields);
   };
-
+  const addField = (setState) => {
+    setState(prevState => [...prevState, '']);
+  };
   // Function to handle timing change
   const handleTimingChange = (index, field, value) => {
     const updatedTimings = [...timings];
@@ -51,15 +53,19 @@ export default function AddRestaurant() {
     setTimings(updatedTimings);
   };
 
+  const handleDelete = (index, setState) => {
+    setState(prevState => prevState.filter((_, i) => i !== index));
+  };
+
   // Handle Submit
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     if (phoneNumber.length !== 10 || isNaN(phoneNumber)) {
       alert('Phone number must be exactly 10 digits.');
       return;
     }
-  
+
     const restaurantData = {
       name,
       city,
@@ -79,22 +85,39 @@ export default function AddRestaurant() {
         email,
       },
       review,
+      urls,
     };
-  
+    
     try {
       const res = await fetch('http://localhost:5000/add-restaurant', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(restaurantData),
       });
-  
+
       const data = await res.json();
+      alert(data.message)
+      if(data.message){
+        setName('');
+        setCity('');
+        setState('');
+        setAddress('');
+        setAbout('');
+        setCuisines(['']);
+        setMealTypes(['']);
+        setSpecialDiets(['']);
+        setRestaurantFeatures(['']);
+        setPhoneNumber('');
+        setWebsite('');
+        setEmail('')
+        setUrls([''])
+      }
       console.log('Restaurant saved:', data);
     } catch (err) {
       console.error('Error submitting restaurant data:', err);
     }
   };
-  
+
 
   return (
     <form className={styles.container} onSubmit={handleSubmit}>
@@ -133,7 +156,7 @@ export default function AddRestaurant() {
           <div className={styles.multiInput}>
             {section.state.map((item, i) => (
               <div key={i} className={styles.inputGroup}>
-                <input type="text" value={item} onChange={(e) => handleChange(i, section.state, section.setState, e.target.value)} required/>
+                <input type="text" value={item} onChange={(e) => handleChange(i, section.state, section.setState, e.target.value)} required />
                 {section.state.length > 1 && (
                   <button type="button" className={styles.deleteButton} onClick={() => handleFieldChange('remove', section, i)}>Delete</button>
                 )}
@@ -149,7 +172,7 @@ export default function AddRestaurant() {
       {/* Timings Section */}
       <h1>Timings</h1>
       {timings.map((time, index) => (
-        <div key={index} className={styles.formdataAdd}>
+        <div key={index} className={styles.formdata}>
           <label>From</label>
           <input type="time" value={time.from} onChange={(e) => handleTimingChange(index, 'from', e.target.value)} required />
 
@@ -188,11 +211,39 @@ export default function AddRestaurant() {
         <label>Email</label>
         <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
       </div>
-
-      {/* Submit Button */}
-      <div className={styles.button}>
-        <button type="submit" className={styles.submitButton}>Submit</button>
+      <div className={styles.formdataAdd} style={{ flexWrap: 'wrap' }}>
+      <label>Urls</label>
+      <div className={styles.multiInput}>
+        {urls.map((url, i) => (
+          <div key={i} className={styles.formdataAdd}>
+            <input
+              type="text"
+              value={url}
+              onChange={(e) => handleChange(i, urls, setUrls, e.target.value)}
+              required
+              width={'100%'}
+            />
+            {urls.length > 1 && (
+              <button
+                type="button"
+                className={styles.deleteButton}
+                onClick={() => handleDelete(i, setUrls)}
+              >
+                Delete
+              </button>
+            )}
+          </div>
+        ))}
+        <button type="button" className={styles.addButton} onClick={() => addField(setUrls)}>
+          Add+
+        </button>
       </div>
-    </form>
+    </div>
+
+      {/* Submit Button */ }
+  <div className={styles.button}>
+    <button type="submit" className={styles.submitButton}>Submit</button>
+  </div>
+    </form >
   )
 }

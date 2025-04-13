@@ -12,14 +12,14 @@ export default function App() {
     <Router>
       <Routes>
         <Route element={<Layout />}>
-        <Route path="*" element={<h1>404 Not Found</h1>} />
-        <Route path="/" element={<HomePage />} />
-        <Route path="/Home" element={<HomePage />} />
-        <Route path="/Dashboard" element={<Dashboard />} />
-        <Route path="/Cities" element={<CityDetails />} />
-        <Route path='/Hotels' element={<Hotel/>} />
-        <Route path='/Restaurants' element={<Restaurant />} />
-        <Route path='/Places' element={<Places />} />
+          <Route path="*" element={<h1>404 Not Found</h1>} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/Home" element={<HomePage />} />
+          <Route path="/Dashboard" element={<Dashboard />} />
+          <Route path="/Cities" element={<CityDetails />} />
+          <Route path='/Hotels' element={<Hotel/>} />
+          <Route path='/Restaurants' element={<Restaurant />} />
+          <Route path='/Places' element={<Places />} />
         </Route>
       </Routes>
     </Router>

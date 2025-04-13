@@ -83,8 +83,48 @@ export default function UpdatePlaces() {
     }
   }, [placeData]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleDeleteData = async (name) => {
+    if (!name) {
+      alert("No place name provided.");
+      return;
+    }
+  
+    try {
+      const res = await fetch(`http://localhost:5000/delete-place/${name}`, {
+        method: 'DELETE',
+      });
+  
+      const data = await res.json();
+      alert(data.message || data.error);
+  
+      if (data.message) {
+        // Reset all fields
+        setName('');
+        setDesc('');
+        setCity('');
+        setState('');
+        setLatitude(0);
+        setLongitude(0);
+        setSuggestedDuration(0);
+        setWhatToExpect('');
+        setHistory('');
+        setHighlights('');
+        setTimings('');
+        setEntryFee('');
+        setRestrictedItems('');
+        setMoreAbout('');
+        setBestTime('');
+        setUrls(['']);
+      }
+    } catch (err) {
+      console.error('Delete failed:', err);
+      alert('Delete failed: ' + err.message);
+    }
+  };
+  
+  
+
+  const handleSubmit = async () => {
 
     const placeDetails = {
       name,
@@ -117,6 +157,24 @@ export default function UpdatePlaces() {
 
       const data = await res.json();
       alert(data.message || data.error);
+      if(data.message){
+        setName('');
+        setDesc('');
+        setCity('');
+        setState('');
+        setLatitude(0);
+        setLongitude(0);
+        setSuggestedDuration(0);
+        setWhatToExpect('');
+        setHistory('');
+        setHighlights('');
+        setTimings('');
+        setEntryFee('');
+        setRestrictedItems('');
+        setMoreAbout('');
+        setBestTime('');
+        setUrls(['']);
+      }
     } catch (err) {
       console.error('Update failed:', err);
     }
@@ -138,7 +196,7 @@ export default function UpdatePlaces() {
       {error && <p style={{ color: 'red' }}>{error}</p>}
 
       {placeData && (
-        <form onSubmit={handleSubmit}>
+        <div>
           <h1>Update Place</h1>
           <div className={styles.formdata}>
             <label>Name</label>
@@ -236,9 +294,13 @@ export default function UpdatePlaces() {
           </div>
 
           <div className={styles.button}>
-            <button type="submit" className={styles.submitButton}>Update</button>
+            <button onClick={handleSubmit} className={styles.submitButton}>Update</button>
           </div>
-        </form>
+          <div className={styles.button}>
+            <button onClick={()=>handleDeleteData(name)} className={styles.submitButton}>Delete</button>
+          </div>
+
+        </div>
       )}
     </div>
   );

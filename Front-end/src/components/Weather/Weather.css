@@ -87,6 +87,7 @@
     text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 30%;
+    height: 10%;
     box-sizing: border-box;
   }
   
@@ -98,12 +99,17 @@
   .forecast-image img {
     width: 40px;
     height: 40px;
+    color: #333;
   }
   
   .forecast-temp {
     font-size: 16px;
     font-weight: bold;
     color: #ff8c00;
+  }
+  .forecast-condition{
+    color: #000;
+    font-size: 11px;
   }
   
   @media (max-width: 768px) {

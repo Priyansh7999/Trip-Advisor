@@ -40,10 +40,6 @@ export default function AddCity() {
   const [urls, setUrls] = useState([{ url: '', description: '' }]);
 
 
-
-
-
-
   const handleFieldChange = (action, field, index, setState) => {
     const updatedFields = [...field];
     if (action === 'add') {
@@ -121,6 +117,7 @@ export default function AddCity() {
       const data = await res.json();
       console.log(data);
       alert(data.error || data.message);
+      if(data.message){
       setCityName('');
       setDescription('');
       setBestTime('');
@@ -149,7 +146,9 @@ export default function AddCity() {
       setSelectedPlaceTypes([]);
       setConclusion('');
       setUrls([{ url: '', description: '' }]);
-      setReview([]);
+      setReview([]);        
+      }
+
     } catch (err) {
       console.error('Submission error:', err);
     }

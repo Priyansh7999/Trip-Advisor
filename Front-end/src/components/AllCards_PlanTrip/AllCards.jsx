@@ -22,17 +22,12 @@ const AllCards = ({ places }) => {
             <div className={styles["place-card-footer"]} id="place-card-footer">
               <hr style={{ opacity: '0.3' }} />
               <br />
-              <button
-                className={styles["explore-button"]} id="explore-button"
-                onClick={() =>{
+              <div className="see-more" style={{textAlign:'center', width:'100%'}}>
+                            <button class="glow-on-hover" type="button" style={{width:"80%"}}  onClick={() =>{
                   navigate(`/PlanTripCategory/${place.name}`)
                   setTripCategory({ name: place.name, image: place.img , description: place.description });
-                }}
-
-              >
-                <span className={styles["explore-button-bg"]} id="explore-button-bg"></span>
-                <span className="explore-button-text">Explore</span>
-              </button>
+                }}>EXPLORE </button>
+              </div>
             </div>
           </div>
         ))}

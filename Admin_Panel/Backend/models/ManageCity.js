@@ -12,7 +12,7 @@ const pool = new Pool({
 });
 
 async function saveCityData(data) {
-  const existing = await pool.query('SELECT 1 FROM CitiesDb WHERE cityName = $1', [data.cityName]);
+  const existing = await pool.query('SELECT * FROM CitiesDb WHERE cityName = $1', [data.cityName]);
   if (existing.rows.length > 0) {
     return { exists: true, message: 'City already exists' };
   }
@@ -112,14 +112,17 @@ async function updateCityData(cityName, data) {
 }
 
 
+async function deleteCityData(cityName) {
+  const result = await pool.query('DELETE FROM CitiesDb WHERE cityName = $1', [cityName]);
+  return { success: true, message: 'City deleted successfully' };
+}
+
 module.exports = {
   saveCityData,
   getCityByName,
   updateCityData,
+  deleteCityData, 
 };
-
-
-
 
 
 
