@@ -47,6 +47,15 @@
     max-width: 60%;
     z-index: 2;
   }
+  .selected-city-rating{
+    position: absolute;
+    bottom: 11%;
+    font-size: 1.3rem;
+    padding: 2rem;
+    border-radius: 1rem;
+    margin: 1rem 0;
+    font-family: var(--ta-Raleway);
+  }
   .selected-place-desc {
     position: absolute;
     bottom: 10%;

@@ -117,11 +117,99 @@ async function deleteCityData(cityName) {
   return { success: true, message: 'City deleted successfully' };
 }
 
+async function saveCityReview({ name, username, review }) {
+  try {
+    // Fetch existing reviews
+    const result = await pool.query('SELECT reviews FROM CitiesDb WHERE cityName = $1', [name]);
+
+    if (result.rows.length === 0) {
+      return { error: true, message: 'City not found' };
+    }
+
+    const existingReviews = result.rows[0].reviews || [];
+    const updatedReviews = [...existingReviews, { username, review }];
+
+    // Update the reviews field
+    await pool.query('UPDATE CitiesDb SET reviews = $1 WHERE cityName = $2', [
+      JSON.stringify(updatedReviews),
+      name,
+    ]);
+
+    return { success: true, message: 'Review saved successfully' };
+  } catch (err) {
+    console.error('Error saving city review:', err);
+    return { error: true, message: 'Error saving review' };
+  }
+}
+async function GiveCityReview(cityName) {
+  try {
+    const result = await pool.query(
+      'SELECT reviews FROM CitiesDb WHERE cityName = $1',
+      [cityName]
+    );
+
+    if (result.rows.length === 0) {
+      return { error: true, message: 'City not found' };
+    }
+
+    const reviews = result.rows[0].reviews || [];
+    return { success: true, reviews };
+  } catch (err) {
+    console.error('Error fetching city reviews:', err.message);
+    return { error: true, message: 'Error fetching reviews' };
+  }
+}
+
+
+async function SaveRating({ name, rating }) {
+  try {
+    const result = await pool.query('SELECT rating FROM CitiesDb WHERE cityName = $1', [name]);
+
+    if (result.rows.length === 0) {
+      return { error: true, message: 'City not found' };
+    }
+    const currentRating = result.rows[0].rating || 0;
+    const ratingsResult = await pool.query('SELECT reviews FROM CitiesDb WHERE cityName = $1', [name]);
+    const reviews = ratingsResult.rows[0].reviews || [];
+    const validRatings = reviews.map(r => r.rating).filter(r => typeof r === 'number');
+    const totalRatings = [...validRatings, rating];
+    const average = totalRatings.reduce((a, b) => a + b, 0) / totalRatings.length;
+    const updatedReviews = [...reviews, { rating }];
+    await pool.query(
+      'UPDATE CitiesDb SET rating = $1, reviews = $2 WHERE cityName = $3',
+      [average, JSON.stringify(updatedReviews), name]
+    );
+    return { success: true, message: 'Rating saved successfully', average };
+  } catch (err) {
+    console.error('Error saving city rating:', err);
+    return { error: true, message: 'Failed to save rating' };
+  }
+}
+
+async function GetRating(cityName) {
+  try {
+    const result = await pool.query('SELECT rating FROM CitiesDb WHERE cityName = $1', [cityName]);
+
+    if (result.rows.length === 0) {
+      return { error: true, message: 'City not found' };
+    }
+
+    return { success: true, rating: result.rows[0].rating || 0 };
+  } catch (err) {
+    console.error('Error fetching city rating:', err.message);
+    return { error: true, message: 'Failed to fetch rating' };
+  }
+}
+
 module.exports = {
   saveCityData,
   getCityByName,
   updateCityData,
   deleteCityData, 
+  saveCityReview,
+  GiveCityReview,
+  SaveRating,
+  GetRating
 };
 
 

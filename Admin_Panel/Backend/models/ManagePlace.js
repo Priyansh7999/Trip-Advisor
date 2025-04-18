@@ -97,6 +97,103 @@ async function deletePlaceData(name) {
   }
   return { message: 'Place deleted successfully' };
 }
+async function savePlaceReview({ name, username, review }) {
+  try {
+    // Fetch existing reviews for the place
+    const result = await pool.query('SELECT reviews FROM PlacesDb WHERE name = $1', [name]);
+
+    if (result.rows.length === 0) {
+      return { error: true, message: 'Place not found' };
+    }
+
+    const existingReviews = result.rows[0].reviews || [];
+    const updatedReviews = [...existingReviews, { username, review }];
+
+    // Update the reviews field for the place
+    await pool.query('UPDATE PlacesDb SET reviews = $1 WHERE name = $2', [
+      JSON.stringify(updatedReviews),
+      name,
+    ]);
+
+    return { success: true, message: 'Review saved successfully' };
+  } catch (err) {
+    console.error('Error saving place review:', err);
+    return { error: true, message: 'Error saving review' };
+  }
+}
+async function GivePlaceReview(name) {
+  try {
+    const result = await pool.query(
+      'SELECT reviews FROM PlacesDb WHERE name = $1',
+      [name]
+    );
+
+    if (result.rows.length === 0) {
+      return { error: true, message: 'Place not found' };
+    }
+
+    const reviews = result.rows[0].reviews || [];
+    return { success: true, reviews };
+  } catch (err) {
+    console.error('Error fetching place reviews:', err.message);
+    return { error: true, message: 'Error fetching reviews' };
+  }
+}
+
+async function SavePlaceRating(name, newRating) {
+  try {
+    const result = await pool.query(
+      'SELECT rating, reviews FROM PlacesDb WHERE name = $1',
+      [name]
+    );
+    if (result.rows.length === 0) {
+      return { error: true, message: 'Place not found' };
+    }
+
+    let existingReviews = result.rows[0].reviews;
+
+    if (!Array.isArray(existingReviews)) {
+      try {
+        existingReviews = JSON.parse(existingReviews);
+        if (!Array.isArray(existingReviews)) existingReviews = [];
+      } catch {
+        existingReviews = [];
+      }
+    }
+    existingReviews.push({ rating: newRating });
+    const validRatings = existingReviews
+      .map((r) => r.rating)
+      .filter((r) => typeof r === 'number');
+    const updatedAvg =
+      validRatings.reduce((sum, r) => sum + r, 0) / validRatings.length;
+    await pool.query(
+      'UPDATE PlacesDb SET rating = $1, reviews = $2 WHERE name = $3',
+      [updatedAvg, JSON.stringify(existingReviews), name]
+    );
+
+    return { success: true, rating: updatedAvg };
+  } catch (err) {
+    console.error('Error saving place rating:', err.message);
+    return { error: true, message: 'Error saving rating' };
+  }
+}
+
+
+async function GetPlaceRating(name) {
+  try {
+    const result = await pool.query('SELECT rating FROM PlacesDb WHERE name = $1', [name]);
+
+    if (result.rows.length === 0) {
+      return { error: true, message: 'Place not found' };
+    }
+
+    return { success: true, rating: result.rows[0].rating || 0 };
+  } catch (err) {
+    console.error('Error fetching place rating:', err.message);
+    return { error: true, message: 'Failed to fetch rating' };
+  }
+}
+
 
 module.exports = {
   savePlaceData,
@@ -104,4 +201,8 @@ module.exports = {
   updatePlaceData,
   getPlacesByCityName,
   deletePlaceData, 
+  savePlaceReview,
+  GivePlaceReview,
+  SavePlaceRating,
+  GetPlaceRating
 };

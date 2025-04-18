@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styles from './SelectedHotel.module.css';
+import GiveReviews from '../../components/Reviews/GiveReviews';
+import ViewReviews from '../../components/Reviews/ViewReviews';
 
 export default function SelectedHotel() {
   const { name } = useParams();
@@ -85,6 +87,10 @@ export default function SelectedHotel() {
         <p><strong>Check-Out:</strong> {hotel.propertyrules?.checkOut}</p>
         <ul>{hotel.propertyrules?.otherRules?.map((rule, i) => <li key={i}>{rule}</li>)}</ul>
       </section>
+    </div>
+    <div className={styles.reviews}>
+      <ViewReviews type={'hotel'} name={name} />
+      <GiveReviews type={'hotel'} name={name} username={'priyansh'} />
     </div>
     </div>
   );

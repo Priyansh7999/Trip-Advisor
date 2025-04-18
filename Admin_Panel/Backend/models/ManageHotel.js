@@ -101,11 +101,56 @@ async function deleteHotelData(hotelName) {
   }
   return { message: 'Hotel deleted successfully' };
 }
+async function saveHotelReview({ hotelName, username, review }) {
+  try {
+    // Fetch existing reviews for the hotel
+    const result = await pool.query('SELECT reviews FROM HotelsDb WHERE hotelName = $1', [hotelName]);
+
+    if (result.rows.length === 0) {
+      return { error: true, message: 'Hotel not found' };
+    }
+
+    const existingReviews = result.rows[0].reviews || []; // Default to empty array if no reviews
+    const updatedReviews = [...existingReviews, { username, review }];
+
+    // Update the reviews field for the hotel
+    await pool.query('UPDATE HotelsDb SET reviews = $1 WHERE hotelName = $2', [
+      JSON.stringify(updatedReviews), // Store the updated reviews as a JSON string
+      hotelName,
+    ]);
+
+    return { success: true, message: 'Review saved successfully' };
+  } catch (err) {
+    console.error('Error saving hotel review:', err.message); // More specific error logging
+    return { error: true, message: 'Error saving review' };
+  }
+}
+async function GiveHotelReview(hotelName) {
+  try {
+    const result = await pool.query(
+      'SELECT reviews FROM HotelsDb WHERE hotelName = $1',
+      [hotelName]
+    );
+
+    if (result.rows.length === 0) {
+      return { error: true, message: 'Hotel not found' };
+    }
+
+    const reviews = result.rows[0].reviews || [];
+    return { success: true, reviews };
+  } catch (err) {
+    console.error('Error fetching hotel reviews:', err.message);
+    return { error: true, message: 'Error fetching reviews' };
+  }
+}
+
 
 module.exports = {
   saveHotelData,
   getHotelByName,
   updateHotelData,
   getHotelsByCity,
-  deleteHotelData 
+  deleteHotelData ,
+  saveHotelReview,
+  GiveHotelReview
 };

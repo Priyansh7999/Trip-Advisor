@@ -1,0 +1,50 @@
+.container {
+  background-color: #1e1e1e;
+    padding: 1.5rem;
+    border-radius: 16px;
+    max-width: 400px;
+    margin: 1.5rem auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    text-align: center;
+  }
+  
+  .title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #00adb5;
+  }
+  
+  .stars {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  
+  .star {
+    color: #e5e7eb;
+    transition: color 0.2s ease;
+  }
+  
+  .star:hover {
+    color: #facc15;
+  }
+  
+  .active {
+    color: #facc15;
+  }
+  
+  .result {
+    margin-top: 0.5rem;
+    font-weight: 500;
+    color: #2563eb;
+  }
+  
+  .message {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #10b981;
+  }
+  

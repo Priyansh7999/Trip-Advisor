@@ -2,9 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const { getDashboardCounts } = require('./models/ManageDashboard');
-const { saveCityData, getCityByName,updateCityData, deleteCityData } = require('./models/ManageCity');
-const { savePlaceData, getPlaceByName, updatePlaceData, getPlacesByCityName, deletePlaceData } = require('./models/ManagePlace');
-const { saveHotelData, getHotelByName, updateHotelData, getHotelsByCity, deleteHotelData } = require('./models/ManageHotel');
+const { saveCityData, getCityByName,updateCityData, deleteCityData, saveCityReview, GiveCityReview, SaveRating, GetRating } = require('./models/ManageCity');
+const { savePlaceData, getPlaceByName, updatePlaceData, getPlacesByCityName, deletePlaceData, savePlaceReview, GivePlaceReview, GetPlaceRating, SavePlaceRating } = require('./models/ManagePlace');
+const { saveHotelData, getHotelByName, updateHotelData, getHotelsByCity, deleteHotelData, saveHotelReview, GiveHotelReview } = require('./models/ManageHotel');
 const { saveRestaurantData, getRestaurantByName, updateRestaurant, deleteRestaurantData } = require('./models/ManageRestaurant');
 
 dotenv.config();
@@ -219,6 +219,185 @@ app.delete('/delete-restaurant/:name', async (req, res) => {
     res.status(500).json({ error: 'Failed to delete restaurant' });
   }
 });
+
+
+
+// REVIEWS
+app.post('/store-review-city', async (req, res) => {
+  const { name, username, review } = req.body;
+
+  if (!name || !username || !review) {
+    return res.status(400).json({ error: 'Missing required fields' });
+  }
+
+  try {
+    const result = await saveCityReview({ name, username, review });
+    if (result.error) {
+      return res.status(500).json(result);
+    }
+
+    res.json(result);
+  } catch (error) {
+    console.error('Error in /store-review-city:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+app.post('/store-review-place', async (req, res) => {
+  const { name, username, review } = req.body;
+  console.log(req.body); 
+
+  if (!name || !username || !review) {
+    return res.status(400).json({ error: 'Missing required fields' });
+  }
+
+  try {
+    const result = await savePlaceReview({ name, username, review });
+
+    if (result.error) {
+      return res.status(500).json(result);
+    }
+
+    res.json(result);
+  } catch (error) {
+    console.error('Error in /store-review-place:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+app.post('/store-review-hotel', async (req, res) => {
+  const { name, username, review } = req.body;
+  const hotelName = name; 
+  console.log(req.body);
+  if (!hotelName || !username || !review) {
+    return res.status(400).json({ error: 'Missing required fields' });
+  }
+
+  try {
+    const result = await saveHotelReview({ hotelName, username, review });
+    if (result.error) {
+      return res.status(500).json(result);
+    }
+
+    res.json(result);
+  } catch (error) {
+    console.error('Error in /store-review-hotel:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+// VIEW REVIEWS
+
+app.post('/view-review-city', async (req, res) => {
+  const { name } = req.body;
+
+  if (!name) {
+    return res.status(400).json({ error: 'City name is required' });
+  }
+
+  try {
+    const result = await GiveCityReview(name);
+
+    if (result.error) {
+      return res.status(404).json(result);
+    }
+
+    res.json(result);
+  } catch (error) {
+    console.error('Error in /view-review-city:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+app.post('/view-review-hotel', async (req, res) => {
+  const { name } = req.body; 
+
+  if (!name) {
+    return res.status(400).json({ error: 'Hotel name is required' });
+  }
+
+  try {
+    const result = await GiveHotelReview(name);
+
+    if (result.error) {
+      return res.status(404).json(result);
+    }
+
+    res.json(result);
+  } catch (error) {
+    console.error('Error in /view-review-hotel:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+app.post('/view-review-place', async (req, res) => {
+  const { name } = req.body;
+
+  if (!name) {
+    return res.status(400).json({ error: 'Place name is required' });
+  }
+
+  try {
+    const result = await GivePlaceReview(name);
+
+    if (result.error) {
+      return res.status(404).json(result);
+    }
+
+    res.json(result);
+  } catch (error) {
+    console.error('Error in /view-review-place:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
+app.post('/view-rating-city', async (req, res) => {
+  const { name, rating } = req.body;
+
+  const result = await SaveRating({ name, rating });
+  if (result.error) {
+    return res.status(400).json({ message: result.message });
+  }
+  return res.json({ message: result.message, average: result.average });
+});
+
+app.post('/get-rating-city', async (req, res) => {
+  const { name } = req.body;
+
+  const result = await GetRating(name);
+
+  if (result.error) {
+    return res.status(404).json({ message: result.message });
+  }
+
+  res.json({ rating: result.rating });
+})
+
+app.post('/view-rating-place', async (req, res) => {
+  const { name, rating } = req.body;
+
+  if (!name || typeof rating !== 'number') {
+    return res.status(400).json({ message: 'Invalid input' });
+  }
+
+  const result = await SavePlaceRating(name, rating);
+
+  if (result.error) {
+    return res.status(500).json({ message: result.message });
+  }
+
+  res.json({ message: 'Place rating submitted!', newRating: result.rating });
+});
+
+
+app.post('/get-rating-place', async (req, res) => {
+  const { name } = req.body;
+  const result = await GetPlaceRating(name);
+  if (result.error) {
+    return res.status(404).json({ message: result.message });
+  }
+  res.json({ rating: result.rating });
+});
+
 
 const PORT = 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

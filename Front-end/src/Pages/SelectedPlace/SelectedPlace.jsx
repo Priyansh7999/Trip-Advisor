@@ -2,7 +2,10 @@ import React, { useEffect, useState } from 'react';
 import styles from '../SelectedCity/SelectedCity.module.css';
 import style from './SelectedCity.module.css'
 import { useParams } from 'react-router-dom';
-
+import ViewReviews from '../../components/Reviews/ViewReviews';
+import GiveReviews from '../../components/Reviews/GiveReviews';
+import GiveRating from '../../components/Rating/GiveRating';
+import ViewRating from '../../components/Rating/ViewRaing';
 export default function SelectedPlace() {
   const { placeName } = useParams();
   const [placeData, setPlaceData] = useState(null);
@@ -51,6 +54,9 @@ export default function SelectedPlace() {
         <div className={styles["selected-city-name"]}>
           <h1>{name}, {city}</h1>
         </div>
+        <div className={styles["selected-city-rating"]}>
+                <ViewRating type={'Place'} name={placeName} />
+        </div>
       </div>
 
       <div className={styles["selected-place-description"]}>
@@ -93,6 +99,11 @@ export default function SelectedPlace() {
             <p><strong>Restricted Items:</strong> {overview.restrictedItems}</p>
           </div>
         )}
+      </div>
+      <div className={styles["selected-place-review"]}>
+        <ViewReviews type={'Place'} name={placeName} />
+        <GiveReviews type={'Place'} name={placeName} username={'priyansh'} />
+        <GiveRating type={'Place'} name={placeName} />
       </div>
     </div>
   );

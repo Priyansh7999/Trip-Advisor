@@ -5,6 +5,10 @@ import Weather from '../../components/Weather/Weather';
 import CityMap from '../../components/CityMap/CityMap';
 import HotelList from '../../components/HotelsList/HotelList';
 import PlaceToVisitList from '../../components/PlaceToVisitList/PlaceToVisitList';
+import ViewReviews from '../../components/Reviews/ViewReviews';
+import GiveReviews from '../../components/Reviews/GiveReviews';
+import GiveRating from '../../components/Rating/GiveRating';
+import ViewRating from '../../components/Rating/ViewRaing';
 
 const SelectedCity = () => {
   const { cityName } = useParams();
@@ -49,10 +53,15 @@ const SelectedCity = () => {
           <img src="https://plus.unsplash.com/premium_photo-1697729585263-29ebdcb972ee?w=900&auto=format&fit=crop&q=60" alt={cityname} />
         </div>
         <div className={styles["selected-city-name"]}>
-          <h1>{cityname}</h1>
+          <h1>{cityname}</h1> 
+        </div>
+        <div className={styles["selected-city-rating"]}>
+        <ViewRating type={'City'} name={cityname} />
         </div>
         <div className={styles["selected-city-desc"]}>
           <p>{description}</p>
+        </div>
+        <div>
         </div>
       </div>
 
@@ -156,6 +165,14 @@ const SelectedCity = () => {
       <div className={styles["selected-city-Conclusion"]}>
         <h2>Conclusion</h2>
         <p>{conclusion}</p>
+      </div>
+
+      {/* Reviews */}
+      <div className={styles["selected-city-reviews"]}>
+        <h2>Reviews</h2>
+        <ViewReviews type={'City'} name={cityname} />
+        <GiveReviews type={'City'} name={cityname} username={'priyansh'} />
+        <GiveRating type={'City'} name={cityname} />
       </div>
     </div>
   );
