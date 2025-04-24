@@ -6,7 +6,6 @@ import ImageSlider from './components/ImageSlider/ImageSlider';
 import Search from "./components/Search/Search";
 import Trending from './components/Trending/Trending';
 import AddCityDetails from './Pages/AddCityDetails/AddCityDetails';
-import AllCityList from './Pages/AllCityList/AllCityList';
 import SelectedCity from './Pages/SelectedCity/SelectedCity';
 import PlanTripCategory from './Pages/PlanTripCategory/PlanTripCategory';
 import Layout from './Layout';  
@@ -21,6 +20,9 @@ import "./index.css"
 import TripReview from './Pages/PlanTrip/TripReview/TripReview';
 import UserPanel from './Pages/UserPanel/Userpanel';
 import SelectedHotel from './Pages/SelectedHotel/SelectedHotel';
+import AllCityList from './Pages/AllCityList/AllCityList';
+import AllPlaceList from './Pages/AllCityList/AllPlaceList';
+
 export default function App() {
   return (
     <div>
@@ -33,7 +35,7 @@ export default function App() {
                         <Route path="/slider" element={<ImageSlider />} />
                         <Route path="/focus" element={<Trending />} />
                         <Route path="/cities" element={<AllCityList trending="trendingcity" />} />
-                        <Route path="/places" element={<AllCityList trending="trendingplace" />} />
+                        <Route path="/places" element={<AllPlaceList trending="trendingplace" />} />
                         <Route path="/add-city" element={<AddCityDetails />} />
                         <Route path="/city/:cityName" element={<SelectedCity />} />
                         <Route path="/place/:placeName" element={<SelectedPlace />} />

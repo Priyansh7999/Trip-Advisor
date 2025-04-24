@@ -48,7 +48,13 @@
   .explore-button-text:hover{
     color: rgb(36, 153, 149);
   }
-
+  .sort-dropdown .sortMenu {
+    padding: 8px 12px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+  
   /* Mobile Responsive Styles */
 @media (max-width: 768px) {
   .all-city-list-container {

@@ -193,7 +193,10 @@ async function GetPlaceRating(name) {
     return { error: true, message: 'Failed to fetch rating' };
   }
 }
-
+async function showAllPlaceList() {
+  const result = await pool.query('SELECT * FROM PlacesDb');
+  return result.rows;
+}
 
 module.exports = {
   savePlaceData,
@@ -204,5 +207,6 @@ module.exports = {
   savePlaceReview,
   GivePlaceReview,
   SavePlaceRating,
-  GetPlaceRating
+  GetPlaceRating,
+  showAllPlaceList
 };

@@ -50,13 +50,13 @@ const SelectedCity = () => {
     <div className={styles["selected-city-container"]}>
       <div className={styles["selected-city-header"]}>
         <div className={styles["selected-city-image"]}>
-          <img src="https://plus.unsplash.com/premium_photo-1697729585263-29ebdcb972ee?w=900&auto=format&fit=crop&q=60" alt={cityname} />
+          <img src={cityData.urls[0].urls} alt={cityname} />
         </div>
         <div className={styles["selected-city-name"]}>
           <h1>{cityname}</h1> 
         </div>
         <div className={styles["selected-city-rating"]}>
-        <ViewRating type={'City'} name={cityname} />
+        {/* <ViewRating type={'City'} name={cityname} /> */}
         </div>
         <div className={styles["selected-city-desc"]}>
           <p>{description}</p>
@@ -172,7 +172,7 @@ const SelectedCity = () => {
         <h2>Reviews</h2>
         <ViewReviews type={'City'} name={cityname} />
         <GiveReviews type={'City'} name={cityname} username={'priyansh'} />
-        <GiveRating type={'City'} name={cityname} />
+        {/* <GiveRating type={'City'} name={cityname} /> */}
       </div>
     </div>
   );

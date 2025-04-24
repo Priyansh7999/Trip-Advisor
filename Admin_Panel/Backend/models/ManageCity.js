@@ -200,6 +200,11 @@ async function GetRating(cityName) {
     return { error: true, message: 'Failed to fetch rating' };
   }
 }
+async function showAllCityList() {
+  const result = await pool.query('SELECT * FROM CitiesDb');
+  // console.log(result.rows);
+  return result.rows;
+}
 
 module.exports = {
   saveCityData,
@@ -209,7 +214,8 @@ module.exports = {
   saveCityReview,
   GiveCityReview,
   SaveRating,
-  GetRating
+  GetRating,
+  showAllCityList
 };
 
 

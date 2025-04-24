@@ -2,8 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const { getDashboardCounts } = require('./models/ManageDashboard');
-const { saveCityData, getCityByName,updateCityData, deleteCityData, saveCityReview, GiveCityReview, SaveRating, GetRating } = require('./models/ManageCity');
-const { savePlaceData, getPlaceByName, updatePlaceData, getPlacesByCityName, deletePlaceData, savePlaceReview, GivePlaceReview, GetPlaceRating, SavePlaceRating } = require('./models/ManagePlace');
+const { saveCityData, getCityByName,updateCityData, deleteCityData, saveCityReview, GiveCityReview, SaveRating, GetRating, showAllCityList } = require('./models/ManageCity');
+const { savePlaceData, getPlaceByName, updatePlaceData, getPlacesByCityName, deletePlaceData, savePlaceReview, GivePlaceReview, GetPlaceRating, SavePlaceRating, showAllPlaceList  } = require('./models/ManagePlace');
 const { saveHotelData, getHotelByName, updateHotelData, getHotelsByCity, deleteHotelData, saveHotelReview, GiveHotelReview } = require('./models/ManageHotel');
 const { saveRestaurantData, getRestaurantByName, updateRestaurant, deleteRestaurantData } = require('./models/ManageRestaurant');
 
@@ -71,6 +71,16 @@ app.put('/delete-city/:cityName', async (req, res) => {
   }
 });
 
+app.post('/api/get-city-data', async (req, res) => {
+  try {
+    const cities = await showAllCityList();
+    res.json(cities);
+  } catch (error) {
+    console.error('Error fetching city list:', error);
+    res.status(500).json({ error: 'Failed to fetch city list' });
+  }
+});
+
 
 app.post('/add-place', async (req, res) => {
   try {
@@ -121,6 +131,15 @@ app.delete('/delete-place/:name', async (req, res) => {
   }
 });
 
+app.post('/api/get-place-data', async (req, res) => {
+  try {
+    const places = await showAllPlaceList();
+    res.json(places);
+  } catch (error) {
+    console.error('Error fetching all place data:', error);
+    res.status(500).json({ error: 'Failed to fetch all place data' });
+  }
+});
 
 app.post('/add-hotel', async (req, res) => {
   try {

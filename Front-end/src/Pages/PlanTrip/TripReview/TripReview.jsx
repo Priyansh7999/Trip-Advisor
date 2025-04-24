@@ -61,7 +61,7 @@ export default function TripReview() {
                         allowFullScreen
                         src={urls}
                     ></iframe> */}
-                    <CityMap url={cityMapurl} />
+                    <CityMap url={DistanceMapUrl} />
                 </div>
             </div>
             <div className={styles.navbar}>

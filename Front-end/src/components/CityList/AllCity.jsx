@@ -6,16 +6,17 @@ export default function AllCity({ cities, trending, navigate }) {
   if (!cities) {
     return <AllCitySkeleton />
   }
+  console.log(cities)
   return (
     <div className="city-cards-grid">
       {cities.length > 0 ? (
         cities.map((city, index) => (
           <div className={style["city-card"]} key={index}>
-            <img className={style["city-card-image"]} id="city-card-image" src={city.src} alt={city.title} />
+            <img className={style["city-card-image"]} id="city-card-image" src={city.urls[0].urls} alt={city.title} />
             <div className={style["city-card-content"]} id="city-card-content">
               <div className={style["city-card-header"]} id="city-card-header">
                 <span className={style["city-card-number"]} id="city-card-number">{index + 1}</span>
-                <h2 className={style["city-card-title"]} id="city-card-title">{city.title}</h2>
+                <h2 className={style["city-card-title"]} id="city-card-title">{city.cityname || city.name}</h2>
               </div>
               <p className={style["city-card-desc"]} id="city-card-desc">{city.description}</p>
             </div>
@@ -25,7 +26,7 @@ export default function AllCity({ cities, trending, navigate }) {
               <div className="see-more" style={{ textAlign: 'center', width: '100%' }}>
                 <button class="glow-on-hover" type="button" style={{ width: "80%" }} onClick={() => {
                   (trending === "trendingcity") ?
-                    navigate(`/city/${city.title}`) : navigate(`/place/${city.title}`)
+                    navigate(`/city/${city.cityname}`) : navigate(`/place/${city.name}`)
                 }}>EXPLORE </button>
               </div>
             </div>

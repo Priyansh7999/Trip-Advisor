@@ -4,30 +4,36 @@ import styles from "./AllCityList.module.css";
 import bg1 from "../../assets/bg2.jpg";
 import AllCity from "../../components/CityList/AllCity";
 
-export default function AllCityList({ trending }) {
+export default function AllPlaceList({ trending }) {
   const navigate = useNavigate();
 
   const [cities, setCities] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [sortOption, setSortOption] = useState("default");
+  const [sortedCities, setSortedCities] = useState([]);
 
-  // Fetch all places from the backend
+  // Scroll to top when mounted
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  // Fetch cities/places from server
   useEffect(() => {
     const fetchCities = async () => {
       setLoading(true);
       try {
-        const response = await fetch("http://localhost:5000/api/get-city-data", {
+        const response = await fetch("http://localhost:5000/api/get-place-data", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ trending }), // you can include trending if needed
+          body: JSON.stringify({}),
         });
 
         const data = await response.json();
         setCities(data);
-        console.log("Fetched cities/places:", data);
       } catch (error) {
-        console.error("Error fetching city/place data:", error);
+        console.error("Error fetching cities:", error);
       } finally {
         setLoading(false);
       }
@@ -36,10 +42,20 @@ export default function AllCityList({ trending }) {
     fetchCities();
   }, [trending]);
 
-  // Scroll to the top of the page when the component is mounted
+  // Sort cities based on selected option
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    if (!cities) return;
+
+    let sorted = [...cities];
+
+    if (sortOption === "high-rating") {
+      sorted.sort((a, b) => b.rating - a.rating);
+    } else if (sortOption === "low-rating") {
+      sorted.sort((a, b) => a.rating - b.rating);
+    }
+
+    setSortedCities(sorted);
+  }, [cities, sortOption]);
 
   return (
     <div className={styles["all-city-list-container"]} id="all-city-list-container">
@@ -50,10 +66,20 @@ export default function AllCityList({ trending }) {
         </h1>
       </div>
 
+      {/* SORT DROPDOWN MENU */}
+      <div className={styles.sortMenu}>
+        <select value={sortOption} onChange={(e) => setSortOption(e.target.value)}>
+          <option value="default">Default</option>
+          <option value="high-rating">Highest Rating</option>
+          <option value="low-rating">Lowest Rating</option>
+        </select>
+      </div>
+
+      {/* Loader */}
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <AllCity cities={cities} trending={trending} navigate={navigate} />
+        <AllCity cities={sortedCities} trending={trending} navigate={navigate} />
       )}
     </div>
   );
