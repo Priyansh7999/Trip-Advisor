@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'; // Import navigate from react-ro
 import LesserKnownSkeleton from './LesserKnownSkeleton';
 
 export default function LesserKnown() {
-  const { data, loading, error } = useFetch('http://localhost:7000/api/lesserknown');
+  const { data, loading, error } = useFetch('http://localhost:5000/api/lesserknown');
   const navigate = useNavigate(); // Initialize navigate function
 
   // Handle loading state

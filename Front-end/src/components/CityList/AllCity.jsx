@@ -12,7 +12,8 @@ export default function AllCity({ cities, trending, navigate }) {
       {cities.length > 0 ? (
         cities.map((city, index) => (
           <div className={style["city-card"]} key={index}>
-            <img className={style["city-card-image"]} id="city-card-image" src={city.urls[0].urls} alt={city.title} />
+            {console.log(city.rating, city.name)}
+            <img className={style["city-card-image"]} id="city-card-image" src={city.urls[0].urls || city.urls[0]} alt={city.title} />
             <div className={style["city-card-content"]} id="city-card-content">
               <div className={style["city-card-header"]} id="city-card-header">
                 <span className={style["city-card-number"]} id="city-card-number">{index + 1}</span>

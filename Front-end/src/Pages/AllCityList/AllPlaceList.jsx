@@ -49,11 +49,11 @@ export default function AllPlaceList({ trending }) {
     let sorted = [...cities];
 
     if (sortOption === "high-rating") {
-      sorted.sort((a, b) => b.rating - a.rating);
+      sorted.sort((a, b) => (Number(b.rating) || 0) - (Number(a.rating) || 0));
     } else if (sortOption === "low-rating") {
-      sorted.sort((a, b) => a.rating - b.rating);
+      sorted.sort((a, b) => (Number(a.rating) || 0) - (Number(b.rating) || 0));
     }
-
+    
     setSortedCities(sorted);
   }, [cities, sortOption]);
 
@@ -69,7 +69,7 @@ export default function AllPlaceList({ trending }) {
       {/* SORT DROPDOWN MENU */}
       <div className={styles.sortMenu}>
         <select value={sortOption} onChange={(e) => setSortOption(e.target.value)}>
-          <option value="default">Default</option>
+          <option value="default">All</option>
           <option value="high-rating">Highest Rating</option>
           <option value="low-rating">Lowest Rating</option>
         </select>

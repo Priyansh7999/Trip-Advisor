@@ -18,13 +18,13 @@ export default function TrendingSlider({cards,text}) {
       {loaded ? (
           cards.map((item, index) => (
             <div key={index} className={styles["homepage-card"]}>
-              <img src={item.src} alt={item.title} />
+              <img src={item.urls[0].urls || item.urls[0]} alt={item.title} />
               <div className={styles["card-title"]}>
-                <h2>{item.title}</h2>
-                <p>{item.des}</p>
+                <h2>{item.cityname || item.name}</h2>
+                {/* <p>{item.description}</p> */}
                 <div className={styles["explore"]}>
-                  <button onClick={() => (navigate(`/${text}/${item.title}`))}>
-                    Explore {item.title}
+                  <button onClick={() => (navigate(`/${text}/${item.cityname || item.name}`))}>
+                    Explore {item.cityname || item.name}
                   </button>
                 </div>
               </div>
