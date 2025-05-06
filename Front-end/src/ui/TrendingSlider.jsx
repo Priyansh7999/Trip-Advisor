@@ -18,7 +18,7 @@ export default function TrendingSlider({cards,text}) {
       {loaded ? (
           cards.map((item, index) => (
             <div key={index} className={styles["homepage-card"]}>
-              <img src={item.urls[0].urls || item.urls[0]} alt={item.title} />
+              <img src={item.urls[0].urls || item.urls[0] || item.urls[0].url} alt={item.title} />
               <div className={styles["card-title"]}>
                 <h2>{item.cityname || item.name}</h2>
                 {/* <p>{item.description}</p> */}

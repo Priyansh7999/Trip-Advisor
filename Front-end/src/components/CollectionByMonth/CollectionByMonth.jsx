@@ -1,9 +1,8 @@
 import React, { useContext, useEffect } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
 import styles from "./CollectionByMonth.module.css"
-import { TripPlannerContext } from '../../context'
 export default function CollectionByMonth() {
-    const {setMonth}=useContext(TripPlannerContext);
+    
     const navigate=useNavigate()
     const month=[
         {
@@ -56,7 +55,6 @@ export default function CollectionByMonth() {
         }
     ]
     function handleClick(name,image){
-        setMonth({'month':name,'img':image})
         navigate(`/month/${name}`)
     }
   return (

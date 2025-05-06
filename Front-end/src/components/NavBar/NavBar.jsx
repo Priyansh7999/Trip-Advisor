@@ -43,7 +43,7 @@ const NavBar = () => {
             <li><a href="/PlanTripCategory">Trip Category</a></li>
             <li><a href="/plantrip">Plan Trip</a></li>
             {/* <li onClick={handleAuthentication}><img src={User} alt="" width={30} height={30} style={{cursor: 'pointer', borderRadius: '100%'}} /></li> */}
-            <li><a href="/user"><img src={User} alt="" width={30} height={30} style={{cursor: 'pointer', borderRadius: '100%'}} /></a></li>
+            <li><a href="/login"><img src={User} alt="" width={30} height={30} style={{cursor: 'pointer', borderRadius: '100%'}} /></a></li>
           </ul>
         </div>
         <div className="toggle-button" onClick={toggleMenu}>

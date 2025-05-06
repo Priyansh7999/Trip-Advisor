@@ -1,18 +1,53 @@
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import styles from "./WhereToSelected.module.css";
-import useFetch from '../../components/hooks/useFetch';
-import AllCity from "../../components/CityList/AllCity"
-import { useNavigate } from 'react-router-dom';
+import AllCity from "../../components/CityList/AllCity";
 import { TripPlannerContext } from '../../context';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import AllCitySkeleton from './AllCitySkeleton';
+
 export default function PlanTripSelected() {
-    // const { someProp } = location.state || {};  // Access the passed state
+    const { TripCategory } = useContext(TripPlannerContext);
+    const { placeName } = useParams(); // Get placeName from route
+    const [filteredCities, setFilteredCities] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
+
     useEffect(() => {
         window.scrollTo(0, 0);
-    },[])
-    const {TripCategory} = useContext(TripPlannerContext);
-    const { data: cities, loading, error } = useFetch(`http://localhost:7000/api/trendingplace`);
+    }, []);
+
+    useEffect(() => {
+        const fetchCities = async () => {
+            try {
+                const response = await fetch("http://localhost:5000/api/get-city-data", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({}) // if you need to send something in body, do it here
+                });
+
+                if (!response.ok) throw new Error("Network response was not ok");
+
+                const data = await response.json();
+
+                const matchedCities = data.filter(city =>
+                    Array.isArray(city.placetypes) &&
+                    city.placetypes.includes(placeName)
+                );
+
+                setFilteredCities(matchedCities);
+                setLoading(false);
+            } catch (err) {
+                console.error("Error fetching city list:", err);
+                setError(true);
+                setLoading(false);
+            }
+        };
+
+        fetchCities();
+    }, [placeName]);
+
     return (
         <div className="where-to-container" id='where-to-container'>
             <div className="place-card-content" id="place-card-content">
@@ -26,7 +61,7 @@ export default function PlanTripSelected() {
                 {loading || error ? (
                     <AllCitySkeleton />
                 ) : (
-                    <AllCity cities={cities || []} navigate={null} />
+                    <AllCity cities={filteredCities} navigate={null} />
                 )}
             </div>
         </div>

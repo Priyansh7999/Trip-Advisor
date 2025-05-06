@@ -6,13 +6,14 @@ import { useNavigate } from 'react-router-dom';
 export default function HotelList({ cityname }) {
   const [hotels, setHotels] = useState([]);
   const navigate = useNavigate();
+  const formattedCityName = cityname.charAt(0).toUpperCase() + cityname.slice(1);
 
   useEffect(() => {
-    if (!cityname) return;
+    if (!formattedCityName) return;
 
     const fetchHotels = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/get-hotel-list/${cityname}`);
+        const response = await axios.get(`http://localhost:5000/get-hotel-list/${formattedCityName}`);
         setHotels(response.data); // assuming array of hotel objects
       } catch (error) {
         console.error('Error fetching hotels:', error);
@@ -20,7 +21,7 @@ export default function HotelList({ cityname }) {
     };
 
     fetchHotels();
-  }, [cityname]);
+  }, [formattedCityName]);
 
   return (
     <div className={style['city-cards-grid']}>

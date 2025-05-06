@@ -26,7 +26,7 @@ const AllCards = ({ places }) => {
                             <button class="glow-on-hover" type="button" style={{width:"80%"}}  onClick={() =>{
                   navigate(`/PlanTripCategory/${place.name}`)
                   setTripCategory({ name: place.name, image: place.img , description: place.description });
-                }}>EXPLORE </button>
+                }}>EXPLORE  </button>
               </div>
             </div>
           </div>

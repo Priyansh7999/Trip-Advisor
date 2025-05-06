@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styles from './SelectedCity.module.css';
 import Weather from '../../components/Weather/Weather';
@@ -7,12 +7,11 @@ import HotelList from '../../components/HotelsList/HotelList';
 import PlaceToVisitList from '../../components/PlaceToVisitList/PlaceToVisitList';
 import ViewReviews from '../../components/Reviews/ViewReviews';
 import GiveReviews from '../../components/Reviews/GiveReviews';
-import GiveRating from '../../components/Rating/GiveRating';
-import ViewRating from '../../components/Rating/ViewRaing';
-
+// import { TripPlannerContext } from '../../context';
 const SelectedCity = () => {
   const { cityName } = useParams();
   const [cityData, setCityData] = useState(null);
+  
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -171,8 +170,7 @@ const SelectedCity = () => {
       <div className={styles["selected-city-reviews"]}>
         <h2>Reviews</h2>
         <ViewReviews type={'City'} name={cityname} />
-        <GiveReviews type={'City'} name={cityname} username={'priyansh'} />
-        {/* <GiveRating type={'City'} name={cityname} /> */}
+        <GiveReviews type={'City'} name={cityname} />
       </div>
     </div>
   );

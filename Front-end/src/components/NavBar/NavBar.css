@@ -1,23 +1,23 @@
 .navbar {
-  width: 50%;;
+  width: 50%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: fixed;
   left: 50%;
-  top: 2%;
+  top: 1%;
   transform: translate(-50%, 0);
   background-color: #000000b7;
   border-radius: 70px;
 }
 .black{
-  width: 50%;;
+  width: 50%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: fixed;
   left: 50%;
-  top: 2%;
+  top: 1%;
   transform: translate(-50%, 0);
   background-color: #000000;
   border-radius: 70px;
@@ -25,14 +25,13 @@
 
 .navbar-container {
   display: flex;
-  padding: 0.1rem 1.5rem;
   justify-content: space-evenly;
   align-items: center;
   width: 100%;
 }
 
 .logo img {
-  height: 2.4rem;
+  height: 2.2rem;
   border-radius: 50%;
 }
 

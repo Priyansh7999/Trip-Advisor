@@ -176,8 +176,8 @@ async function SaveRating({ name, rating }) {
     const average = totalRatings.reduce((a, b) => a + b, 0) / totalRatings.length;
     const updatedReviews = [...reviews, { rating }];
     await pool.query(
-      'UPDATE CitiesDb SET rating = $1, reviews = $2 WHERE cityName = $3',
-      [average, JSON.stringify(updatedReviews), name]
+      'UPDATE CitiesDb SET rating = $1, WHERE cityName = $2',
+      [average, name]
     );
     return { success: true, message: 'Rating saved successfully', average };
   } catch (err) {

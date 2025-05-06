@@ -102,7 +102,7 @@ export default function SelectedPlace() {
       </div>
       <div className={styles["selected-place-review"]}>
         <ViewReviews type={'Place'} name={placeName} />
-        <GiveReviews type={'Place'} name={placeName} username={'priyansh'} />
+        <GiveReviews type={'Place'} name={placeName} />
         <GiveRating type={'Place'} name={placeName} />
       </div>
     </div>

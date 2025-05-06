@@ -7,7 +7,7 @@ export default function Layout() {
   return (
     <>
     <div style={{display: "flex", flexDirection: "column", height: "100vh"}}>
-      <div style={{zIndex: 200, width: '100%', height: '70px'}}>
+      <div style={{zIndex: 200, width: '100%', height: '10px'}}>
         <NavBar />
       </div>
       <div style={{flex: 1}}>

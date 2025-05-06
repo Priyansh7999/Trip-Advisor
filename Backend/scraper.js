@@ -33,7 +33,7 @@ export const scrapeTrainData = async (from, to) => {
           arrivalStation,
           travelTime,
           travelDistance,
-          departDays  // Adding the depart days to the result
+          departDays 
         });
       }
     });

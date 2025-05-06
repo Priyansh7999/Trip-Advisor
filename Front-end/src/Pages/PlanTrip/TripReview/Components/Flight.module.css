@@ -1,0 +1,197 @@
+.flightCard {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    margin-bottom: 16px;
+    background-color: #fff;
+  }
+  
+  .flightCard:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .flightHeader {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  @media (min-width: 768px) {
+    .flightHeader {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+  
+  .airlineInfo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  @media (min-width: 768px) {
+    .airlineInfo {
+      margin-bottom: 0;
+      width: auto;
+    }
+  }
+  
+  .airlineLogo {
+    width: 40px;
+    height: 40px;
+    margin-right: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0b429;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .flightDetails {
+    display: flex;
+    flex: 1;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .timeDisplay {
+    text-align: center;
+  }
+  
+  .departureTime, .arrivalTime {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+  
+  .cityName {
+    font-size: 0.875rem;
+    color: #718096;
+  }
+  
+  .durationContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 16px;
+  }
+  
+  .duration {
+    font-size: 0.75rem;
+    color: #718096;
+  }
+  
+  .flightPath {
+    position: relative;
+    width: 80px;
+  }
+  
+  @media (min-width: 768px) {
+    .flightPath {
+      width: 120px;
+    }
+  }
+  
+  .flightPathLine {
+    border-top: 2px solid #e2e8f0;
+    margin: 8px 0;
+  }
+  
+  .flightPathText {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.875rem;
+    white-space: nowrap;
+  }
+  
+  .priceContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: 16px;
+  }
+  
+  @media (min-width: 768px) {
+    .priceContainer {
+      margin-top: 0;
+      width: auto;
+    }
+  }
+  
+  .price {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  
+  .viewFareButton {
+    background-color: #3182ce;
+    color: white;
+    font-weight: 500;
+    padding: 8px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.2s ease;
+  }
+  
+  .viewFareButton:hover {
+    background-color: #2c5282;
+  }
+  
+  .flightFooter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+    background-color: #f7fafc;
+  }
+  
+  .refundableText {
+    font-size: 0.875rem;
+    color: #718096;
+  }
+  
+  .promoCode {
+    color: #38a169;
+    font-size: 0.875rem;
+  }
+  
+  .loadingSpinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+  }
+  
+  .spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border-top: 4px solid #3182ce;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .errorContainer {
+    padding: 16px;
+    color: #e53e3e;
+    background-color: #fed7d7;
+    border-radius: 6px;
+  }
+  
+  .emptyStateContainer {
+    padding: 16px;
+    color: #718096;
+  }

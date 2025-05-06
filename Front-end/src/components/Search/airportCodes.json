@@ -1,0 +1,9 @@
+{
+    "airports": [
+      { "name": "Indira Gandhi International", "code": "DEL" },
+      { "name": "Chhatrapati Shivaji Maharaj International", "code": "BOM" },
+      { "name": "Raja Bhoj Airport, Bhopal ", "code": "BHO" },
+      { "name": "Kempegowda International Airport, Bangalore", "code": "BLR" }
+    ]
+  }
+  

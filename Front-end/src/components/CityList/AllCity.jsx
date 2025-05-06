@@ -2,7 +2,9 @@
 import React from "react";
 import style from "./AllCity.module.css";
 import AllCitySkeleton from "./AllCitySkeleton";
-export default function AllCity({ cities, trending, navigate }) {
+import { useNavigate } from "react-router-dom";
+export default function AllCity({ cities, trending }) {
+  const navigate = useNavigate();
   if (!cities) {
     return <AllCitySkeleton />
   }
@@ -25,10 +27,8 @@ export default function AllCity({ cities, trending, navigate }) {
               <hr style={{ opacity: "0.3" }} />
               <br />
               <div className="see-more" style={{ textAlign: 'center', width: '100%' }}>
-                <button class="glow-on-hover" type="button" style={{ width: "80%" }} onClick={() => {
-                  (trending === "trendingcity") ?
-                    navigate(`/city/${city.cityname}`) : navigate(`/place/${city.name}`)
-                }}>EXPLORE </button>
+                <button class="glow-on-hover" type="button" style={{ width: "80%" }} onClick={() =>navigate(`/city/${city.cityname || city.name}`)}
+                >EXPLORE</button>
               </div>
             </div>
           </div>

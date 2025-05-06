@@ -20,7 +20,7 @@ const TravelGrid = () => {
       image: Hills
     },
     {
-      category: "Heritage",
+      category: "Heritage Walk",
       title: "Best Tourist Attractions",
       description: "Explore historical places & countless ideas for an epic break and make way to explore the prominent monuments, streets, architectures, and UNESCO recognized sites",
       image: heritage,
@@ -32,13 +32,13 @@ const TravelGrid = () => {
       image: Foodies,
     },
     {
-      category: "Beach",
+      category: "Beach Retreat",
       title: "Best Beach Attractions",
       description: "Beach Tourism - Enjoy the soothing sounds of the ocean waves, the gentle breeze, and the warm sun on your skin. Immerse yourself in the tranquility and relaxation of the beach.",
       image: Beach,
     },
     {
-      category: "Romantic",
+      category: "Romantic Vacation",
       title: "Best Romantic Attractions",
       description: "List of romantic tourism destinations and plan a passionate getaway with your special someone to surreal valleys, snow-clad mountains, sun-soaked beaches or adventurous wildlife trails",
       image: Romantic,
@@ -46,9 +46,8 @@ const TravelGrid = () => {
   ];
 
   const handleCardClick = (category, image, description) => {
-    const formattedCategory = category.toLowerCase().replace(/[^a-z0-9-]+/g, "-");
     setTripCategory({ name: category, image: image, description: description });
-    navigate(`/PlanTripCategory/${formattedCategory}`);
+    navigate(`/PlanTripCategory/${category}`);
   };
 
   return (

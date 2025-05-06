@@ -142,42 +142,79 @@ async function GivePlaceReview(name) {
 
 async function SavePlaceRating(name, newRating) {
   try {
+    // Find the place in the database
     const result = await pool.query(
       'SELECT rating, reviews FROM PlacesDb WHERE name = $1',
       [name]
     );
+    
     if (result.rows.length === 0) {
-      return { error: true, message: 'Place not found' };
+      return { 
+        error: true, 
+        message: 'Place not found', 
+        status: 404 
+      };
     }
-
-    let existingReviews = result.rows[0].reviews;
-
-    if (!Array.isArray(existingReviews)) {
-      try {
-        existingReviews = JSON.parse(existingReviews);
-        if (!Array.isArray(existingReviews)) existingReviews = [];
-      } catch {
-        existingReviews = [];
+    
+    // Get existing reviews
+    let existingReviews = [];
+    const placeData = result.rows[0];
+    
+    // Handle reviews depending on its current format
+    if (placeData.reviews) {
+      if (Array.isArray(placeData.reviews)) {
+        existingReviews = placeData.reviews;
+      } else {
+        try {
+          // Try to parse if it's stored as a JSON string
+          const parsed = JSON.parse(placeData.reviews);
+          existingReviews = Array.isArray(parsed) ? parsed : [];
+        } catch (e) {
+          // If parsing fails, initialize as empty array
+          console.warn('Failed to parse reviews JSON:', e);
+          existingReviews = [];
+        }
       }
     }
-    existingReviews.push({ rating: newRating });
+    
+    // Add the new rating
+    existingReviews.push({ 
+      rating: newRating,
+      timestamp: new Date().toISOString()
+    });
+    
+    // Calculate the new average rating
     const validRatings = existingReviews
-      .map((r) => r.rating)
-      .filter((r) => typeof r === 'number');
-    const updatedAvg =
-      validRatings.reduce((sum, r) => sum + r, 0) / validRatings.length;
+      .map(r => r.rating)
+      .filter(r => typeof r === 'number' && r >= 1 && r <= 5);
+    
+    // Calculate average with validation
+    const sum = validRatings.reduce((total, r) => total + r, 0);
+    const updatedAvg = validRatings.length > 0 ? sum / validRatings.length : 0;
+    
+    // Round to 1 decimal place for storage
+    const roundedAvg = Math.round(updatedAvg * 10) / 10;
+    
+    // Update the database
     await pool.query(
-      'UPDATE PlacesDb SET rating = $1, reviews = $2 WHERE name = $3',
-      [updatedAvg, JSON.stringify(existingReviews), name]
+      'UPDATE PlacesDb SET rating = $1, WHERE name = $2',
+      [roundedAvg, name]
     );
-
-    return { success: true, rating: updatedAvg };
+    
+    return { 
+      success: true, 
+      rating: roundedAvg,
+      totalReviews: validRatings.length
+    };
   } catch (err) {
-    console.error('Error saving place rating:', err.message);
-    return { error: true, message: 'Error saving rating' };
+    console.error('Error saving place rating:', err);
+    return { 
+      error: true, 
+      message: 'Error saving rating',
+      status: 500
+    };
   }
 }
-
 
 async function GetPlaceRating(name) {
   try {

@@ -6,13 +6,16 @@ import { useNavigate } from 'react-router-dom';
 export default function PlaceToVisitList({ cityname }) {
   const [places, setPlaces] = useState([]);
   const navigate = useNavigate();
+  console.log(cityname)
+  const formattedCityName = cityname.charAt(0).toUpperCase() + cityname.slice(1);
+
 
   useEffect(() => {
-    if (!cityname) return;
+    if (!formattedCityName) return;
 
     const fetchPlaces = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/get-place-list/${cityname}`);
+        const response = await axios.get(`http://localhost:5000/get-place-list/${formattedCityName}`);
         setPlaces(response.data);
         console.log(response.data);
       } catch (error) {
@@ -21,7 +24,7 @@ export default function PlaceToVisitList({ cityname }) {
     };
 
     fetchPlaces();
-  }, [cityname]);
+  }, [formattedCityName]);
 
   return (
     <div className={style['place-list-container']}>

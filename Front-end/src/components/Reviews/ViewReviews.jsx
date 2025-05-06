@@ -38,8 +38,8 @@ export default function ViewReviews({ type, name }) {
           <div className={styles.reviewList}>
             {visibleReviews.map((rev, idx) => (
               <div key={idx} className={styles.reviewItem}>
-                <p className={styles.username}>{rev.username}</p>
-                <p className={styles.reviewText}>{rev.review}</p>
+                <p className={styles.username}>{rev?.username}</p>
+                <p className={styles.reviewText}>{rev?.review}</p>
               </div>
             ))}
           </div>

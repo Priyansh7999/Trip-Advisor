@@ -1,21 +1,45 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import axios from 'axios';
 import styles from './GiveRating.module.css';
-
+import { TripPlannerContext } from '../../context';  
 export default function GiveRating({ type, name }) {
   const [hovered, setHovered] = useState(0);
   const [selected, setSelected] = useState(0);
   const [message, setMessage] = useState('');
-
+  const [loading, setLoading] = useState(false);
+  const { authenticated } = useContext(TripPlannerContext);
   const handleRating = async (rating) => {
+    if (!authenticated) {
+      window.location.href = '/login';
+      return;
+    }
     setSelected(rating);
+    setLoading(true);
+    setMessage('');
+    
     try {
       const endpoint = `http://localhost:5000/view-rating-${type.toLowerCase()}`;
-      const res = await axios.post(endpoint, { name, rating });
-      setMessage(res.data.message || 'Rating submitted!');
+      const res = await axios.post(endpoint, { 
+        name, 
+        rating: Number(rating)
+      });
+      
+      if (res.data.newRating) {
+        setMessage(`Rating submitted! Current average: ${res.data.newRating.toFixed(1)}`);
+      } else {
+        setMessage(res.data.message || 'Rating submitted!');
+      }
     } catch (err) {
       console.error('Failed to submit rating:', err);
-      setMessage('Failed to submit rating.');
+      if (err.response) {
+        setMessage(`Error: ${err.response.data.message || 'Server error'}`);
+      } else if (err.request) {
+        setMessage('Error: No response from server. Please try again.');
+      } else {
+        setMessage('Failed to submit rating. Please try again.');
+      }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -38,6 +62,8 @@ export default function GiveRating({ type, name }) {
         ))}
       </div>
       {selected > 0 && <p className={styles.result}>You rated: {selected} / 5</p>}
+      {loading && <p className={styles.loading}>Submitting rating...</p>}
+      {message && <p className={styles.message}>{message}</p>}
     </div>
   );
 }
