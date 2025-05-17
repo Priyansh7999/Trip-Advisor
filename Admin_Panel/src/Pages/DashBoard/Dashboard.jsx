@@ -7,10 +7,6 @@ export default function Dashboard() {
         <div className={styles.dashboard}>
             <h1>Overview</h1>
             <Cards />
-            <div className={styles.recent}>
-                <h1>Recent Activity</h1>
-                <Recent />
-            </div>
         </div>
     )
 }

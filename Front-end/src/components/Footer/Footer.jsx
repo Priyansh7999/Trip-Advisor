@@ -27,10 +27,7 @@ export default function Footer() {
         </div>
         <div className='newsletter'>
           <h3>Get exclusive inspiration for your next stay subscribe to our newsletter.</h3>
-          <form onSubmit={(e) => e.preventDefault()}>
-            <input type='email' placeholder='Enter your email address' />
-            <button>Subscribe</button>
-          </form>
+          
         </div>
       </div>
       <div className='footer-bottom'>

@@ -1,9 +1,10 @@
 {
-    "airports": [
-      { "name": "Indira Gandhi International", "code": "DEL" },
-      { "name": "Chhatrapati Shivaji Maharaj International", "code": "BOM" },
-      { "name": "Raja Bhoj Airport, Bhopal ", "code": "BHO" },
-      { "name": "Kempegowda International Airport, Bangalore", "code": "BLR" }
-    ]
-  }
-  
+  "airports": [
+    { "name": "Indira Gandhi International", "code": "DEL" },
+    { "name": "Chhatrapati Shivaji Maharaj International", "code": "BOM" },
+    { "name": "Raja Bhoj Airport, Bhopal", "code": "BHO" },
+    { "name": "Kempegowda International Airport, Bangalore", "code": "BLR" },
+    { "name": "Chennai International Airport", "code": "MAA" },
+    { "name": "Netaji Subhas Chandra Bose International Airport, Kolkata", "code": "CCU" }
+  ]
+}

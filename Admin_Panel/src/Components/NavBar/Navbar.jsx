@@ -8,16 +8,16 @@ export default function Navbar() {
   const [activeButton, setActiveButton] = useState('');
 
   useEffect(() => {
-    const path = location.pathname.split('/')[1]; // Extract the part of the URL after the '/'
+    const path = location.pathname.split('/')[1]; 
     if (path) {
       setActiveButton(path.charAt(0).toUpperCase() + path.slice(1)); 
     }
-  }, [location]); // Re-run when location changes
+  }, [location]);
 
  
   const handleButtonClick = (label) => {
     setActiveButton(label);
-    navigate(`/${label}`); // Navigate to the URL
+    navigate(`/${label}`); 
   };
 
   return (
@@ -27,7 +27,7 @@ export default function Navbar() {
         <p>Admin Panel</p>
       </div>
       <div className={styles.buttons}>
-        {['Home', 'Dashboard', 'Cities', 'Hotels', 'Restaurants', 'Places'].map((label, index) => (
+        {['Home', 'Dashboard', 'Cities', 'Hotels', 'Places'].map((label, index) => (
           <button
             key={index}
             className={activeButton === label ? styles.activeButton : ''}

@@ -26,7 +26,7 @@ export default function LesserKnown() {
           <div
             key={index}
             className='lesser-known-card'
-            onClick={() => navigate(`/places/${place.name}`)} // Navigate to place details
+            onClick={() => navigate(`/city/${place.name}`)} // Navigate to place details
           >
             <div className='lesser-known-card-img'>
               <img src={place.img} alt={place.name} />

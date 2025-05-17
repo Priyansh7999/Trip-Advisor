@@ -23,10 +23,10 @@ export default function HomePage() {
           <h3>Hotels & Stays</h3>
           <p>Keep hotel details up-to-date for travelers.</p>
         </div>
-        <div className={styles.card}>
+        {/* <div className={styles.card}>
           <h3>Restaurants</h3>
           <p>Manage local food spots and dining recommendations.</p>
-        </div>
+        </div> */}
       </div>
 
       <footer className={styles.footer}>

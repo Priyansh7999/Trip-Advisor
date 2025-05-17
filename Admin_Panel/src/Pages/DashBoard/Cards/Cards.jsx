@@ -31,10 +31,7 @@ export default function Cards() {
         <p>Total Hotels</p>
         <h2>{counts.totalHotels}</h2>
       </div>
-      <div className={styles.cards}>
-        <p>Total Restaurant</p>
-        <h2>{counts.totalRestaurants}</h2>
-      </div>
+      
     </div>
   );
 }

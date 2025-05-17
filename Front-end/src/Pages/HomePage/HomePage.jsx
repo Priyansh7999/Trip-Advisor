@@ -6,7 +6,6 @@ import styles from "./HomePage.module.css";
 import Trending from "../../components/Trending/Trending";
 import BelowHeroSeaction from "../../components/BelowHeroSeaction/BelowHeroSeaction";
 import TravelGrid from "../../components/TravelGrid/TravelGrid";
-import Stack from "../../components/WhatToSEE/Example"
 import LesserKnown from "../../components/LesserKnown/LesserKnown";
 import CollectionByMonth from "../../components/CollectionByMonth/CollectionByMonth";
 import WhatToSee from "../../components/WhatToSEE/WhatToSee"

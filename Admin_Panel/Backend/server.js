@@ -439,17 +439,6 @@ const lesser_known=[
     state: "Gujarat",
     img:"https://hblimg.mmtcdn.com/content/hubble/img/tvdestinationimages/mmt/activities/m_Saputara_tv_destination_img_6_l_667_1000.jpg",
   },
-  {
-    name: "Kailash",
-    state: "Himachal Pradesh",
-    img: "https://media.istockphoto.com/id/1362644903/photo/kailash-himalaya-mountain-slopes-at-narkanda-himachal-pradesh-india.jpg?s=612x612&w=0&k=20&c=P5OiP9QnX29KjoXZ0YLRmU9pmAHuV1KIoRy4mdD44DY=",
-  },
-  {
-    name: "Kanha National Park",
-    state: "Madhya Pradesh",
-    img: "https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcSfDcSud3AdDGbV669966-OIsO1hKzwA1gRms0ZduDTPCkKCh6_p9gYdQ3z1ebrtqhjXOz5swHvAk2vP8DalqqupTZxmO1z5UYUQV2dag"
-  },
- 
 ]
 
 app.get('/api/lesserknown', (req, res) => {

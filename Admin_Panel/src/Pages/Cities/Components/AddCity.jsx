@@ -106,6 +106,7 @@ export default function AddCity() {
       urls: urls || [],
       reviews: review || [],
     };
+    console.log(cityDetails);
   
     try {
       const res = await fetch('http://localhost:5000/add-city', {

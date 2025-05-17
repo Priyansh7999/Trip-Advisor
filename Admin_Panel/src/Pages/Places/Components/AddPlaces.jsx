@@ -19,29 +19,63 @@ export default function AddPlaces() {
   const [moreAbout, setMoreAbout] = useState('');
   const [bestTime, setBestTime] = useState('');
   const [urls, setUrls] = useState(['']);
+  const [errors, setErrors] = useState({});
+
   const addField = (setState) => {
     setState((prev) => [...prev, '']);
   };
+  
   const handleChange = (index, state, setState, value) => {
     const updatedFields = [...state];
     updatedFields[index] = value;
     setState(updatedFields);
   };
+  
   const handleDelete = (index, state, setState) => {
     const updatedFields = state.filter((_, i) => i !== index);
     setState(updatedFields);
   };
 
+  const validateForm = () => {
+    const newErrors = {};
+    
+    // Check required fields
+    if (!name) newErrors.name = 'Name is required';
+    if (!city) newErrors.city = 'City is required';
+    if (!state) newErrors.state = 'State is required';
+    
+    // Validate latitude and longitude
+    if (latitude === '') {
+      newErrors.latitude = 'Latitude is required';
+    } else if (isNaN(parseFloat(latitude))) {
+      newErrors.latitude = 'Latitude must be a valid number';
+    }
+    
+    if (longitude === '') {
+      newErrors.longitude = 'Longitude is required';
+    } else if (isNaN(parseFloat(longitude))) {
+      newErrors.longitude = 'Longitude must be a valid number';
+    }
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    if (!validateForm()) {
+      alert('Please fix the form errors before submitting');
+      return;
+    }
   
     const placeData = {
       name,
       desc,
       city,
       state,
-      latitude,
-      longitude,
+      latitude: parseFloat(latitude) || 0, // Convert to number, default to 0 if empty
+      longitude: parseFloat(longitude) || 0, // Convert to number, default to 0 if empty
       suggestedDuration,
       whatToExpect,
       tips,
@@ -73,9 +107,9 @@ export default function AddPlaces() {
         setDesc('');
         setCity('');
         setState('');
-        setLatitude(0);
-        setLongitude(0);
-        setSuggestedDuration(0);
+        setLatitude('');
+        setLongitude('');
+        setSuggestedDuration('');
         setWhatToExpect('');
         setHistory('');
         setHighlights('');
@@ -84,27 +118,46 @@ export default function AddPlaces() {
         setRestrictedItems('');
         setMoreAbout('');
         setBestTime('');
-        setUrls('');
+        setUrls(['']);
+        setTips(['']);
       }
     } catch (err) {
       console.error('Error submitting place data:', err);
     }
   };
   
-
   return (
     <form className={styles.container} onSubmit={handleSubmit}>
       <h1>Basic Details</h1>
       <div className={styles.formdata}>
         <label>Name</label>
-        <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+        <input 
+          type="text" 
+          value={name} 
+          onChange={(e) => setName(e.target.value)} 
+          className={errors.name ? styles.errorInput : ''}
+        />
+        {errors.name && <span className={styles.errorText}>{errors.name}</span>}
       </div>
 
       <div className={styles.formdata}>
         <label>City</label>
-        <input type="text" value={city} onChange={(e) => setCity(e.target.value)} />
+        <input 
+          type="text" 
+          value={city} 
+          onChange={(e) => setCity(e.target.value)} 
+          className={errors.city ? styles.errorInput : ''}
+        />
+        {errors.city && <span className={styles.errorText}>{errors.city}</span>}
+        
         <label>State</label>
-        <input type="text" value={state} onChange={(e) => setState(e.target.value)} />
+        <input 
+          type="text" 
+          value={state} 
+          onChange={(e) => setState(e.target.value)} 
+          className={errors.state ? styles.errorInput : ''}
+        />
+        {errors.state && <span className={styles.errorText}>{errors.state}</span>}
       </div>
 
       <div className={styles.formdata}>
@@ -114,9 +167,22 @@ export default function AddPlaces() {
 
       <div className={styles.formdata}>
         <label>Latitude</label>
-        <input type="text" value={latitude} onChange={(e) => setLatitude(e.target.value)} />
+        <input 
+          type="text" 
+          value={latitude} 
+          onChange={(e) => setLatitude(e.target.value)} 
+          className={errors.latitude ? styles.errorInput : ''}
+        />
+        {errors.latitude && <span className={styles.errorText}>{errors.latitude}</span>}
+        
         <label>Longitude</label>
-        <input type="text" value={longitude} onChange={(e) => setLongitude(e.target.value)} />
+        <input 
+          type="text" 
+          value={longitude} 
+          onChange={(e) => setLongitude(e.target.value)} 
+          className={errors.longitude ? styles.errorInput : ''}
+        />
+        {errors.longitude && <span className={styles.errorText}>{errors.longitude}</span>}
       </div>
 
       <div className={styles.formdata}>
